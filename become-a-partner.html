@@ -1,464 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Become a Partner — Scaling Offers Partnership Program</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Partner | Scaling Offers</title>
+  <!-- FONTS -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Poppins:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/xxon-sca-ff-home.css" />
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <!-- LINKED CSS FILES -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            accent: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#2abced',
+              dim: 'rgba(42, 188, 237, 0.08)',
+              glow: 'rgba(42, 188, 237, 0.12)'
+            },
+            bg: '#141414',
+            surface: 'rgba(255, 255, 255, 0.02)',
+            border: 'rgba(255, 255, 255, 0.1)'
+          },
+          letterSpacing: {
+            tighter: '-0.04em',
+            tight: '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    /* ═══════════════════════════════════════════════════════════════════════════════ */
-    /* BECOME A PARTNER PAGE — Page-specific styles */
-    /* ═══════════════════════════════════════════════════════════════════════════════ */
+    /* ═══ PARTNER PAGE SPECIFIC STYLES ═══ */
 
-    /* ═══ PARTNER HERO SECTION ═══ */
-
-    .partner-hero {
+    .partner-main-content {
       position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: var(--space-4xl) var(--margin-sm);
-      gap: var(--space-2xl);
-      min-height: 600px;
+      z-index: 10;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
     }
 
-    .partner-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 20px;
-      background: var(--color-accent-dim);
-      border: 1px solid var(--color-border-accent);
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: var(--color-accent);
-      text-transform: uppercase;
-      font-family: var(--font-accent);
+    @media (min-width: 1024px) {
+      .partner-main-content {
+        padding: 80px 24px 96px;
+      }
     }
 
-    .partner-hero-heading {
-      font-size: clamp(40px, 8vw, 72px);
-      font-family: var(--font-display);
-      font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: -2px;
-      background: var(--gradient-text-white);
-      background-clip: text;
+    /* Utilities */
+    .text-gradient-white {
+      background: linear-gradient(0deg, #fff 30%, rgba(255, 255, 255, 0.6) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: transparent;
     }
 
-    .partner-hero-subheading {
-      font-size: clamp(16px, 3vw, 20px);
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-      max-width: 650px;
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
     }
 
-    /* ═══ BENEFITS SECTION ═══ */
-
-    .partner-benefits {
-      position: relative;
-      z-index: 1;
-      padding: var(--space-4xl) var(--margin-sm);
-      gap: var(--space-3xl);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .feature-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition-base);
     }
 
-    .partner-benefits-heading {
-      font-size: 32px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: -1.28px;
-      color: var(--color-text-primary);
-      text-align: center;
-      max-width: 800px;
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.12);
     }
 
-    .partner-benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-2xl);
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    .benefit-card {
-      padding: var(--space-2xl);
-      background: var(--gradient-card-glass);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      transition: all var(--transition-base);
-    }
-
-    .benefit-card:hover {
-      border-color: var(--color-border-accent);
-      background: linear-gradient(180deg, rgba(42, 188, 237, 0.16) 0%, rgba(42, 188, 237, 0.06) 50%, rgba(42, 188, 237, 0.1) 100%);
-      transform: translateY(-4px);
-    }
-
-    .benefit-card-title {
-      font-size: 20px;
-      font-family: var(--font-accent);
-      font-weight: 600;
-      color: var(--color-accent);
-      letter-spacing: 0px;
-    }
-
-    .benefit-card-text {
-      font-size: 15px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-    }
-
-    /* ═══ WHO SHOULD PARTNER SECTION ═══ */
-
-    .partner-who {
-      position: relative;
-      z-index: 1;
-      padding: var(--space-4xl) var(--margin-sm);
-      gap: var(--space-3xl);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .partner-who-heading {
-      font-size: 32px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: -1.28px;
-      color: var(--color-text-primary);
-      text-align: center;
-      max-width: 800px;
-    }
-
-    .partner-who-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--space-2xl);
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    .partner-category {
-      padding: var(--space-2xl);
-      background: var(--gradient-card-subtle);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      text-align: center;
-      transition: all var(--transition-base);
-    }
-
-    .partner-category:hover {
-      border-color: var(--color-border-accent);
-      background: linear-gradient(165deg, rgba(42, 188, 237, 0.15) 0%, rgba(42, 188, 237, 0.04) 50%, rgba(42, 188, 237, 0.08) 100%);
-    }
-
-    .partner-category-title {
-      font-size: 18px;
-      font-family: var(--font-accent);
-      font-weight: 600;
-      color: var(--color-text-primary);
-      letter-spacing: 0px;
-    }
-
-    .partner-category-desc {
-      font-size: 14px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--color-text-tertiary);
-    }
-
-    /* ═══ HOW IT WORKS SECTION ═══ */
-
-    .partner-how-it-works {
-      position: relative;
-      z-index: 1;
-      padding: var(--space-4xl) var(--margin-sm);
-      gap: var(--space-3xl);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .partner-how-heading {
-      font-size: 32px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: -1.28px;
-      color: var(--color-text-primary);
-      text-align: center;
-      max-width: 800px;
-    }
-
-    .partner-steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-2xl);
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    .partner-step {
-      padding: var(--space-2xl);
-      background: var(--color-surface-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      position: relative;
-    }
-
-    .partner-step-number {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-accent);
-      border-radius: var(--radius-md);
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--color-bg);
-      font-family: var(--font-accent);
-    }
-
-    .partner-step-title {
-      font-size: 18px;
-      font-family: var(--font-accent);
-      font-weight: 600;
-      color: var(--color-text-primary);
-      letter-spacing: 0px;
-    }
-
-    .partner-step-desc {
-      font-size: 14px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-    }
-
-    /* ═══ PARTNER CTA SECTION ═══ */
-
-    .partner-cta {
-      position: relative;
-      z-index: 1;
-      margin: var(--space-4xl) var(--margin-sm);
-      padding: var(--space-4xl);
-      background: var(--gradient-card-glass);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: var(--space-2xl);
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .partner-cta-heading {
-      font-size: clamp(32px, 6vw, 56px);
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: -1.5px;
-      background: var(--gradient-text-accent);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-
-    .partner-cta-subtext {
-      font-size: 16px;
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-      max-width: 600px;
-    }
-
-    .partner-cta-button {
-      padding: 14px 40px;
-      background: var(--color-accent);
-      color: var(--color-bg);
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: 16px;
-      font-family: var(--font-accent);
-      font-weight: 600;
-      letter-spacing: 0px;
-      cursor: pointer;
-      transition: all var(--transition-base);
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-    }
-
-    .partner-cta-button:hover {
-      background: #1aa5c1;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(42, 188, 237, 0.2);
-    }
-
-    .partner-cta-button:active {
-      transform: translateY(0);
-    }
-
-    /* ═══ SCROLL REVEAL ANIMATION ═══ */
-
-    .reveal {
+    /* Animations */
+    .partner-reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
+      transform: translateY(20px);
+      animation: partner-reveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
 
-    .reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ═══ RESPONSIVE ═══ */
-
-    @media (max-width: 768px) {
-      .partner-hero {
-        padding: var(--space-3xl) var(--margin-sm);
-        min-height: 500px;
-      }
-
-      .partner-hero-heading {
-        font-size: 40px;
-      }
-
-      .partner-hero-subheading {
-        font-size: 16px;
-      }
-
-      .partner-benefits,
-      .partner-who,
-      .partner-how-it-works {
-        padding: var(--space-3xl) var(--margin-sm);
-      }
-
-      .partner-benefits-heading,
-      .partner-who-heading,
-      .partner-how-heading {
-        font-size: 24px;
-      }
-
-      .benefit-card,
-      .partner-category,
-      .partner-step {
-        padding: var(--space-lg);
-      }
-
-      .partner-benefits-grid,
-      .partner-who-grid,
-      .partner-steps-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-
-      .partner-cta {
-        margin: var(--space-3xl) var(--margin-sm);
-        padding: var(--space-3xl);
-        gap: var(--space-lg);
-      }
-
-      .partner-cta-heading {
-        font-size: 32px;
+    @keyframes partner-reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 480px) {
-      .partner-hero {
-        padding: var(--space-2xl) 16px;
-        min-height: 400px;
-        gap: var(--space-xl);
-      }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
 
-      .partner-hero-heading {
-        font-size: 32px;
-      }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
-      .partner-hero-subheading {
-        font-size: 14px;
-      }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
 
-      .partner-benefits,
-      .partner-who,
-      .partner-how-it-works {
-        padding: var(--space-2xl) 16px;
-      }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
 
-      .partner-benefits-heading,
-      .partner-who-heading,
-      .partner-how-heading {
-        font-size: 20px;
-      }
+    /* Override header for partner page — no hero section, just nav */
+    .partner-page .header {
+      min-height: auto;
+    }
 
-      .benefit-card-title,
-      .partner-category-title,
-      .partner-step-title {
-        font-size: 16px;
-      }
+    .partner-page .header-rect1 {
+      height: 200px;
+    }
 
-      .partner-cta {
-        margin: var(--space-2xl) 16px;
-        padding: var(--space-2xl);
-      }
+    .partner-page .hero-content,
+    .partner-page .header-stat,
+    .partner-page .header-particles {
+      display: none;
+    }
 
-      .partner-cta-heading {
-        font-size: 24px;
-      }
-
-      .partner-cta-button {
-        width: 100%;
-        justify-content: center;
-      }
+    .partner-page .header-video {
+      height: 200px;
     }
   </style>
 </head>
 
-<body>
+<body class="partner-page selection:bg-brand-dim selection:text-brand">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div class="main-wrapper">
-    <!-- Background elements -->
+    <!-- ═══ BACKGROUND ELEMENTS ═══ -->
     <div class="bg" aria-hidden="true">
       <div class="bg-circle-blue bg-circle-blue1"></div>
       <div class="bg-circle-blue bg-circle-blue2"></div>
@@ -475,11 +160,36 @@
       <img src="assets/bg-noise.png" class="bg-noise" alt="" />
     </div>
 
-    <!-- Header/Navigation -->
+    <!-- Additional background blobs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div class="absolute top-[-10%] left-[20%] w-[800px] h-[800px] bg-brand/5 rounded-full blur-[120px] opacity-60"></div>
+      <div class="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] opacity-40"></div>
+    </div>
+
+    <!-- ═══ HEADER (same as homepage) ═══ -->
     <header class="header">
       <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
 
       <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+
         <nav class="header-nav" aria-label="Main navigation">
           <a href="index.html" class="header-logo-link" aria-label="Scaling Offers home">
             <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
@@ -493,12 +203,12 @@
           </div>
 
           <div class="header-row-right">
-            <button class="header-btn-become-a-partner hover-bright text1">
+            <a href="become-a-partner.html" class="header-btn-become-a-partner hover-bright text1">
               Become a Partner
-            </button>
-            <button class="header-btn-client-login text1 hover-bright">
+            </a>
+            <a href="client-login.html" class="header-btn-client-login text1 hover-bright">
               Client Login
-            </button>
+            </a>
           </div>
 
           <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -514,131 +224,89 @@
             <a href="index.html" class="header-text" role="menuitem">About Us</a>
           </div>
           <div class="mobile-menu-actions">
-            <button class="header-btn-become-a-partner hover-bright text1">
+            <a href="become-a-partner.html" class="header-btn-become-a-partner hover-bright text1">
               Become a Partner
-            </button>
-            <button class="header-btn-client-login text1 hover-bright">
+            </a>
+            <a href="client-login.html" class="header-btn-client-login text1 hover-bright">
               Client Login
-            </button>
+            </a>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main content -->
-    <main id="main-content" class="main">
-      <!-- Partner Hero Section -->
-      <section class="partner-hero reveal" aria-labelledby="partner-hero-heading">
-        <span class="partner-badge">PARTNERSHIP PROGRAM</span>
-        <h1 id="partner-hero-heading" class="partner-hero-heading">Partner With The Best</h1>
-        <p class="partner-hero-subheading">
-          Join forces with Scaling Offers and unlock unprecedented growth for your business
-        </p>
-      </section>
+    <!-- ═══ PARTNER PAGE CONTENT ═══ -->
+    <main id="main-content" class="partner-main-content">
+      <div class="grid lg:grid-cols-12 gap-16 items-start">
 
-      <!-- Benefits Section -->
-      <section class="partner-benefits reveal" aria-labelledby="benefits-heading">
-        <h2 id="benefits-heading" class="partner-benefits-heading">
-          Why Partner With Scaling Offers?
-        </h2>
-        <div class="partner-benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-card-title">Revenue Share Model</div>
-            <p class="benefit-card-text">
-              Earn competitive commissions on every successful referral. Our transparent revenue share model ensures mutual growth.
-            </p>
+        <!-- Left Column: Information -->
+        <div class="lg:col-span-5 flex flex-col lg:pt-12 partner-reveal h-full pt-4 justify-center"
+          style="animation-delay: 0.1s">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/5 border border-brand/10 w-fit mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+            <span class="text-[10px] uppercase tracking-widest text-brand font-medium">Accepting New Partners</span>
           </div>
-          <div class="benefit-card">
-            <div class="benefit-card-title">Dedicated Support</div>
-            <p class="benefit-card-text">
-              Get a dedicated partnership manager who understands your business and helps maximize your earning potential.
-            </p>
+
+          <h1
+            class="text-4xl lg:text-5xl font-display font-medium text-gradient-white tracking-tight mb-6 leading-[1.1]">
+            Scale your revenue infrastructure.
+          </h1>
+
+          <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-10 max-w-md">
+            We partner with high-growth businesses to implement automated funnels, optimize asset management, and
+            provide real-time PnL clarity.
+          </p>
+
+          <!-- Value Props Grid -->
+          <div class="grid gap-4 mb-12">
+            <!-- Feature 1 -->
+
+
+            <!-- Feature 2 -->
+
+
+            <!-- Feature 3 -->
+
           </div>
-          <div class="benefit-card">
-            <div class="benefit-card-title">Marketing Resources</div>
-            <p class="benefit-card-text">
-              Access our proven marketing materials, case studies, and sales assets to accelerate your outreach.
-            </p>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-card-title">Training & Onboarding</div>
-            <p class="benefit-card-text">
-              Comprehensive training program to get you up to speed on our offers, processes, and closing techniques.
-            </p>
-          </div>
+
+
         </div>
-      </section>
 
-      <!-- Who Should Partner Section -->
-      <section class="partner-who reveal" aria-labelledby="who-heading">
-        <h2 id="who-heading" class="partner-who-heading">
-          Who Should Partner With Us?
-        </h2>
-        <div class="partner-who-grid">
-          <div class="partner-category">
-            <div class="partner-category-title">Marketing Agencies</div>
-            <p class="partner-category-desc">
-              Expand your service offerings and unlock new revenue streams with our partnership program.
-            </p>
+        <!-- Right Column: Booking Widget -->
+        <div class="lg:col-span-7 w-full partner-reveal" style="animation-delay: 0.3s;">
+          <div class="glass-panel rounded-[24px] p-2 lg:p-4 shadow-2xl shadow-black/50 relative overflow-hidden">
+            <!-- Decor element -->
+            <div
+              class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand/30 to-transparent">
+            </div>
+
+            <div class="bg-[#1a1a1a] rounded-[20px] overflow-hidden h-[700px] lg:h-[800px] relative w-full">
+              <!-- Loading State -->
+              <div class="absolute inset-0 flex items-center justify-center bg-[#1a1a1a] -z-10">
+                <iconify-icon icon="solar:refresh-circle-linear" class="animate-spin text-white/10"
+                  width="32"></iconify-icon>
+              </div>
+
+              <!-- Iframe Embed -->
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/8QLS7aUqX5dzbbFN6LgV"
+                style="width: 100%; height: 100%; border: none; overflow: auto; pointer-events: none; display: none;"
+                scrolling="yes" id="8QLS7aUqX5dzbbFN6LgV_1770401815181"
+                data-iframe-resizer-initialized="true">
+              </iframe>
+              <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+            </div>
           </div>
-          <div class="partner-category">
-            <div class="partner-category-title">Business Consultants</div>
-            <p class="partner-category-desc">
-              Provide your clients with premium sales and marketing expertise while earning competitive commissions.
-            </p>
-          </div>
-          <div class="partner-category">
-            <div class="partner-category-title">Industry Influencers</div>
-            <p class="partner-category-desc">
-              Leverage your audience and expertise to generate passive income through our referral partnership.
-            </p>
-          </div>
+          <p class="text-center text-[10px] text-zinc-600 mt-4 font-accent">
+            Times are displayed in your local timezone.
+          </p>
         </div>
-      </section>
 
-      <!-- How It Works Section -->
-      <section class="partner-how-it-works reveal" aria-labelledby="how-heading">
-        <h2 id="how-heading" class="partner-how-heading">
-          How It Works
-        </h2>
-        <div class="partner-steps-grid">
-          <div class="partner-step">
-            <div class="partner-step-number">1</div>
-            <div class="partner-step-title">Apply & Get Approved</div>
-            <p class="partner-step-desc">
-              Submit your application and join our growing network of successful partners.
-            </p>
-          </div>
-          <div class="partner-step">
-            <div class="partner-step-number">2</div>
-            <div class="partner-step-title">Receive Training</div>
-            <p class="partner-step-desc">
-              Get comprehensive training on our offerings, marketing materials, and closing strategies.
-            </p>
-          </div>
-          <div class="partner-step">
-            <div class="partner-step-number">3</div>
-            <div class="partner-step-title">Start Earning</div>
-            <p class="partner-step-desc">
-              Refer qualified leads and earn competitive commissions on every successful partnership.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="partner-cta reveal" aria-labelledby="cta-heading">
-        <h2 id="cta-heading" class="partner-cta-heading">Ready to Scale Together?</h2>
-        <p class="partner-cta-subtext">
-          Take the first step toward a profitable partnership. Book a call with our partnership team today.
-        </p>
-        <button class="partner-cta-button hover-bright">
-          Book a Call
-        </button>
-      </section>
+      </div>
     </main>
 
-    <!-- Footer -->
+    <!-- ═══ FOOTER (same as homepage) ═══ -->
     <footer class="footer">
       <div class="footer-line-top" aria-hidden="true"></div>
 
@@ -669,25 +337,8 @@
   </div>
 
   <script>
-    // Scroll reveal — lightweight IntersectionObserver
+    // Mobile menu toggle
     document.addEventListener("DOMContentLoaded", () => {
-      const reveals = document.querySelectorAll(".reveal");
-      if (reveals.length) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("revealed");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-        );
-
-        reveals.forEach((el) => observer.observe(el));
-      }
-
       const menuButton = document.querySelector(".mobile-menu-btn");
       const menuPanel = document.querySelector(".mobile-menu-panel");
       const headerRoot = document.querySelector(".header-header");
