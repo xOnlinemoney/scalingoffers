@@ -1,0 +1,190 @@
+
+:root {
+	/* ═══ DESIGN SYSTEM TOKENS ═══ */
+
+	/* colors */
+	--color-bg: #141414;
+	--color-accent: #2abced;
+	--color-accent-dim: rgba(42, 188, 237, 0.08);
+	--color-accent-glow: rgba(42, 188, 237, 0.12);
+	--color-surface: rgba(255, 255, 255, 0.02);
+	--color-surface-elevated: rgba(255, 255, 255, 0.06);
+	--color-border: rgba(255, 255, 255, 0.1);
+	--color-border-accent: rgba(42, 188, 237, 0.07);
+
+	/* text colors — 3-tier system */
+	--color-text-primary: rgba(255, 255, 255, 0.95);
+	--color-text-secondary: rgba(255, 255, 255, 0.7);
+	--color-text-tertiary: rgba(255, 255, 255, 0.4);
+	--_60: rgba(255, 255, 255, 0.6); /* legacy compat */
+
+	/* spacing scale */
+	--space-xs: 8px;
+	--space-sm: 16px;
+	--space-md: 24px;
+	--space-lg: 32px;
+	--space-xl: 48px;
+	--space-2xl: 64px;
+	--space-3xl: 96px;
+	--space-4xl: 128px;
+
+	/* responsive margins / paddings */
+	--margin-sm: 16px;
+	--margin-md: 32px;
+
+	/* radii */
+	--radius-sm: 10px;
+	--radius-md: 16px;
+	--radius-lg: 32px;
+	--radius-pill: 100px;
+
+	/* transitions */
+	--transition-fast: 150ms ease;
+	--transition-base: 250ms ease;
+	--transition-slow: 400ms ease;
+
+	/* typography */
+	--font-display: 'Space Grotesk', sans-serif;
+	--font-body: 'Space Grotesk', sans-serif;
+	--font-accent: 'Poppins', sans-serif;
+
+	/* gradients (reusable) */
+	--gradient-text-white: linear-gradient(0deg, #fff 30%, rgba(255, 255, 255, 0.6) 100%);
+	--gradient-text-accent: linear-gradient(0deg, #2abced 30%, rgba(42, 188, 237, 0.32) 100%);
+	--gradient-card: linear-gradient(165deg, rgba(42, 188, 237, 0.9) 0%, rgba(42, 188, 237, 0.6) 50%, rgba(42, 188, 237, 0.4) 100%);
+	--gradient-card-subtle: linear-gradient(165deg, rgba(42, 188, 237, 0.1) 0%, rgba(42, 188, 237, 0.02) 50%, rgba(42, 188, 237, 0.06) 100%);
+	--gradient-card-glass: linear-gradient(180deg, rgba(42, 188, 237, 0.12) 0%, rgba(42, 188, 237, 0.04) 50%, rgba(42, 188, 237, 0.07) 100%);
+}
+
+* {
+	--min-screen-size: 430;
+	--max-screen-size: 1440;
+	--interpolate-diff: calc(var(--max-font-size) - var(--min-font-size));
+	--interpolate: clamp(calc(var(--min-font-size) * 1px), calc((var(--min-font-size) * 1px) + var(--interpolate-diff) * ((100vw - calc(var(--min-screen-size) * 1px)) / (var(--max-screen-size) - var(--min-screen-size)))), calc(var(--max-font-size) * 1px));
+}
+
+html {
+	height: 100%;
+	font-size: 16px;
+	scroll-behavior: smooth;
+}
+
+
+
+/* text utility classes */
+
+.text2 {
+	font-size: 32px;
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: -1.28px;
+}
+
+.text4 {
+	font-size: 16px;
+	letter-spacing: 0px;
+}
+
+.text1 {
+	font-style: normal;
+	letter-spacing: 0px;
+}
+
+.text3 {
+	color: var(--color-text-primary);
+	--min-font-size: 15; --max-font-size: 16; font-size: var(--interpolate);
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0px;
+}
+
+
+
+/* section utility classes */
+
+.section-white {
+	display: flex;
+	align-items: center;
+	background-color: var(--color-surface);
+	padding: 14px var(--space-md);
+	overflow: hidden;
+}
+
+
+
+/* ui objects utility classes */
+
+.circle {
+	width: 5px; height: 5px;
+	border-radius: 50%;
+}
+
+.input {
+	max-width: 551px;
+	width: 100%;
+	border-radius: 35px;
+}
+
+
+
+/* button & interactive utility classes */
+
+.hover-bright {
+	transition: background-color var(--transition-base), transform var(--transition-fast), filter var(--transition-base);
+}
+
+.hover-bright:hover {
+	filter: brightness(1.15);
+	transform: translateY(-1px);
+}
+
+.hover-bright:active {
+	transform: translateY(0);
+	filter: brightness(0.95);
+}
+
+/* global focus-visible for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* skip link (accessibility) */
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: var(--space-sm);
+	background: var(--color-accent);
+	color: #fff;
+	padding: var(--space-xs) var(--space-sm);
+	border-radius: var(--radius-sm);
+	z-index: 9999;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+	top: var(--space-sm);
+}
+
+
+
+/* scroll reveal animation */
+
+.reveal {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.revealed {
+	opacity: 1;
+	transform: translateY(0);
+}
