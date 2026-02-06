@@ -152,7 +152,7 @@ All page-specific styles go in a `<style>` tag in the `<head>`, NOT in a separat
       <a href="index.html" class="footer-link">About Us</a>
     </nav>
   </div>
-  <div class="footer-copyright">&copy; 2024 Scaling Offers | All Rights Reserved</div>
+  <div class="footer-copyright">&copy; 2026 Scaling Offers | All Rights Reserved</div>
 </footer>
 ```
 
