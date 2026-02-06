@@ -1,352 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Client Testimonials — Scaling Offers</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Success Stories | Scaling Offers</title>
+  <!-- FONTS -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Poppins:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/xxon-sca-ff-home.css" />
-
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <!-- LINKED CSS FILES -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            accent: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#2abced',
+              dim: 'rgba(42, 188, 237, 0.08)',
+              glow: 'rgba(42, 188, 237, 0.12)'
+            },
+            bg: '#141414',
+            surface: 'rgba(255, 255, 255, 0.02)',
+            border: 'rgba(255, 255, 255, 0.1)'
+          },
+          letterSpacing: {
+            tighter: '-0.04em',
+            tight: '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    /* ═══ CLIENT TESTIMONIALS PAGE STYLES ═══ */
+    /* ═══ TESTIMONIALS PAGE SPECIFIC STYLES ═══ */
 
-    .testimonials-hero {
-      position: relative;
-      padding: 80px var(--margin-md);
-      text-align: center;
+    :root {
+      --color-bg: #141414;
+      --color-accent: #2abced;
+      --color-accent-dim: rgba(42, 188, 237, 0.08);
+      --color-accent-glow: rgba(42, 188, 237, 0.12);
+      --color-surface: rgba(255, 255, 255, 0.02);
+      --color-surface-elevated: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.1);
+      --color-border-accent: rgba(42, 188, 237, 0.07);
+      --color-text-primary: rgba(255, 255, 255, 0.95);
+      --color-text-secondary: rgba(255, 255, 255, 0.7);
+      --color-text-tertiary: rgba(255, 255, 255, 0.4);
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-2xl: 64px;
+      --space-3xl: 96px;
+      --space-4xl: 128px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 32px;
+      --radius-pill: 100px;
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 400ms ease;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+      --font-accent: 'Poppins', sans-serif;
+      --gradient-text-white: linear-gradient(0deg, #fff 30%, rgba(255, 255, 255, 0.6) 100%);
+      --gradient-text-accent: linear-gradient(0deg, #2abced 30%, rgba(42, 188, 237, 0.32) 100%);
+      --gradient-card-glass: linear-gradient(180deg, rgba(42, 188, 237, 0.12) 0%, rgba(42, 188, 237, 0.04) 50%, rgba(42, 188, 237, 0.07) 100%);
     }
 
-    .testimonials-hero-badge {
-      display: inline-block;
-      padding: 8px 16px;
-      background: rgba(42, 188, 237, 0.1);
-      border: 1px solid rgba(42, 188, 237, 0.3);
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--color-accent);
-      margin-bottom: 24px;
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .testimonials-hero-heading {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 700;
-      line-height: 1.2;
+    .text-primary { color: var(--color-text-primary); }
+    .text-secondary { color: var(--color-text-secondary); }
+    .text-tertiary { color: var(--color-text-tertiary); }
+
+    .text-gradient-white {
       background: var(--gradient-text-white);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
     }
-
-    .testimonials-hero-subheading {
-      font-size: clamp(14px, 3vw, 18px);
-      color: var(--color-text-secondary);
-      max-width: 600px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
-    }
-
-    .testimonials-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 32px;
-      background: var(--gradient-card-glass);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      backdrop-filter: blur(8px);
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: clamp(24px, 5vw, 32px);
-      font-weight: 700;
+    .text-gradient-accent {
       background: var(--gradient-text-accent);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
     }
 
-    .stat-label {
-      font-size: 14px;
-      color: var(--color-text-secondary);
-      line-height: 1.5;
-    }
-
-    /* ═══ TESTIMONIALS GRID ═══ */
-
-    .testimonials-section {
-      position: relative;
-      padding: 80px var(--margin-md);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 1024px) {
-      .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 767px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .testimonial-card {
-      position: relative;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      transition: all var(--transition-base);
-      overflow: hidden;
-    }
-
-    .testimonial-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--gradient-card-subtle);
-      opacity: 0;
-      transition: opacity var(--transition-base);
-      pointer-events: none;
-      border-radius: var(--radius-md);
-    }
-
-    .testimonial-card:hover {
-      border-color: rgba(42, 188, 237, 0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(42, 188, 237, 0.1);
-    }
-
-    .testimonial-card:hover::before {
-      opacity: 1;
-    }
-
-    .testimonial-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Video Placeholder */
-    .video-placeholder {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      overflow: hidden;
-    }
-
-    .video-placeholder::before {
-      content: 'Coming Soon';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      font-size: 14px;
-      color: var(--color-text-tertiary);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    .play-button {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-base);
-      z-index: 3;
-      cursor: pointer;
-    }
-
-    .play-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 24px rgba(42, 188, 237, 0.5);
-    }
-
-    .play-button::after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 16px solid white;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      margin-left: 4px;
-    }
-
-    /* Testimonial Info */
-    .testimonial-client-name {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-text-primary);
-      margin-bottom: 4px;
-      font-family: var(--font-display);
-    }
-
-    .testimonial-company {
-      font-size: 14px;
-      color: var(--color-accent);
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    /* Highlight Tags */
-    .highlight-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .highlight-tag {
-      display: inline-block;
-      padding: 6px 12px;
-      background: rgba(42, 188, 237, 0.1);
-      border: 1px solid rgba(42, 188, 237, 0.2);
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--color-text-secondary);
-      backdrop-filter: blur(4px);
-      transition: all var(--transition-fast);
-    }
-
-    .highlight-tag:hover {
-      background: rgba(42, 188, 237, 0.15);
-      border-color: rgba(42, 188, 237, 0.4);
-      color: var(--color-accent);
-    }
-
-    /* ═══ CTA SECTION ═══ */
-
-    .testimonials-cta {
-      position: relative;
-      margin-top: 80px;
-      padding: 64px var(--margin-md);
-      background: var(--gradient-card-glass);
+    .card-base {
+      background: var(--color-surface);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      backdrop-filter: blur(8px);
-    }
-
-    .testimonials-cta-heading {
-      font-size: clamp(28px, 5vw, 40px);
-      font-weight: 700;
-      color: var(--color-text-primary);
-      margin-bottom: 24px;
-      font-family: var(--font-display);
-    }
-
-    .testimonials-cta-button {
-      display: inline-block;
-      padding: 16px 48px;
-      background: var(--color-accent);
-      color: var(--color-bg);
-      border: none;
-      border-radius: var(--radius-pill);
-      font-size: 16px;
-      font-weight: 700;
-      font-family: var(--font-display);
-      cursor: pointer;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(10px);
       transition: all var(--transition-base);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
-
-    .testimonials-cta-button:hover {
+    .card-base:hover {
+      border-color: var(--color-border-accent);
+      background: var(--color-surface-elevated);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(42, 188, 237, 0.4);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
     }
 
-    .testimonials-cta-button:active {
-      transform: translateY(0);
+    .glow-point {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, var(--color-accent) 0%, rgba(0, 0, 0, 0) 70%);
+      opacity: 0.1;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(60px);
     }
 
-    /* ═══ SCROLL REVEAL ═══ */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--color-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #333; }
 
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    .reveal.revealed {
+    .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ═══ RESPONSIVE ═══ */
+    /* Override header for testimonials page — no hero section, just nav */
+    .testimonials-page .header {
+      min-height: auto;
+    }
 
-    @media (max-width: 768px) {
-      .testimonials-hero {
-        padding: 60px var(--margin-sm);
-      }
+    .testimonials-page .header-rect1 {
+      height: 200px;
+    }
 
-      .testimonials-section {
-        padding: 60px var(--margin-sm);
-      }
+    .testimonials-page .hero-content,
+    .testimonials-page .header-stat,
+    .testimonials-page .header-particles {
+      display: none;
+    }
 
-      .testimonials-stats {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .testimonials-cta {
-        padding: 48px var(--margin-sm);
-        margin-top: 60px;
-      }
-
-      .testimonial-card {
-        padding: 20px;
-      }
+    .testimonials-page .header-video {
+      display: none;
     }
   </style>
 </head>
 
-<body>
+<body class="testimonials-page selection:bg-brand-dim selection:text-brand">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div class="main-wrapper">
+    <!-- ═══ BACKGROUND ELEMENTS ═══ -->
     <div class="bg" aria-hidden="true">
       <div class="bg-circle-blue bg-circle-blue1"></div>
       <div class="bg-circle-blue bg-circle-blue2"></div>
@@ -363,6 +188,15 @@
       <img src="assets/bg-noise.png" class="bg-noise" alt="" />
     </div>
 
+    <!-- Additional background blobs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-brand/5 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px]"></div>
+      <div class="absolute top-[40%] left-[-10%] w-[400px] h-[400px] bg-brand-glow rounded-full blur-[80px]"></div>
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    </div>
+
+    <!-- ═══ HEADER (same as become-a-partner) ═══ -->
     <header class="header">
       <div class="header-rect1" aria-hidden="true"></div>
       <div class="header-particles" aria-hidden="true"></div>
@@ -392,19 +226,16 @@
           </a>
 
           <div class="header-row2">
-            <a href="index.html" class="header-text">Products</a>
-            <a href="index.html" class="header-text">Use Cases</a>
-            <a href="index.html" class="header-text">Blog</a>
-            <a href="index.html" class="header-text">About Us</a>
+            <a href="client-testimonials.html" class="header-text">Client Testimonials</a>
           </div>
 
           <div class="header-row-right">
-            <button class="header-btn-become-a-partner hover-bright text1">
+            <a href="become-a-partner.html" class="header-btn-become-a-partner hover-bright text1">
               Become a Partner
-            </button>
-            <button class="header-btn-client-login text1 hover-bright">
+            </a>
+            <a href="client-login.html" class="header-btn-client-login text1 hover-bright">
               Client Login
-            </button>
+            </a>
           </div>
 
           <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -414,198 +245,256 @@
 
         <div class="mobile-menu-panel" aria-hidden="true">
           <div class="mobile-menu-links" role="menu">
-            <a href="index.html" class="header-text" role="menuitem">Products</a>
-            <a href="index.html" class="header-text" role="menuitem">Use Cases</a>
-            <a href="index.html" class="header-text" role="menuitem">Blog</a>
-            <a href="index.html" class="header-text" role="menuitem">About Us</a>
+            <a href="client-testimonials.html" class="header-text" role="menuitem">Client Testimonials</a>
           </div>
           <div class="mobile-menu-actions">
-            <button class="header-btn-become-a-partner hover-bright text1">
+            <a href="become-a-partner.html" class="header-btn-become-a-partner hover-bright text1">
               Become a Partner
-            </button>
-            <button class="header-btn-client-login text1 hover-bright">
+            </a>
+            <a href="client-login.html" class="header-btn-client-login text1 hover-bright">
               Client Login
-            </button>
+            </a>
           </div>
         </div>
-      </div>
-
-      <div class="hero-content">
-        <div class="frame-a frame4">
-          <div class="frame-frame-unleash-success">CLIENT SUCCESS STORIES</div>
-        </div>
-
-        <h1 class="hero-headline">
-          <span class="hero-headline-payoff">Real Results From Real Clients</span>
-        </h1>
-        <p class="header-text-tons-of-potential text3">
-          Hear directly from the businesses we've helped scale to new heights
-        </p>
       </div>
     </header>
 
-    <main id="main-content" class="main">
-      <section class="testimonials-hero reveal" aria-labelledby="testimonials-heading">
-        <div class="testimonials-stats">
-          <div class="stat-item">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Happy Clients</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">40x</div>
-            <div class="stat-label">Average Revenue Increase</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">$100M+</div>
-            <div class="stat-label">Revenue Generated</div>
-          </div>
-        </div>
-      </section>
+    <!-- ═══ TESTIMONIALS PAGE CONTENT ═══ -->
+    <main id="main-content" class="z-10 pt-32 pr-6 pb-24 pl-6 relative">
 
-      <section class="testimonials-section reveal" aria-labelledby="client-testimonials-heading">
-        <h2 id="client-testimonials-heading" class="sr-only">Client Testimonials Video Grid</h2>
+        <!-- Header Section -->
+        <section class="text-center max-w-7xl mr-auto mb-20 ml-auto relative">
+            <div class="glow-point top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
-        <div class="testimonials-grid">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">James Mitchell</h3>
-              <p class="testimonial-company">E-Commerce Brand</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">300% Revenue Growth</span>
-                <span class="highlight-tag">40x ROI</span>
-                <span class="highlight-tag">Elite Closers</span>
-              </div>
+            <div class="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--color-border-accent)] bg-[var(--color-accent-dim)] text-[10px] uppercase tracking-widest font-semibold text-brand mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                <span class="font-accent">Case Studies</span>
             </div>
-          </div>
 
-          <!-- Testimonial 2 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Sarah Chen</h3>
-              <p class="testimonial-company">SaaS Company</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">Scaled to 7 Figures</span>
-                <span class="highlight-tag">Expert Sales Team</span>
-                <span class="highlight-tag">Data-Driven</span>
-              </div>
+            <h1 class="reveal text-4xl md:text-6xl lg:text-7xl font-display font-medium text-gradient-white tracking-tighter mb-6 leading-[1.1]">
+                Proven results <span class="text-gradient-accent">at scale.</span>
+            </h1>
+
+            <p class="reveal text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                Discover how leading agencies and consultants use our infrastructure to automate sales and scale revenue predictability.
+            </p>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 — Cole D. -->
+                <article class="reveal card-base overflow-hidden group cursor-pointer relative">
+                    <div class="aspect-[16/10] bg-[#1a1a1a] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] to-transparent opacity-80"></div>
+
+                        <div class="flex bg-center cursor-pointer absolute top-0 right-0 bottom-0 left-0 items-center justify-center" onclick="this.innerHTML='&lt;iframe src=\'https://fast.wistia.net/embed/iframe/83bkkyctrx?autoplay=1\' title=\'Wistia video player\' allow=\'autoplay; fullscreen\' style=\'position:absolute;top:0;left:0;width:100%;height:100%;border:0;\' allowfullscreen&gt;&lt;/iframe&gt;'; this.style.cursor='default';">
+                            <div class="w-12 h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand group-hover:border-brand group-hover:text-black transition-all duration-300">
+                                <iconify-icon icon="solar:play-bold" width="20"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex mb-3 items-center justify-between">
+                            <h3 class="font-display font-medium text-lg text-primary">Cole D.</h3>
+                        </div>
+                        <p class="text-secondary line-clamp-2 text-sm font-light mb-4">Dramatic Growth and Superior Performance with Scaling Offers</p>
+                        <div class="flex flex-col gap-4 pb-2 gap-x-4 gap-y-4">
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Exceptional Revenue Surge</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Jumped from zero to over $1 million within 90 days, exceeding all expectations.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Scalability and Expansion Vision</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Clear path to multimillion-dollar revenues with proven scalability.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Streamlined and Effortless Process</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Nearly hands-off experience allowing focus solely on business fulfillment.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Outstanding Professionalism</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Seamless setup and execution from sales strategies to client engagements.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Superior Performance vs Competitors</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Delivered tangible and profitable results unlike previous partnerships.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Excellent Communication</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Fully informed and engaged throughout with no areas needing improvement.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">High Referral Readiness</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Eager to recommend services to others based on impressive results.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Comprehensive Ad Spend Management</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Team managed all ad expenditures adding convenience and satisfaction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 — Michael G. -->
+                <article class="reveal card-base overflow-hidden group cursor-pointer relative">
+                    <div class="aspect-[16/10] bg-[#1a1a1a] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-bl from-brand/10 to-transparent opacity-50"></div>
+                        <div class="flex absolute top-0 right-0 bottom-0 left-0 items-center justify-center">
+                            <div class="w-12 h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand group-hover:border-brand group-hover:text-black transition-all duration-300">
+                                <iconify-icon icon="solar:play-bold" width="20"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-6 pr-6 pb-6 pl-6">
+                        <div class="flex mb-3 items-center justify-between">
+                            <h3 class="text-primary text-lg font-medium font-display">Michael G.</h3>
+                        </div>
+                        <p class="text-secondary line-clamp-2 text-sm font-light mb-4">$100M+ CEO Partners with Scaling Offers</p>
+                        <div class="flex flex-col gap-4 pb-2 gap-x-4 gap-y-4">
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Rapid Results</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">"I got a sale within the first night" - emphasizes the speed of implementation compared to other companies that might take "90 days" just for setup.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Early Success</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Already generating consistent sales just two weeks into working together - "every single day getting paid clients."</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Full-Service Advantage</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Appreciates having all marketing services bundled together rather than working with separate companies for "email," "Facebook ads," etc.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Comprehensive Expertise</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">Highlights the team's complete skill set - "sales language," "funnel building," "sales process," and "traffic building" versus competitors who might only be good at one aspect.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 — Kennan W. -->
+                <article class="reveal card-base overflow-hidden group cursor-pointer relative">
+                    <div class="aspect-[16/10] bg-[#1a1a1a] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-bl from-brand/10 to-transparent opacity-50"></div>
+                        <div class="flex absolute top-0 right-0 bottom-0 left-0 items-center justify-center">
+                            <div class="w-12 h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-brand group-hover:border-brand group-hover:text-black transition-all duration-300">
+                                <iconify-icon icon="solar:play-bold" width="20"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-6 pr-6 pb-6 pl-6">
+                        <div class="flex mb-3 items-center justify-between">
+                            <h3 class="text-primary text-lg font-medium font-display">Kennan W.</h3>
+                        </div>
+                        <p class="text-secondary line-clamp-2 text-sm font-light mb-4">Transformative Growth and Seamless Success by Scaling Offers</p>
+                        <div class="flex flex-col gap-4 pb-2 gap-x-4 gap-y-4">
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Eye-Opening Potential</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client was impressed with the results achieved in just 45 days, which revealed the true potential of their business and projections.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Systemization and Scalability</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client appreciated how your team helped systemize their operations, allowing them to see the bigger picture and realize how more money could be made by phasing out certain tasks.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Hands-Off Process</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client found the process of creating an offer with your team to be extremely easy, noting that they didn't have to do much work themselves, and your team took care of everything.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Team Description</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client described your team as "hungry, eager, and ambitious," emphasizing the shared vision and commitment to making money, which led to successful outcomes.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Willingness to Refer</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client would definitely refer your services to a business associate, knowing that many of their peers face similar challenges that your team has successfully resolved for them.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Marketing and Sales Support</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client noted that your team ramped up their marketing efforts, leading to increased sales and freeing up their time.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5">
+                                <iconify-icon icon="lucide:star" width="12" class="text-brand/60 shrink-0 mt-0.5"></iconify-icon>
+                                <div>
+                                    <p class="text-xs font-medium text-white mb-0.5">Back-End Fulfillment</p>
+                                    <p class="text-[10px] leading-relaxed text-zinc-400 font-light">The client appreciated the additional support provided by your team in creating the back end to help fulfill the offer, which opened up new possibilities for systemization and growth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card CTA -->
+                <div class="reveal card-base overflow-hidden relative flex flex-col items-center justify-center p-8 text-center border-dashed border-white/20 bg-transparent hover:border-brand/40 group transition-all" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-full bg-[var(--color-accent-dim)] flex items-center justify-center mb-4 text-brand group-hover:bg-brand group-hover:text-white transition-all">
+                        <iconify-icon icon="solar:add-circle-linear" width="24"></iconify-icon>
+                    </div>
+                    <h3 class="font-display font-medium text-lg text-primary mb-2">You?</h3>
+                    <p class="text-sm text-secondary mb-6 max-w-[200px]">Join our partners scaling to 8-figures.</p>
+                    <a href="become-a-partner.html" class="text-xs font-medium font-accent bg-white text-black px-4 py-2 rounded-[var(--radius-sm)] hover:bg-gray-200 transition-colors">Start Journey</a>
+                </div>
+
             </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Marcus Williams</h3>
-              <p class="testimonial-company">Coaching Business</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">50x Revenue Increase</span>
-                <span class="highlight-tag">Full Sales Management</span>
-                <span class="highlight-tag">Game Changer</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 4 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Emily Rodriguez</h3>
-              <p class="testimonial-company">Real Estate Investment</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">85% Close Rate</span>
-                <span class="highlight-tag">Qualified Leads</span>
-                <span class="highlight-tag">Premium Service</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 5 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">David Park</h3>
-              <p class="testimonial-company">Online Education</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">Tripled Revenue</span>
-                <span class="highlight-tag">Appointment Setting</span>
-                <span class="highlight-tag">Consistent Growth</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 6 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Jessica Thompson</h3>
-              <p class="testimonial-company">Health & Wellness</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">10x Growth</span>
-                <span class="highlight-tag">CRM Setup</span>
-                <span class="highlight-tag">Outbound Strategy</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 7 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Alex Nakamura</h3>
-              <p class="testimonial-company">B2B Services</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">Revenue Doubled</span>
-                <span class="highlight-tag">Call Analytics</span>
-                <span class="highlight-tag">Sales Scripts</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 8 -->
-          <div class="testimonial-card">
-            <div class="testimonial-card-inner">
-              <div class="video-placeholder">
-                <div class="play-button"></div>
-              </div>
-              <h3 class="testimonial-client-name">Rachel Foster</h3>
-              <p class="testimonial-company">Digital Agency</p>
-              <div class="highlight-tags">
-                <span class="highlight-tag">5x Client Base</span>
-                <span class="highlight-tag">Partner Without Equity</span>
-                <span class="highlight-tag">Full Support</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="testimonials-cta reveal" aria-labelledby="cta-heading">
-        <h2 id="cta-heading" class="testimonials-cta-heading">
-          Ready to Be Our Next Success Story?
-        </h2>
-        <button class="testimonials-cta-button hover-bright">
-          Book a Call
-        </button>
-      </section>
+        </section>
     </main>
 
+    <!-- ═══ FOOTER (same as become-a-partner) ═══ -->
     <footer class="footer">
       <div class="footer-line-top" aria-hidden="true"></div>
 
@@ -622,10 +511,7 @@
         </div>
 
         <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="index.html" class="footer-link">Products</a>
-          <a href="index.html" class="footer-link">Use Cases</a>
-          <a href="index.html" class="footer-link">Blog</a>
-          <a href="index.html" class="footer-link">About Us</a>
+          <a href="client-testimonials.html" class="footer-link">Client Testimonials</a>
         </nav>
       </div>
 
@@ -636,25 +522,20 @@
   </div>
 
   <script>
-    // Scroll reveal — lightweight IntersectionObserver
+    // Intersection Observer for Scroll Reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
     document.addEventListener("DOMContentLoaded", () => {
-      const reveals = document.querySelectorAll(".reveal");
-      if (reveals.length) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("revealed");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-        );
-
-        reveals.forEach((el) => observer.observe(el));
-      }
-
       const menuButton = document.querySelector(".mobile-menu-btn");
       const menuPanel = document.querySelector(".mobile-menu-panel");
       const headerRoot = document.querySelector(".header-header");
