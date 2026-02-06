@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Client Testimonials — Scaling Offers</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css" />
+
+  <style>
+    /* ═══ CLIENT TESTIMONIALS PAGE STYLES ═══ */
+
+    .testimonials-hero {
+      position: relative;
+      padding: 80px var(--margin-md);
+      text-align: center;
+    }
+
+    .testimonials-hero-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(42, 188, 237, 0.1);
+      border: 1px solid rgba(42, 188, 237, 0.3);
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    .testimonials-hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 700;
+      line-height: 1.2;
+      background: var(--gradient-text-white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .testimonials-hero-subheading {
+      font-size: clamp(14px, 3vw, 18px);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    .testimonials-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px;
+      background: var(--gradient-card-glass);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 700;
+      background: var(--gradient-text-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ═══ TESTIMONIALS GRID ═══ */
+
+    .testimonials-section {
+      position: relative;
+      padding: 80px var(--margin-md);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1024px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonial-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: all var(--transition-base);
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-card-subtle);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      pointer-events: none;
+      border-radius: var(--radius-md);
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(42, 188, 237, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(42, 188, 237, 0.1);
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Video Placeholder */
+    .video-placeholder {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .video-placeholder::before {
+      content: 'Coming Soon';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      font-size: 14px;
+      color: var(--color-text-tertiary);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .play-button {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-base);
+      z-index: 3;
+      cursor: pointer;
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 24px rgba(42, 188, 237, 0.5);
+    }
+
+    .play-button::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 16px solid white;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      margin-left: 4px;
+    }
+
+    /* Testimonial Info */
+    .testimonial-client-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+      font-family: var(--font-display);
+    }
+
+    .testimonial-company {
+      font-size: 14px;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    /* Highlight Tags */
+    .highlight-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(42, 188, 237, 0.1);
+      border: 1px solid rgba(42, 188, 237, 0.2);
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      backdrop-filter: blur(4px);
+      transition: all var(--transition-fast);
+    }
+
+    .highlight-tag:hover {
+      background: rgba(42, 188, 237, 0.15);
+      border-color: rgba(42, 188, 237, 0.4);
+      color: var(--color-accent);
+    }
+
+    /* ═══ CTA SECTION ═══ */
+
+    .testimonials-cta {
+      position: relative;
+      margin-top: 80px;
+      padding: 64px var(--margin-md);
+      background: var(--gradient-card-glass);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(8px);
+    }
+
+    .testimonials-cta-heading {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 24px;
+      font-family: var(--font-display);
+    }
+
+    .testimonials-cta-button {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: 16px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .testimonials-cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(42, 188, 237, 0.4);
+    }
+
+    .testimonials-cta-button:active {
+      transform: translateY(0);
+    }
+
+    /* ═══ SCROLL REVEAL ═══ */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+
+    @media (max-width: 768px) {
+      .testimonials-hero {
+        padding: 60px var(--margin-sm);
+      }
+
+      .testimonials-section {
+        padding: 60px var(--margin-sm);
+      }
+
+      .testimonials-stats {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .testimonials-cta {
+        padding: 48px var(--margin-sm);
+        margin-top: 60px;
+      }
+
+      .testimonial-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+    <div class="bg" aria-hidden="true">
+      <div class="bg-circle-blue bg-circle-blue1"></div>
+      <div class="bg-circle-blue bg-circle-blue2"></div>
+      <div class="bg-circle-blue bg-circle-blue3"></div>
+      <div class="bg-circle-blue bg-circle-blue4"></div>
+      <div class="bg-circle-blue bg-circle-blue5"></div>
+      <div class="bg-circle-blue bg-circle-blue6"></div>
+      <div class="bg-circle-blue bg-circle-blue7"></div>
+      <div class="bg-circle-blue bg-circle-blue8"></div>
+      <object data="assets/bg-graphic1.svg" class="bg-graphic1" type="image/svg+xml" tabindex="-1"></object>
+      <div class="bg-ellipse bg-ellipse1"></div>
+      <object data="assets/bg-graphic2.svg" class="bg-graphic2" type="image/svg+xml" tabindex="-1"></object>
+      <img src="assets/ellipse.png" class="bg-ellipse3" alt="" />
+      <img src="assets/bg-noise.png" class="bg-noise" alt="" />
+    </div>
+
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="index.html" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+
+          <div class="header-row2">
+            <a href="index.html" class="header-text">Products</a>
+            <a href="index.html" class="header-text">Use Cases</a>
+            <a href="index.html" class="header-text">Blog</a>
+            <a href="index.html" class="header-text">About Us</a>
+          </div>
+
+          <div class="header-row-right">
+            <button class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </button>
+            <button class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </button>
+          </div>
+
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="index.html" class="header-text" role="menuitem">Products</a>
+            <a href="index.html" class="header-text" role="menuitem">Use Cases</a>
+            <a href="index.html" class="header-text" role="menuitem">Blog</a>
+            <a href="index.html" class="header-text" role="menuitem">About Us</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <button class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </button>
+            <button class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="frame-a frame4">
+          <div class="frame-frame-unleash-success">CLIENT SUCCESS STORIES</div>
+        </div>
+
+        <h1 class="hero-headline">
+          <span class="hero-headline-payoff">Real Results From Real Clients</span>
+        </h1>
+        <p class="header-text-tons-of-potential text3">
+          Hear directly from the businesses we've helped scale to new heights
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="main">
+      <section class="testimonials-hero reveal" aria-labelledby="testimonials-heading">
+        <div class="testimonials-stats">
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">40x</div>
+            <div class="stat-label">Average Revenue Increase</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$100M+</div>
+            <div class="stat-label">Revenue Generated</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials-section reveal" aria-labelledby="client-testimonials-heading">
+        <h2 id="client-testimonials-heading" class="sr-only">Client Testimonials Video Grid</h2>
+
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">James Mitchell</h3>
+              <p class="testimonial-company">E-Commerce Brand</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">300% Revenue Growth</span>
+                <span class="highlight-tag">40x ROI</span>
+                <span class="highlight-tag">Elite Closers</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Sarah Chen</h3>
+              <p class="testimonial-company">SaaS Company</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">Scaled to 7 Figures</span>
+                <span class="highlight-tag">Expert Sales Team</span>
+                <span class="highlight-tag">Data-Driven</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Marcus Williams</h3>
+              <p class="testimonial-company">Coaching Business</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">50x Revenue Increase</span>
+                <span class="highlight-tag">Full Sales Management</span>
+                <span class="highlight-tag">Game Changer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Emily Rodriguez</h3>
+              <p class="testimonial-company">Real Estate Investment</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">85% Close Rate</span>
+                <span class="highlight-tag">Qualified Leads</span>
+                <span class="highlight-tag">Premium Service</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">David Park</h3>
+              <p class="testimonial-company">Online Education</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">Tripled Revenue</span>
+                <span class="highlight-tag">Appointment Setting</span>
+                <span class="highlight-tag">Consistent Growth</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Jessica Thompson</h3>
+              <p class="testimonial-company">Health & Wellness</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">10x Growth</span>
+                <span class="highlight-tag">CRM Setup</span>
+                <span class="highlight-tag">Outbound Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 7 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Alex Nakamura</h3>
+              <p class="testimonial-company">B2B Services</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">Revenue Doubled</span>
+                <span class="highlight-tag">Call Analytics</span>
+                <span class="highlight-tag">Sales Scripts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 8 -->
+          <div class="testimonial-card">
+            <div class="testimonial-card-inner">
+              <div class="video-placeholder">
+                <div class="play-button"></div>
+              </div>
+              <h3 class="testimonial-client-name">Rachel Foster</h3>
+              <p class="testimonial-company">Digital Agency</p>
+              <div class="highlight-tags">
+                <span class="highlight-tag">5x Client Base</span>
+                <span class="highlight-tag">Partner Without Equity</span>
+                <span class="highlight-tag">Full Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials-cta reveal" aria-labelledby="cta-heading">
+        <h2 id="cta-heading" class="testimonials-cta-heading">
+          Ready to Be Our Next Success Story?
+        </h2>
+        <button class="testimonials-cta-button hover-bright">
+          Book a Call
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html" class="footer-link">Products</a>
+          <a href="index.html" class="footer-link">Use Cases</a>
+          <a href="index.html" class="footer-link">Blog</a>
+          <a href="index.html" class="footer-link">About Us</a>
+        </nav>
+      </div>
+
+      <div class="footer-copyright">
+        &copy; 2024 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll reveal — lightweight IntersectionObserver
+    document.addEventListener("DOMContentLoaded", () => {
+      const reveals = document.querySelectorAll(".reveal");
+      if (reveals.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        reveals.forEach((el) => observer.observe(el));
+      }
+
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+
+      if (!menuButton || !menuPanel || !headerRoot) return;
+
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
