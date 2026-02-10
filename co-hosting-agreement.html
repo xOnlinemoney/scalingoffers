@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinar Co-Host Agreement | Scaling Offers</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Poppins', 'sans-serif'],
+display: ['Space Grotesk', 'sans-serif'],
+},
+colors: {
+brand: {
+DEFAULT: '#2abced',
+dim: 'rgba(42, 188, 237, 0.1)',
+glow: 'rgba(42, 188, 237, 0.5)',
+dark: '#1ea8d6'
+},
+bg: '#0a0a0a',
+surface: '#141414',
+border: 'rgba(255, 255, 255, 0.08)',
+},
+boxShadow: {
+'glow': '0 0 40px -10px rgba(42, 188, 237, 0.3)',
+}
+}
+}
+}
+</script>
+<style>
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+::-webkit-scrollbar-track {
+background: rgba(255, 255, 255, 0.02);
+}
+::-webkit-scrollbar-thumb {
+background: rgba(255, 255, 255, 0.15);
+border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: rgba(255, 255, 255, 0.25);
+}
+/* Agreement Content Styling */
+.legal-content h3 {
+color: #fff;
+font-family: 'Space Grotesk', sans-serif;
+font-weight: 600;
+margin-top: 1.5rem;
+margin-bottom: 0.5rem;
+font-size: 1.1rem;
+}
+.legal-content p {
+margin-bottom: 1rem;
+color: #a1a1aa;
+font-size: 0.9rem;
+line-height: 1.6;
+}
+.legal-content ul {
+list-style-type: disc;
+padding-left: 1.5rem;
+margin-bottom: 1rem;
+color: #a1a1aa;
+}
+.legal-content li {
+margin-bottom: 0.5rem;
+}
+/* Canvas */
+canvas {
+touch-action: none; /* Prevent scrolling while drawing */
+}
+.disabled-btn {
+opacity: 0.5;
+cursor: not-allowed;
+filter: grayscale(100%);
+}
+/* Animations */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+animation: fadeIn 0.4s ease-out forwards;
+}
+</style></head>
+<body class="bg-bg text-white antialiased min-h-screen selection:bg-brand selection:text-black relative overflow-x-hidden">
+
+    <!-- Background Ambience -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-dim rounded-full blur-[120px] opacity-40"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[120px] opacity-40"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b border-border bg-bg/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand to-brand-dark flex items-center justify-center text-black font-bold font-display text-lg">
+                    S
+                </div>
+                <div>
+                    <h1 class="font-display font-bold text-lg tracking-tight leading-none">Scaling Offers</h1>
+                    <p class="text-xs text-zinc-500 font-medium tracking-wide mt-0.5">TRUE CAPITAL HOLDINGS, LLC</p>
+                </div>
+            </div>
+            <div class="hidden sm:block">
+                <span class="px-3 py-1 rounded-full border border-border bg-white/5 text-xs text-zinc-400">Secure Document</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-3xl mx-auto px-6 py-12 pb-24 relative">
+        
+        <!-- Signing View -->
+        <div id="sign-view" class="animate-fade-in">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-display font-medium mb-3">Webinar Co-Host Agreement</h2>
+                <p class="text-zinc-400 text-sm md:text-base max-w-lg mx-auto">Please read the agreement below in its entirety. You must scroll to the bottom to enable the signature section.</p>
+            </div>
+
+            <!-- Agreement Container -->
+            <div class="relative rounded-xl border border-border bg-surface shadow-2xl overflow-hidden mb-10 group">
+                <!-- Progress Bar -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-white/5 z-20">
+                    <div id="scroll-progress" class="h-full bg-brand w-0 transition-all duration-150"></div>
+                </div>
+
+                <!-- Scroll Notice Overlay (Fades out) -->
+                <div id="scroll-notice" class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-bg to-transparent pointer-events-none z-10 flex items-end justify-center pb-8 transition-opacity duration-500">
+                    <span class="bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium border border-white/10 flex items-center gap-2 animate-bounce">
+                        Scroll to read
+                        <iconify-icon icon="solar:arrow-down-linear"></iconify-icon>
+                    </span>
+                </div>
+
+                <!-- Text Content -->
+                <div id="agreement-text" class="h-[500px] overflow-y-auto p-8 legal-content scroll-smooth relative">
+                    <div class="mb-6">
+                        <p class="font-bold text-white">EFFECTIVE DATE: <span id="legal-date-placeholder" class="text-brand"></span></p>
+                        <p>This Independent Contractor Agreement (the "Agreement") is entered into by and between True Capital Holdings, LLC d/b/a Scaling Offers ("Company") and the undersigned contractor ("Webinar Host").</p>
+                    </div>
+
+                    <h3>1. Definitions</h3>
+                    <p><strong>"Offer Owner"</strong> refers to the client of the Company whose product or service is being sold via webinar.</p>
+                    <p><strong>"Webinar"</strong> refers to a live sales presentation, typically 1-2 hours in duration, conducted immediately following the Company's proprietary Sales Process.</p>
+                    <p><strong>"Repitch"</strong> refers to a follow-up session, typically 1 hour in duration, conducted the day after the Webinar to answer FAQ and assist prospective buyers with the funding process.</p>
+                    <p><strong>"Top-Line Revenue"</strong> means gross revenue actually collected and received by the Offer Owner's payment processor. Revenue is counted only when payment is confirmed.</p>
+                    <p><strong>"Confidential Information"</strong> includes but is not limited to sales processes, scripts, pricing models, client lists, business strategies, proprietary methods, trade secrets, and technical data.</p>
+                    <p><strong>"Sales Process"</strong> refers to the Company's proprietary methodology for conducting webinars and closing sales.</p>
+
+                    <h3>2. Scope of Services</h3>
+                    <p>The Webinar Host agrees to perform the following services as an independent contractor:</p>
+                    <ul>
+                        <li>Co-host live Webinars (1-2 hours) with Offer Owners utilizing the Company's Sales Process.</li>
+                        <li>Conduct Repitch sessions (approx. 1 hour) the following day to address FAQs and guide clients through funding.</li>
+                        <li>Adhere strictly to Company compliance standards and scripts.</li>
+                        <li>Act solely as an independent contractor, not an employee.</li>
+                    </ul>
+
+                    <h3>3. Compensation</h3>
+                    <p>In consideration for the Services, Company shall pay Webinar Host as follows:</p>
+                    <ul>
+                        <li><strong>Webinar Only:</strong> 2% of Top-Line Revenue generated from the Webinar.</li>
+                        <li><strong>Webinar + Repitch:</strong> 3% of Top-Line Revenue generated if both sessions are completed.</li>
+                    </ul>
+                    <p>Revenue is recognized only when payment is actually received from the client. Payments are remitted semi-monthly on the 3rd and 17th of each month. No other benefits, insurance, or compensation shall be provided.</p>
+
+                    <h3>4. Confidentiality / NDA</h3>
+                    <p>Webinar Host agrees to maintain strict confidentiality of all Confidential Information. Information shall be used solely for the purpose of performing services under this Agreement. This obligation remains in effect for five (5) years following termination, and indefinitely for trade secrets. Upon termination, all materials must be returned or destroyed.</p>
+
+                    <h3>5. Non-Solicitation &amp; Non-Circumvention</h3>
+                    <p>During the term of this Agreement and for a period of two (2) years following termination:</p>
+                    <ul>
+                        <li>Webinar Host shall not work individually, independently, or directly with any Offer Owner introduced by the Company. <strong>Violation of this clause shall result in liquidated damages of $250,000 per occurrence.</strong></li>
+                        <li>Webinar Host shall not solicit any employees, contractors, or clients of the Company.</li>
+                    </ul>
+
+                    <h3>6. Non-Disparagement</h3>
+                    <p>Webinar Host agrees not to make, publish, or communicate any disparaging or negative statements regarding the Company, its owners, staff, clients, Offer Owners, or affiliates in any forum (public, private, or social media). <strong>Violation of this clause shall result in liquidated damages of $100,000 per occurrence.</strong></p>
+
+                    <h3>7. Intellectual Property</h3>
+                    <p>All work product, recordings, scripts, and materials created or used in connection with the Services shall be the sole and exclusive property of the Company. Webinar Host hereby assigns all rights, title, and interest to the Company.</p>
+
+                    <h3>8. Term &amp; Termination</h3>
+                    <p>This Agreement may be terminated by either party with thirty (30) days written notice. The Company may terminate immediately for material breach. Sections 4, 5, 6, 7, 9, 10, and 11 shall survive termination.</p>
+
+                    <h3>9. Dispute Resolution</h3>
+                    <p>Any dispute arising out of this Agreement shall be settled by binding arbitration administered by the American Arbitration Association (AAA) in accordance with its Commercial Arbitration Rules. Judgment on the award rendered by the arbitrator(s) may be entered in any court having jurisdiction thereof. The seat of arbitration shall be Miami-Dade County, Florida.</p>
+
+                    <h3>10. Attorney's Fees</h3>
+                    <p>In the event of any legal action or arbitration to enforce or interpret this Agreement, the non-prevailing party shall pay the prevailing party's reasonable attorney's fees, costs, and expenses.</p>
+
+                    <h3>11. Indemnification</h3>
+                    <p>Webinar Host agrees to indemnify, defend, and hold harmless the Company against any claims, losses, or damages arising from Webinar Host's breach of this Agreement, negligence, or misconduct.</p>
+
+                    <h3>12. Governing Law</h3>
+                    <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Florida. Venue for any disputes shall lie exclusively in Miami-Dade County, Florida.</p>
+
+                    <h3>13. General Provisions</h3>
+                    <p>This Agreement constitutes the entire understanding between the parties. Amendments must be in writing. If any provision is found invalid, the remainder shall continue in effect. This Agreement may not be assigned by Webinar Host without written consent. Electronic signatures shall be considered valid and binding. Force majeure applies to events beyond reasonable control.</p>
+                </div>
+            </div>
+
+            <!-- Form Container (Initially locked state visual cue, unlocks via JS) -->
+            <div id="form-section" class="opacity-50 pointer-events-none transition-all duration-500 blur-[2px]">
+                <form id="sign-form" class="space-y-6">
+                    
+                    <!-- Personal Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Full Legal Name</label>
+                            <input type="text" id="full-name" required="" placeholder="John Doe" class="w-full bg-white/5 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Email Address</label>
+                            <input type="email" id="email" required="" placeholder="john@example.com" class="w-full bg-white/5 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Phone Number</label>
+                            <input type="tel" id="phone" required="" placeholder="+1 (555) 000-0000" class="w-full bg-white/5 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Date</label>
+                            <input type="text" id="date-field" readonly="" class="w-full bg-white/5 border border-border rounded-lg px-4 py-3 text-zinc-400 cursor-not-allowed">
+                        </div>
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Mailing Address</label>
+                            <input type="text" id="address" required="" placeholder="123 Business Rd, City, State, Zip" class="w-full bg-white/5 border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-white/10 my-8"></div>
+
+                    <!-- Signature Pad -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-end">
+                            <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Draw Your Signature Below</label>
+                            <button type="button" id="clear-sig" class="text-xs text-brand hover:text-white transition-colors underline">Clear Signature</button>
+                        </div>
+                        <div class="relative w-full h-40 bg-white/5 border border-border rounded-xl overflow-hidden cursor-crosshair hover:border-brand/50 transition-colors">
+                            <canvas id="signature-pad" class="w-full h-full block"></canvas>
+                            <div id="sig-placeholder" class="absolute inset-0 flex items-center justify-center pointer-events-none text-zinc-700">
+                                <span class="text-4xl font-handwriting opacity-20">Sign Here</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="flex items-start gap-4 p-4 rounded-lg bg-brand-dim/50 border border-brand/20">
+                        <div class="relative flex items-center pt-1">
+                            <input type="checkbox" id="agree-checkbox" class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-zinc-600 bg-white/5 checked:border-brand checked:bg-brand transition-all">
+                            <iconify-icon icon="solar:check-read-linear" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[40%] text-black opacity-0 peer-checked:opacity-100 pointer-events-none"></iconify-icon>
+                        </div>
+                        <label for="agree-checkbox" class="text-sm text-zinc-300 leading-relaxed cursor-pointer select-none">
+                            I have read this Agreement in its entirety, understand its terms and conditions, and agree to be bound by its provisions. I acknowledge that I have had the opportunity to seek independent legal counsel before signing.
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" id="submit-btn" disabled="" class="disabled-btn w-full bg-brand text-black font-semibold font-display text-lg py-4 rounded-xl shadow-glow hover:shadow-[0_0_60px_-15px_rgba(42,188,237,0.6)] transition-all transform active:scale-[0.98]">
+                            Sign &amp; Submit Agreement
+                        </button>
+                        <p id="error-msg" class="text-red-400 text-xs text-center mt-3 hidden">Please complete all fields and sign to continue.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Confirmation View (Hidden by default) -->
+        <div id="confirmation-view" class="hidden animate-fade-in">
+            <div class="bg-surface border border-border rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                <!-- Decorative BG -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-brand to-transparent"></div>
+                
+                <div class="w-20 h-20 bg-brand/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand border border-brand/20">
+                    <iconify-icon icon="solar:verified-check-bold" width="40"></iconify-icon>
+                </div>
+
+                <h2 class="text-3xl font-display font-bold text-white mb-2">Agreement Submitted</h2>
+                <p class="text-zinc-400 mb-8">Your Webinar Co-Host Agreement has been securely recorded.</p>
+
+                <div class="bg-black/30 rounded-xl p-6 mb-8 text-left border border-white/5 space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500 text-sm">Reference ID:</span>
+                        <span class="font-mono text-white text-sm" id="conf-ref">SO-8392</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500 text-sm">Signed By:</span>
+                        <span class="text-white text-sm font-medium" id="conf-name">...</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500 text-sm">Timestamp:</span>
+                        <span class="text-white text-sm" id="conf-time">...</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500 text-sm">Status:</span>
+                        <span class="text-brand text-sm font-bold flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                            Active
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button onclick="window.print()" class="flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-zinc-200 transition-colors">
+                        <iconify-icon icon="solar:printer-linear" width="20"></iconify-icon>
+                        Print / Save as PDF
+                    </button>
+                    <button disabled="" class="flex items-center justify-center gap-2 bg-white/5 text-zinc-500 px-6 py-3 rounded-lg font-medium border border-white/5 cursor-not-allowed">
+                        <iconify-icon icon="solar:letter-linear" width="20"></iconify-icon>
+                        Emailed to you
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="text-zinc-500 text-sm hover:text-white transition-colors">Return to Scaling Offers Home</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="border-t border-border py-8 text-center text-zinc-600 text-xs">
+        <p>© <span id="year"></span> True Capital Holdings, LLC. All Rights Reserved.</p>
+        <p class="mt-2">Use of this system is restricted to authorized personnel.</p>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Initialization ---
+            const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('date-field').value = today;
+            document.getElementById('legal-date-placeholder').textContent = today.toUpperCase();
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // State Tracking
+            const state = {
+                scrolledBottom: false,
+                formValid: false,
+                signatureValid: false,
+                checkboxValid: false
+            };
+
+            // Elements
+            const agreementBox = document.getElementById('agreement-text');
+            const scrollProgress = document.getElementById('scroll-progress');
+            const scrollNotice = document.getElementById('scroll-notice');
+            const formSection = document.getElementById('form-section');
+            const submitBtn = document.getElementById('submit-btn');
+            const form = document.getElementById('sign-form');
+            
+            // --- 2. Scroll Logic ---
+            agreementBox.addEventListener('scroll', () => {
+                const scrollTop = agreementBox.scrollTop;
+                const scrollHeight = agreementBox.scrollHeight;
+                const clientHeight = agreementBox.clientHeight;
+                
+                // Calculate percentage
+                const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                scrollProgress.style.width = `${scrolled}%`;
+
+                // Fade out notice
+                if (scrollTop > 50) {
+                    scrollNotice.style.opacity = '0';
+                }
+
+                // Check if bottom reached (allow 5px buffer)
+                if (scrollTop + clientHeight >= scrollHeight - 5) {
+                    if (!state.scrolledBottom) {
+                        state.scrolledBottom = true;
+                        unlockForm();
+                    }
+                }
+            });
+
+            function unlockForm() {
+                formSection.classList.remove('opacity-50', 'pointer-events-none', 'blur-[2px]');
+                formSection.classList.add('opacity-100');
+                // Optional: Smooth scroll to form
+                // formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // --- 3. Signature Pad Logic ---
+            const canvas = document.getElementById('signature-pad');
+            const ctx = canvas.getContext('2d');
+            const clearBtn = document.getElementById('clear-sig');
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            function resizeCanvas() {
+                // Look up the size the canvas is being displayed
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+
+                // If it's resolution does not match change it
+                if (canvas.width !== width || canvas.height !== height) {
+                    canvas.width = width;
+                    canvas.height = height;
+                }
+                
+                ctx.strokeStyle = '#2abced'; // Brand color
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+            }
+
+            // Initial resize
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            function startDraw(e) {
+                isDrawing = true;
+                const pos = getPos(e);
+                lastX = pos.x;
+                lastY = pos.y;
+                document.getElementById('sig-placeholder').style.opacity = '0';
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                // prevent scrolling on mobile when drawing
+                if(e.type === 'touchmove') e.preventDefault();
+                
+                const pos = getPos(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+                
+                lastX = pos.x;
+                lastY = pos.y;
+                state.signatureValid = true;
+                validateAll();
+            }
+
+            function stopDraw() {
+                isDrawing = false;
+            }
+
+            // Mouse Events
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mouseout', stopDraw);
+
+            // Touch Events
+            canvas.addEventListener('touchstart', startDraw, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDraw);
+
+            // Clear Signature
+            clearBtn.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                document.getElementById('sig-placeholder').style.opacity = '0.2';
+                state.signatureValid = false;
+                validateAll();
+            });
+
+            // --- 4. Validation & Submit ---
+            const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+            const checkbox = document.getElementById('agree-checkbox');
+
+            function checkInputs() {
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim()) allFilled = false;
+                });
+                return allFilled;
+            }
+
+            function validateAll() {
+                const inputsFilled = checkInputs();
+                const checked = checkbox.checked;
+                
+                if (state.scrolledBottom && inputsFilled && state.signatureValid && checked) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('disabled-btn');
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('disabled-btn');
+                }
+            }
+
+            // Event Listeners for Validation
+            inputs.forEach(input => input.addEventListener('input', validateAll));
+            checkbox.addEventListener('change', validateAll);
+
+            // Submit Handler
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                if (submitBtn.disabled) return;
+
+                // Simulation of submission
+                submitBtn.innerHTML = '<iconify-icon icon="line-md:loading-loop" width="24"></iconify-icon> Processing...';
+                
+                setTimeout(() => {
+                    // Populate Confirmation
+                    const name = document.getElementById('full-name').value;
+                    document.getElementById('conf-name').textContent = name;
+                    document.getElementById('conf-time').textContent = new Date().toLocaleString();
+                    document.getElementById('conf-ref').textContent = 'SO-' + Math.floor(1000 + Math.random() * 9000);
+
+                    // Switch Views
+                    document.getElementById('sign-view').classList.add('hidden');
+                    const confView = document.getElementById('confirmation-view');
+                    confView.classList.remove('hidden');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            });
+        });
+    </script>
+
+</body></html>
