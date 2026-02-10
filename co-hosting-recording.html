@@ -158,34 +158,69 @@
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <!-- HEADER -->
-    <header class="fixed top-0 left-0 right-0 z-[999] border-b border-white/5 bg-bg/95 backdrop-blur-md">
-        <!-- Hiring Banner -->
-        <div class="bg-gradient-to-r from-brand/10 via-transparent to-brand/10 border-b border-brand/20 overflow-hidden">
-            <div class="flex gap-12 animate-scroll py-2 px-4">
-                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
-                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
-                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+    <!-- ═══ HEADER (same as become-a-partner) ═══ -->
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
             </div>
+          </div>
         </div>
 
-        <!-- Navigation -->
-        <nav class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-            <a href="/" class="flex items-center gap-2">
-                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="50" y="60" font-size="40" font-weight="bold" text-anchor="middle" fill="white">SO</text>
-                </svg>
-                <span class="font-display font-semibold text-white hidden sm:inline">Scaling Offers</span>
-            </a>
-            
-            <div class="flex items-center gap-8">
-                <a href="client-testimonials" class="text-sm text-zinc-400 hover:text-white transition-colors">Client Testimonials</a>
-                <a href="become-a-partner" class="px-6 py-2 rounded-full bg-brand hover:bg-brand-dark text-bg font-medium text-sm transition-colors">Become a Partner</a>
-                <a href="client-login" class="px-6 py-2 rounded-full border border-white/10 hover:border-brand/50 text-white font-medium text-sm transition-colors">Client Login</a>
-            </div>
-        </nav>
-    </header>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="/" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
 
+          <div class="header-row2">
+            <a href="client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+
+          <div class="header-row-right">
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
     <!-- MAIN CONTENT -->
     <main class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-24">
         <!-- Header -->
