@@ -1,3 +1,9 @@
 {
-  "cleanUrls": true
+    "cleanUrls": true,
+    "rewrites": [
+          { "source": "/cohost-training", "destination": "/co-hosting-recording.html" },
+          { "source": "/client-testimonials", "destination": "/client-testimonials.html" },
+          { "source": "/become-a-partner", "destination": "/become-a-partner.html" },
+          { "source": "/client-login", "destination": "/client-login.html" }
+    ]
 }
