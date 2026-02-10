@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinar Co-Host Training | Scaling Offers</title>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        accent: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#2abced',
+                            dim: 'rgba(42, 188, 237, 0.08)',
+                            glow: 'rgba(42, 188, 237, 0.12)',
+                            dark: '#008ba3'
+                        },
+                        bg: '#141414',
+                        surface: 'rgba(255, 255, 255, 0.02)',
+                        border: 'rgba(255, 255, 255, 0.08)',
+                        card: '#1a1a1a'
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.02em',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-bg: #141414;
+            --color-accent: #2abced;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition-base: 250ms ease;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Utilities */
+        .text-gradient-white {
+            background: linear-gradient(0deg, #fff 30%, rgba(255, 255, 255, 0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition-base);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Play Button Pulse */
+        .play-btn-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 188, 237, 0.3); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(42, 188, 237, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 188, 237, 0); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: #2abced;
+            cursor: pointer;
+            margin-top: -5px;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+    </style>
+
+    <!-- LINKED CSS FILES -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body class="selection:bg-brand-dim selection:text-brand">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[50%] -translate-x-1/2 w-[1000px] h-[800px] bg-brand/5 rounded-full blur-[120px] opacity-40"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] opacity-30"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-[999] border-b border-white/5 bg-bg/95 backdrop-blur-md">
+        <!-- Hiring Banner -->
+        <div class="bg-gradient-to-r from-brand/10 via-transparent to-brand/10 border-b border-brand/20 overflow-hidden">
+            <div class="flex gap-12 animate-scroll py-2 px-4">
+                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+                <span class="text-xs text-zinc-400 whitespace-nowrap">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+            <a href="/" class="flex items-center gap-2">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="50" y="60" font-size="40" font-weight="bold" text-anchor="middle" fill="white">SO</text>
+                </svg>
+                <span class="font-display font-semibold text-white hidden sm:inline">Scaling Offers</span>
+            </a>
+            
+            <div class="flex items-center gap-8">
+                <a href="client-testimonials" class="text-sm text-zinc-400 hover:text-white transition-colors">Client Testimonials</a>
+                <a href="become-a-partner" class="px-6 py-2 rounded-full bg-brand hover:bg-brand-dark text-bg font-medium text-sm transition-colors">Become a Partner</a>
+                <a href="client-login" class="px-6 py-2 rounded-full border border-white/10 hover:border-brand/50 text-white font-medium text-sm transition-colors">Client Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-24">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center mb-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/5 border border-brand/10 w-fit mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                <span class="text-[10px] uppercase tracking-widest text-brand font-medium">Webinar Training</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-center text-gradient-white tracking-tighter mb-6 leading-[1.1] max-w-3xl">
+                Master the art of <br>co-hosting.
+            </h1>
+
+            <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed text-center max-w-xl mb-12">
+                As a co-host, you are the energy and the guide. Watch these recorded client sessions to master the art of the introduction, chat engagement, and supporting the close.
+            </p>
+
+            <!-- Focus Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+                <!-- Card 1 -->
+                <div class="feature-card p-6 rounded-xl relative group">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
+                        <iconify-icon icon="solar:microphone-3-linear" width="20"></iconify-icon>
+                    </div>
+                    <h3 class="text-sm font-medium text-zinc-200 mb-2">The Intro</h3>
+                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">How to introduce the owner, build authority, and set the energy high.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card p-6 rounded-xl relative group">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
+                        <iconify-icon icon="solar:chat-round-dots-linear" width="20"></iconify-icon>
+                    </div>
+                    <h3 class="text-sm font-medium text-zinc-200 mb-2">Chat & Q&A</h3>
+                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Engage in real-time. Answer basics, flag good questions for the owner.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card p-6 rounded-xl relative group">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
+                        <iconify-icon icon="solar:refresh-circle-linear" width="20"></iconify-icon>
+                    </div>
+                    <h3 class="text-sm font-medium text-zinc-200 mb-2">Transitions</h3>
+                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Manage pacing. Smooth handoffs between sections and handling breaks.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card p-6 rounded-xl relative group">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
+                        <iconify-icon icon="solar:wad-of-money-linear" width="20"></iconify-icon>
+                    </div>
+                    <h3 class="text-sm font-medium text-zinc-200 mb-2">The Close</h3>
+                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Reinforce the offer. Drop links. Create urgency without being pushy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recordings Section -->
+        <div class="border-t border-white/5 pt-16 mb-20">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-display font-medium text-white tracking-tight">Past Recordings</h2>
+                <span class="text-xs font-accent font-light text-zinc-500">3 Sessions Available</span>
+            </div>
+
+            <div class="grid gap-6">
+                <!-- Video Card 1 -->
+                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('High-Ticket Coaching Offer')">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white play-btn-pulse group-hover:bg-brand group-hover:text-bg transition-all">
+                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">58:12</div>
+                        </div>
+
+                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Strategy</span>
+                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Jan 14, 2026</span>
+                                </div>
+                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">High-Ticket Coaching Offer</h3>
+                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
+                                    Full webinar co-hosted for a coaching client selling a $5,000 mentorship program. Great example of a smooth intro, active chat management, and a strong close sequence.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        0:00 Intro
+                                    </button>
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        22:15 Q&A Handling
+                                    </button>
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        41:00 The Pitch
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 2 -->
+                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('DFY Agency Service')">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-brand group-hover:text-bg transition-all">
+                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">47:30</div>
+                        </div>
+
+                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Execution</span>
+                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Dec 02, 2025</span>
+                                </div>
+                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">DFY Agency Service</h3>
+                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
+                                    Webinar for a "Done-For-You" agency offer. Notice how the co-host re-engages the audience mid-way when energy drops and handles price objections in the chat.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        15:20 Re-engagement
+                                    </button>
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        35:45 Objection Handling
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 3 -->
+                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('SaaS Product Demo')">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-brand group-hover:text-bg transition-all">
+                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">52:15</div>
+                        </div>
+
+                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Technical</span>
+                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Nov 18, 2025</span>
+                                </div>
+                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">SaaS Product Demo</h3>
+                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
+                                    SaaS-focused webinar with a different flow. The co-host manages a more technical Q&A session and supports a Free Trial CTA instead of a hard purchase close.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        12:00 Tech Q&A
+                                    </button>
+                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
+                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
+                                        45:00 Free Trial CTA
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Cheat Sheet Section -->
+        <div class="grid lg:grid-cols-12 gap-16 items-start border-t border-white/5 pt-16">
+            <!-- Left: Intro -->
+            <div class="lg:col-span-4 flex flex-col pt-4">
+                <h2 class="text-2xl font-display font-medium text-white tracking-tight mb-4">
+                    Your role at a glance.
+                </h2>
+                <p class="text-sm text-zinc-500 font-accent font-light mb-8 leading-relaxed">
+                    Review this checklist before every session. Consistency in the pre-webinar setup leads to conversion in the close.
+                </p>
+            </div>
+
+            <!-- Right: The Checklist -->
+            <div class="lg:col-span-8 w-full">
+                <div class="glass-panel rounded-[24px] p-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand/30 to-transparent"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                        <!-- Dividers -->
+                        <div class="hidden md:block absolute top-4 bottom-4 left-1/3 w-px bg-white/5"></div>
+                        <div class="hidden md:block absolute top-4 bottom-4 left-2/3 w-px bg-white/5"></div>
+
+                        <!-- Column 1 -->
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+                                <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">Before (30m)</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Test mic, camera & internet speed connection</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span class="">Open Q&A panel & webinar platform admin</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Review offer details & ready CTA links</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 2 -->
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_rgba(42,188,237,0.5)]"></span>
+                                <h3 class="text-xs font-bold tracking-widest uppercase text-white">Live</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>High energy welcome message in Chat</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Edify & introduce the Owner enthusiastically</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Reinforce urgency during the Close pitch</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 3 -->
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+                                <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">After</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Post CTA link one final time before end</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Thank attendees and close room</span>
+                                </li>
+                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
+                                    <span>Quick 5m debrief call with Owner</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Footer -->
+        <div class="mt-20 border-t border-white/5 pt-12 max-w-2xl mx-auto">
+            <h3 class="text-lg font-display font-medium text-white mb-6 text-center">Common Questions</h3>
+            <div class="space-y-2">
+                <details class="group feature-card rounded-lg open:bg-white/[0.03] transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-zinc-300 hover:text-white transition-colors list-none text-sm">
+                        <span>What platform do we use for webinars?</span>
+                        <span class="transition group-open:rotate-180 text-zinc-500">
+                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="p-4 pt-0 text-xs text-zinc-500 font-accent font-light leading-relaxed">
+                        We primarily use Zoom Webinar or GoToWebinar depending on the client. Check the calendar invite for the specific link.
+                    </div>
+                </details>
+
+                <details class="group feature-card rounded-lg open:bg-white/[0.03] transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-zinc-300 hover:text-white transition-colors list-none text-sm">
+                        <span>Do I need to be on camera?</span>
+                        <span class="transition group-open:rotate-180 text-zinc-500">
+                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
+                        </span>
+                    </summary>
+                    <div class="p-4 pt-0 text-xs text-zinc-500 font-accent font-light leading-relaxed">
+                        Yes. Co-hosts must have camera ON during the intro and Q&A. You may turn it off during the owner's presentation slides if requested.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm mt-32">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <svg class="w-10 h-10 mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50" y="60" font-size="40" font-weight="bold" text-anchor="middle" fill="white">SO</text>
+                    </svg>
+                    <p class="text-sm text-zinc-400 max-w-md leading-relaxed">
+                        Discover unparalleled success with Scaling Offers, your elite sales and marketing partner. We elevate businesses with expert teams, innovative strategies, and tailored solutions, driving growth and maximizing ROI. Experience the difference with our comprehensive, results-driven approach.
+                    </p>
+                </div>
+                <nav class="flex flex-col gap-4">
+                    <h4 class="text-white font-semibold text-sm">Quick Links</h4>
+                    <a href="client-testimonials" class="text-sm text-zinc-400 hover:text-brand transition-colors">Client Testimonials</a>
+                </nav>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center">
+                <p class="text-xs text-zinc-500">© 2026 Scaling Offers | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-md transition-opacity" onclick="closeVideoModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="w-full max-w-5xl bg-[#141414] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+                <!-- Header -->
+                <div class="flex items-center justify-between p-4 border-b border-white/5 bg-[#141414]">
+                    <h3 id="modalTitle" class="text-zinc-200 font-display font-medium text-sm">Webinar Recording</h3>
+                    <button onclick="closeVideoModal()" class="text-zinc-500 hover:text-white transition-colors">
+                        <iconify-icon icon="solar:close-circle-linear" width="20"></iconify-icon>
+                    </button>
+                </div>
+
+                <!-- Video Area -->
+                <div class="relative bg-black aspect-video flex-grow flex items-center justify-center group overflow-
