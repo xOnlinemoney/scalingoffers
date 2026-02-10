@@ -237,21 +237,10 @@
 
         <!-- ═══ SECTION 2: WEBINAR RECORDING + SMART CHAPTERS ═══ -->
         <section class="reveal mb-24">
-            <!-- Video Player -->
+            <!-- YouTube Video Player -->
             <div class="video-glow rounded-2xl overflow-hidden border border-white/10 bg-black mb-8">
                 <div class="relative w-full" style="padding-top: 56.25%;">
-                    <video id="webinarVideo" class="absolute inset-0 w-full h-full" controls preload="metadata" poster="">
-                        <!-- Replace src with your actual video URL -->
-                        <source src="" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    <!-- Placeholder overlay (shown when no video src) -->
-                    <div id="videoPlaceholder" class="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 flex flex-col items-center justify-center">
-                        <div class="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                            <iconify-icon icon="solar:play-bold" width="32" class="text-brand ml-1"></iconify-icon>
-                        </div>
-                        <p class="text-sm text-zinc-500 font-accent">Video will appear here</p>
-                    </div>
+                    <div id="youtubePlayer" class="absolute inset-0 w-full h-full"></div>
                 </div>
             </div>
 
@@ -332,145 +321,147 @@
                 <!-- Vertical Line -->
                 <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px timeline-line"></div>
 
-               <!-- Step 1 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
-        <span class="text-sm md:text-base font-display font-semibold text-brand">01</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">You Warm Up the Room</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You keep camera off. You welcome attendees and set the stage. Client joins 5 minutes after you start.</p>
-    </div>
-</div>
+                <!-- Step 1 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">01</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Warm Up the Room</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You keep camera off. You welcome attendees and set the stage. Client joins 5 minutes after you start.</p>
+                    </div>
+                </div>
 
-<!-- Step 2 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
-        <span class="text-sm md:text-base font-display font-semibold text-brand">02</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Introduce Client</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You frame the Client's authority and experience so when they enter the room the credibility is already built.</p>
-    </div>
-</div>
+                <!-- Step 2 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">02</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Introduce Client</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You frame the Client's authority and experience so when they enter the room the credibility is already built.</p>
+                    </div>
+                </div>
 
-<!-- Step 3 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">03</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Client Shares Their Story</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client walks through where they started, the problem they faced, what wasn't working, and the transformation they achieved.</p>
-    </div>
-</div>
+                <!-- Step 3 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">03</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Client Shares Their Story</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client walks through where they started, the problem they faced, what wasn't working, and the transformation they achieved.</p>
+                    </div>
+                </div>
 
-<!-- Step 4 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">04</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Client Explains Their Framework</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">They explain why their system works — what makes it sustainable, repeatable, and different from surface-level tactics.</p>
-    </div>
-</div>
+                <!-- Step 4 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">04</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Client Explains Their Framework</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">They explain why their system works — what makes it sustainable, repeatable, and different from surface-level tactics.</p>
+                    </div>
+                </div>
 
-<!-- Step 5 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">05</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Client Shows Proof</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client shares their screen and walks through their real client results. Before &rarr; implementation &rarr; outcome. Screenshots, dashboards, wins, testimonials.</p>
-    </div>
-</div>
+                <!-- Step 5 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">05</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Client Shows Proof</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client shares their screen and walks through their real client results. Before &rarr; implementation &rarr; outcome. Screenshots, dashboards, wins, testimonials.</p>
+                    </div>
+                </div>
 
-<!-- Step 6 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
-        <span class="text-sm md:text-base font-display font-semibold text-brand">06</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">You Re-Engage the Room</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You reignite the chat, reinforce why the client's story matters, and frame the core problem for attendees.</p>
-    </div>
-</div>
+                <!-- Step 6 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">06</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Re-Engage the Room</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You reignite the chat, reinforce why the client's story matters, and frame the core problem for attendees.</p>
+                    </div>
+                </div>
 
-<!-- Step 7 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">07</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Client Teaches One Key Insight</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client delivers a short educational piece — one quick-win concept that makes the problem feel solvable. High-level, not a full workshop.</p>
-    </div>
-</div>
+                <!-- Step 7 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">07</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">Client</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Client Teaches One Key Insight</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client delivers a short educational piece — one quick-win concept that makes the problem feel solvable. High-level, not a full workshop.</p>
+                    </div>
+                </div>
 
-<!-- Step 8 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
-        <span class="text-sm md:text-base font-display font-semibold text-brand">08</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">You Handle the Pitch</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You walk through the offer, deliverables, investment, financing, and next steps. The client doesn't pitch.</p>
-    </div>
-</div>
+                <!-- Step 8 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">08</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Handle the Pitch</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You walk through the offer, deliverables, investment, financing, and next steps. The client doesn't pitch.</p>
+                    </div>
+                </div>
 
-<!-- Step 9 -->
-<div class="relative flex gap-5 md:gap-6 mb-5">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-purple-500/10 border border-purple-500/20">
-        <span class="text-sm md:text-base font-display font-semibold text-purple-400">09</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 border border-purple-500/20 text-[10px] font-bold uppercase tracking-wider text-purple-400">Both</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">Live Q&A</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client answers niche and implementation questions. You handle objections, timing, financing, and enrollment questions.</p>
-    </div>
-</div>
+                <!-- Step 9 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-purple-500/10 border border-purple-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-purple-400">09</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 border border-purple-500/20 text-[10px] font-bold uppercase tracking-wider text-purple-400">Both</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Live Q&A</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Client answers niche and implementation questions. You handle objections, timing, financing, and enrollment questions.</p>
+                    </div>
+                </div>
 
-<!-- Step 10 -->
-<div class="relative flex gap-5 md:gap-6">
-    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
-        <span class="text-sm md:text-base font-display font-semibold text-brand">10</span>
-    </div>
-    <div class="step-card rounded-xl p-5 flex-1">
-        <div class="flex items-center gap-2.5 mb-2">
-            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
-            <h4 class="text-sm font-display font-medium text-zinc-100">You Close the Room</h4>
-        </div>
-        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You post the final CTA, prompt financing applications, and invite the client's closing remarks.</p>
-    </div>
-</div>
+                <!-- Step 10 -->
+                <div class="relative flex gap-5 md:gap-6">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">10</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Close the Room</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You post the final CTA, prompt financing applications, and invite the client's closing remarks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- ═══ SECTION 5: YOUR ROLE AT A GLANCE ═══ -->
         <section class="reveal border-t border-white/5 pt-20">
@@ -585,34 +576,68 @@
       </div>
     </footer>
 
+    <!-- YouTube IFrame API -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // ═══ SMART CHAPTERS ═══
-        const video = document.getElementById('webinarVideo');
-        const chapters = document.querySelectorAll('.chapter-card');
-        const placeholder = document.getElementById('videoPlaceholder');
+        // Load the YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        // Chapter timestamps (in seconds) for active tracking
-        const chapterTimes = Array.from(chapters).map(ch => parseInt(ch.dataset.time));
+        var player;
+        var chapterTrackingInterval;
 
-        // Click to seek
-        chapters.forEach(chapter => {
-            chapter.addEventListener('click', () => {
-                const time = parseInt(chapter.dataset.time);
-                if (video) {
-                    video.currentTime = time;
-                    video.play();
-                    if (placeholder) placeholder.style.display = 'none';
+        // Called automatically by the YouTube IFrame API when it's ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtubePlayer', {
+                videoId: 'm0HwJJNW4NE',
+                playerVars: {
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'color': 'white',
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
                 }
-                // Scroll video into view
-                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
-        });
+        }
 
-        // Track active chapter during playback
-        if (video) {
-            video.addEventListener('timeupdate', () => {
-                const currentTime = video.currentTime;
+        function onPlayerReady(event) {
+            // Set up chapter click handlers
+            const chapters = document.querySelectorAll('.chapter-card');
+            chapters.forEach(chapter => {
+                chapter.addEventListener('click', () => {
+                    const time = parseInt(chapter.dataset.time);
+                    player.seekTo(time, true);
+                    player.playVideo();
+                    // Scroll video into view
+                    document.getElementById('youtubePlayer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            // Start tracking active chapter when video is playing
+            if (event.data === YT.PlayerState.PLAYING) {
+                startChapterTracking();
+            } else {
+                stopChapterTracking();
+            }
+        }
+
+        function startChapterTracking() {
+            // Clear any existing interval
+            stopChapterTracking();
+
+            const chapters = document.querySelectorAll('.chapter-card');
+            const chapterTimes = Array.from(chapters).map(ch => parseInt(ch.dataset.time));
+
+            chapterTrackingInterval = setInterval(() => {
+                if (!player || typeof player.getCurrentTime !== 'function') return;
+
+                const currentTime = player.getCurrentTime();
                 let activeIndex = 0;
 
                 for (let i = chapterTimes.length - 1; i >= 0; i--) {
@@ -625,14 +650,19 @@
                 chapters.forEach((ch, i) => {
                     ch.classList.toggle('active', i === activeIndex);
                 });
-            });
-
-            // Hide placeholder when video plays
-            video.addEventListener('play', () => {
-                if (placeholder) placeholder.style.display = 'none';
-            });
+            }, 1000); // Check every second
         }
 
+        function stopChapterTracking() {
+            if (chapterTrackingInterval) {
+                clearInterval(chapterTrackingInterval);
+                chapterTrackingInterval = null;
+            }
+        }
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
         // ═══ SCROLL REVEAL ═══
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
