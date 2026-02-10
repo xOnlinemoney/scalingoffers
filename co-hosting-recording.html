@@ -531,28 +531,81 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-sm mt-32">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <div class="grid md:grid-cols-2 gap-12 mb-12">
-                <div>
-                    <svg class="w-10 h-10 mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="50" y="60" font-size="40" font-weight="bold" text-anchor="middle" fill="white">SO</text>
-                    </svg>
-                    <p class="text-sm text-zinc-400 max-w-md leading-relaxed">
-                        Discover unparalleled success with Scaling Offers, your elite sales and marketing partner. We elevate businesses with expert teams, innovative strategies, and tailored solutions, driving growth and maximizing ROI. Experience the difference with our comprehensive, results-driven approach.
-                    </p>
-                </div>
-                <nav class="flex flex-col gap-4">
-                    <h4 class="text-white font-semibold text-sm">Quick Links</h4>
-                    <a href="client-testimonials" class="text-sm text-zinc-400 hover:text-brand transition-colors">Client Testimonials</a>
-                </nav>
-            </div>
-            <div class="border-t border-white/5 pt-8 text-center">
-                <p class="text-xs text-zinc-500">© 2026 Scaling Offers | All Rights Reserved</p>
-            </div>
+     <!-- ═══ FOOTER (same as become-a-partner) ═══ -->
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
         </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
     </footer>
+  </div>
+
+  <script>
+    // Intersection Observer for Scroll Reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+
+      if (!menuButton || !menuPanel || !headerRoot) return;
+
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
 
     <!-- Video Modal -->
     <div id="videoModal" class="fixed inset-0 z-[100] hidden">
