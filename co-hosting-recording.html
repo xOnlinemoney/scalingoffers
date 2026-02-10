@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webinar Co-Host Training | Scaling Offers</title>
+    <title>Co-Hosting Training | Scaling Offers</title>
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Iconify -->
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -40,18 +40,24 @@
                         tighter: '-0.04em',
                         tight: '-0.02em',
                     },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
                 }
             }
         }
     </script>
 
+    <!-- LINKED CSS FILES -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+
     <style>
         :root {
             --color-bg: #141414;
             --color-accent: #2abced;
+            --color-surface: rgba(255, 255, 255, 0.02);
+            --color-surface-elevated: rgba(255, 255, 255, 0.06);
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-border-accent: rgba(42, 188, 237, 0.15);
             --radius-md: 16px;
             --radius-lg: 24px;
             --transition-base: 250ms ease;
@@ -65,9 +71,14 @@
             overflow-x: hidden;
         }
 
-        /* Utilities */
         .text-gradient-white {
             background: linear-gradient(0deg, #fff 30%, rgba(255, 255, 255, 0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(0deg, #2abced 30%, rgba(42, 188, 237, 0.32) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -84,70 +95,74 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             transition: var(--transition-base);
         }
-
         .feature-card:hover {
             background: rgba(255, 255, 255, 0.03);
             border-color: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
         }
 
-        /* Play Button Pulse */
-        .play-btn-pulse {
-            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 188, 237, 0.3); }
-            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(42, 188, 237, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(42, 188, 237, 0); }
-        }
-
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* Header overrides */
+        .header { min-height: auto; }
+        .header-rect1 { height: 100px; }
+        .hero-content, .header-stat, .header-particles, .header-video { display: none; }
+
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--color-bg);
+        /* Video container glow */
+        .video-glow {
+            box-shadow: 0 0 80px -20px rgba(42, 188, 237, 0.15), 0 0 120px -40px rgba(42, 188, 237, 0.08);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Range Slider */
-        input[type=range] {
-            -webkit-appearance: none;
-            background: transparent;
-        }
-
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            background: #2abced;
+        /* Chapter card */
+        .chapter-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 200ms ease;
             cursor: pointer;
-            margin-top: -5px;
+        }
+        .chapter-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(42, 188, 237, 0.2);
+        }
+        .chapter-card.active {
+            background: rgba(42, 188, 237, 0.08);
+            border-color: rgba(42, 188, 237, 0.3);
+        }
+        .chapter-card.active .chapter-time {
+            color: #2abced;
         }
 
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 2px;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
+        /* Timeline connector */
+        .timeline-line {
+            background: linear-gradient(180deg, rgba(42, 188, 237, 0.4) 0%, rgba(42, 188, 237, 0.1) 60%, transparent 100%);
+        }
+
+        /* Step card hover */
+        .step-card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 200ms ease;
+        }
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.12);
         }
     </style>
-
-    <!-- LINKED CSS FILES -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body class="selection:bg-brand-dim selection:text-brand">
@@ -158,7 +173,7 @@
         <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <!-- ═══ HEADER (same as become-a-partner) ═══ -->
+    <!-- ═══ HEADER ═══ -->
     <header class="header">
       <div class="header-rect1" aria-hidden="true"></div>
       <div class="header-particles" aria-hidden="true"></div>
@@ -169,15 +184,11 @@
       <div class="header-header">
         <div class="header-info" aria-label="Hiring announcement">
           <div class="header-rect2" aria-hidden="true"></div>
-
           <div class="marquee-wrapper">
             <div class="marquee-track">
-              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential
-                $10,000 to $50,000/month</span>
-              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
-                $10,000 to $50,000/month</span>
-              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
-                $10,000 to $50,000/month</span>
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
             </div>
           </div>
         </div>
@@ -186,20 +197,13 @@
           <a href="/" class="header-logo-link" aria-label="Scaling Offers home">
             <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
           </a>
-
           <div class="header-row2">
             <a href="client-testimonials" class="header-text">Client Testimonials</a>
           </div>
-
           <div class="header-row-right">
-            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
-              Become a Partner
-            </a>
-            <a href="client-login" class="header-btn-client-login text1 hover-bright">
-              Client Login
-            </a>
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">Become a Partner</a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">Client Login</a>
           </div>
-
           <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -210,331 +214,359 @@
             <a href="client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
           </div>
           <div class="mobile-menu-actions">
-            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
-              Become a Partner
-            </a>
-            <a href="client-login" class="header-btn-client-login text1 hover-bright">
-              Client Login
-            </a>
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">Become a Partner</a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">Client Login</a>
           </div>
         </div>
       </div>
     </header>
     
-    <!-- MAIN CONTENT -->
-    <main class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-24">
-        <!-- Header -->
-        <div class="flex flex-col items-center justify-center mb-20">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/5 border border-brand/10 w-fit mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
-                <span class="text-[10px] uppercase tracking-widest text-brand font-medium">Webinar Training</span>
-            </div>
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main class="relative z-10 w-full max-w-6xl mx-auto px-6 pt-0 pb-24">
 
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-center text-gradient-white tracking-tighter mb-6 leading-[1.1] max-w-3xl">
-                Master the art of <br>co-hosting.
+        <!-- ═══ SECTION 1: PAGE HEADER ═══ -->
+        <section class="reveal text-center mb-20">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-gradient-white tracking-tighter mb-5 leading-[1.1]">
+                Co-Hosting Training
             </h1>
 
-            <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed text-center max-w-xl mb-12">
-                As a co-host, you are the energy and the guide. Watch these recorded client sessions to master the art of the introduction, chat engagement, and supporting the close.
+            <p class="text-base text-zinc-400 font-accent font-light leading-relaxed max-w-xl mx-auto">
+                Everything you need to prepare for your live webinar. Watch the recording below, study the flow, and show up ready.
             </p>
+        </section>
 
-            <!-- Focus Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-                <!-- Card 1 -->
-                <div class="feature-card p-6 rounded-xl relative group">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
-                        <iconify-icon icon="solar:microphone-3-linear" width="20"></iconify-icon>
+        <!-- ═══ SECTION 2: WEBINAR RECORDING + SMART CHAPTERS ═══ -->
+        <section class="reveal mb-24">
+            <!-- Video Player -->
+            <div class="video-glow rounded-2xl overflow-hidden border border-white/10 bg-black mb-8">
+                <div class="relative w-full" style="padding-top: 56.25%;">
+                    <video id="webinarVideo" class="absolute inset-0 w-full h-full" controls preload="metadata" poster="">
+                        <!-- Replace src with your actual video URL -->
+                        <source src="" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <!-- Placeholder overlay (shown when no video src) -->
+                    <div id="videoPlaceholder" class="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
+                            <iconify-icon icon="solar:play-bold" width="32" class="text-brand ml-1"></iconify-icon>
+                        </div>
+                        <p class="text-sm text-zinc-500 font-accent">Video will appear here</p>
                     </div>
-                    <h3 class="text-sm font-medium text-zinc-200 mb-2">The Intro</h3>
-                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">How to introduce the owner, build authority, and set the energy high.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="feature-card p-6 rounded-xl relative group">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
-                        <iconify-icon icon="solar:chat-round-dots-linear" width="20"></iconify-icon>
-                    </div>
-                    <h3 class="text-sm font-medium text-zinc-200 mb-2">Chat & Q&A</h3>
-                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Engage in real-time. Answer basics, flag good questions for the owner.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="feature-card p-6 rounded-xl relative group">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
-                        <iconify-icon icon="solar:refresh-circle-linear" width="20"></iconify-icon>
-                    </div>
-                    <h3 class="text-sm font-medium text-zinc-200 mb-2">Transitions</h3>
-                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Manage pacing. Smooth handoffs between sections and handling breaks.</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="feature-card p-6 rounded-xl relative group">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 mb-4 group-hover:text-brand group-hover:border-brand/20 transition-colors">
-                        <iconify-icon icon="solar:wad-of-money-linear" width="20"></iconify-icon>
-                    </div>
-                    <h3 class="text-sm font-medium text-zinc-200 mb-2">The Close</h3>
-                    <p class="text-xs text-zinc-500 font-accent leading-relaxed">Reinforce the offer. Drop links. Create urgency without being pushy.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- Recordings Section -->
-        <div class="border-t border-white/5 pt-16 mb-20">
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="text-2xl font-display font-medium text-white tracking-tight">Past Recordings</h2>
-                <span class="text-xs font-accent font-light text-zinc-500">3 Sessions Available</span>
+            <!-- Smart Chapters -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <iconify-icon icon="solar:bookmark-opened-linear" width="18" class="text-brand"></iconify-icon>
+                    <h3 class="text-lg font-display font-medium text-white">Smart Chapters</h3>
+                    <span class="text-[10px] font-accent text-zinc-500 uppercase tracking-wider">Click to jump</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="chaptersGrid">
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="0">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">00:00</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Building Successful Trucking Businesses</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="746">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">12:26</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Entrepreneurship in Trucking: Jesse's Journey</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="1444">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">24:04</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Business Startup Program</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="2779">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">46:19</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Logistics</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="3832">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">1:03:52</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Done-For-You Trucking Business Opportunity</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="4588">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">1:16:28</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Fastlane Trucking Program Overview</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="5266">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">1:27:46</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Program Application Process</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="5894">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">1:38:14</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Dispatch Training</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="6824">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">1:53:44</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Business Program Overview</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="7511">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">2:05:11</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Jesse's Network Investment Overview</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="8172">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">2:16:12</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Business Financing Options</span>
+                    </button>
+                    <button class="chapter-card rounded-xl px-4 py-3 flex items-center gap-3 text-left" data-time="9311">
+                        <span class="chapter-time text-xs font-mono text-zinc-500 shrink-0 w-14">2:35:11</span>
+                        <span class="text-sm text-zinc-300 font-light leading-snug">Trucking Business</span>
+                    </button>
+                </div>
             </div>
+        </section>
 
-            <div class="grid gap-6">
-                <!-- Video Card 1 -->
-                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
-                    <div class="flex flex-col lg:flex-row gap-6">
-                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('High-Ticket Coaching Offer')">
-                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white play-btn-pulse group-hover:bg-brand group-hover:text-bg transition-all">
-                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">58:12</div>
-                        </div>
+        <!-- ═══ SECTION 3: ROLE REASSURANCE ═══ -->
+        <section class="reveal text-center mb-16 border-t border-white/5 pt-20">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-brand mb-4 font-accent">Webinar Flow</span>
+            <h2 class="text-3xl md:text-4xl font-display font-medium text-gradient-white tracking-tighter mb-5">
+                You Don't Need to Sell
+            </h2>
+            <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed max-w-2xl mx-auto">
+                Your role is to bring expertise, clarity, and proof. We lead the room, manage the flow, and handle enrollment. Here's exactly how the webinar flows so you know what to expect.
+            </p>
+        </section>
 
-                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Strategy</span>
-                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Jan 14, 2026</span>
-                                </div>
-                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">High-Ticket Coaching Offer</h3>
-                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
-                                    Full webinar co-hosted for a coaching client selling a $5,000 mentorship program. Great example of a smooth intro, active chat management, and a strong close sequence.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        0:00 Intro
-                                    </button>
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        22:15 Q&A Handling
-                                    </button>
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        41:00 The Pitch
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+        <!-- ═══ SECTION 4: HOW THE WEBINAR FLOWS ═══ -->
+        <section class="reveal mb-24">
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Vertical Line -->
+                <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px timeline-line"></div>
+
+                <!-- Step 1 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">01</span>
                     </div>
-                </article>
-
-                <!-- Video Card 2 -->
-                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
-                    <div class="flex flex-col lg:flex-row gap-6">
-                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('DFY Agency Service')">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-brand group-hover:text-bg transition-all">
-                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">47:30</div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">We Warm Up the Room</h4>
                         </div>
-
-                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Execution</span>
-                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Dec 02, 2025</span>
-                                </div>
-                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">DFY Agency Service</h3>
-                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
-                                    Webinar for a "Done-For-You" agency offer. Notice how the co-host re-engages the audience mid-way when energy drops and handles price objections in the chat.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        15:20 Re-engagement
-                                    </button>
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        35:45 Objection Handling
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You're off-camera. We welcome attendees and set the stage. You join 5 minutes after start.</p>
                     </div>
-                </article>
+                </div>
 
-                <!-- Video Card 3 -->
-                <article class="glass-panel p-2 rounded-[24px] group hover:border-brand/20 transition-all">
-                    <div class="flex flex-col lg:flex-row gap-6">
-                        <div class="relative lg:w-96 aspect-video bg-[#0A0A0A] rounded-[18px] overflow-hidden border border-white/5 cursor-pointer" onclick="openVideoModal('SaaS Product Demo')">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-brand group-hover:text-bg transition-all">
-                                    <iconify-icon icon="solar:play-bold" width="20" class="ml-1"></iconify-icon>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-medium text-zinc-300 border border-white/10">52:15</div>
-                        </div>
-
-                        <div class="flex-1 py-2 pr-4 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand">Technical</span>
-                                    <span class="text-zinc-600 text-xs flex items-center gap-1 font-accent">Nov 18, 2025</span>
-                                </div>
-                                <h3 class="text-xl font-display font-medium text-zinc-100 mb-2">SaaS Product Demo</h3>
-                                <p class="text-sm text-zinc-400 font-accent font-light leading-relaxed mb-6 max-w-2xl">
-                                    SaaS-focused webinar with a different flow. The co-host manages a more technical Q&A session and supports a Free Trial CTA instead of a hard purchase close.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        12:00 Tech Q&A
-                                    </button>
-                                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:border-brand/20 text-xs text-zinc-400 hover:text-brand transition-all font-accent">
-                                        <iconify-icon icon="solar:play-circle-linear"></iconify-icon>
-                                        45:00 Free Trial CTA
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Step 2 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">02</span>
                     </div>
-                </article>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">We Introduce You</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">We frame your authority and experience so you enter the room with credibility already built.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">03</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">You</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Share Your Story</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Walk through where you started, the problem you faced, what wasn't working, and the transformation you achieved.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">04</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">You</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Explain Your Framework</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Explain why your system works — what makes it sustainable, repeatable, and different from surface-level tactics.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">05</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">You</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Show Proof</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Share your screen and walk through real client results. Before &rarr; implementation &rarr; outcome. Screenshots, dashboards, wins, testimonials.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">06</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">We Re-Engage the Room</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">We reignite the chat, reinforce why your story matters, and frame the core problem for attendees.</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-emerald-400">07</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-wider text-emerald-400">You</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">You Teach One Key Insight</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">Deliver a short educational piece — one quick-win concept that makes the problem feel solvable. High-level, not a full workshop.</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">08</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">We Handle the Pitch</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">We walk through the offer, deliverables, investment, financing, and next steps. You don't pitch.</p>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="relative flex gap-5 md:gap-6 mb-5">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-purple-500/10 border border-purple-500/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-purple-400">09</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-purple-500/10 border border-purple-500/20 text-[10px] font-bold uppercase tracking-wider text-purple-400">Both</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">Live Q&A</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">You answer niche and implementation questions. We handle objections, timing, financing, and enrollment questions.</p>
+                    </div>
+                </div>
+
+                <!-- Step 10 -->
+                <div class="relative flex gap-5 md:gap-6">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-full bg-brand/10 border border-brand/20">
+                        <span class="text-sm md:text-base font-display font-semibold text-brand">10</span>
+                    </div>
+                    <div class="step-card rounded-xl p-5 flex-1">
+                        <div class="flex items-center gap-2.5 mb-2">
+                            <span class="px-2 py-0.5 rounded-md bg-brand/10 border border-brand/20 text-[10px] font-bold uppercase tracking-wider text-brand">Host</span>
+                            <h4 class="text-sm font-display font-medium text-zinc-100">We Close the Room</h4>
+                        </div>
+                        <p class="text-xs text-zinc-500 font-accent font-light leading-relaxed">We post the final CTA, prompt financing applications, and invite your closing remarks.</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Cheat Sheet Section -->
-        <div class="grid lg:grid-cols-12 gap-16 items-start border-t border-white/5 pt-16">
-            <!-- Left: Intro -->
-            <div class="lg:col-span-4 flex flex-col pt-4">
-                <h2 class="text-2xl font-display font-medium text-white tracking-tight mb-4">
-                    Your role at a glance.
+        <!-- ═══ SECTION 5: YOUR ROLE AT A GLANCE ═══ -->
+        <section class="reveal border-t border-white/5 pt-20">
+            <div class="text-center mb-12">
+                <span class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-brand mb-4 font-accent">Quick Reference</span>
+                <h2 class="text-3xl md:text-4xl font-display font-medium text-gradient-white tracking-tighter mb-4">
+                    Your Role at a Glance
                 </h2>
-                <p class="text-sm text-zinc-500 font-accent font-light mb-8 leading-relaxed">
+                <p class="text-sm text-zinc-500 font-accent font-light max-w-lg mx-auto">
                     Review this checklist before every session. Consistency in the pre-webinar setup leads to conversion in the close.
                 </p>
             </div>
 
-            <!-- Right: The Checklist -->
-            <div class="lg:col-span-8 w-full">
-                <div class="glass-panel rounded-[24px] p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand/30 to-transparent"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                        <!-- Dividers -->
-                        <div class="hidden md:block absolute top-4 bottom-4 left-1/3 w-px bg-white/5"></div>
-                        <div class="hidden md:block absolute top-4 bottom-4 left-2/3 w-px bg-white/5"></div>
+            <div class="glass-panel rounded-2xl p-8 max-w-4xl mx-auto relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <!-- Dividers -->
+                    <div class="hidden md:block absolute top-4 bottom-4 left-1/3 w-px bg-white/5"></div>
+                    <div class="hidden md:block absolute top-4 bottom-4 left-2/3 w-px bg-white/5"></div>
 
-                        <!-- Column 1 -->
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
-                                <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">Before (30m)</h3>
-                            </div>
-                            <ul class="space-y-4">
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Test mic, camera & internet speed connection</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span class="">Open Q&A panel & webinar platform admin</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Review offer details & ready CTA links</span>
-                                </li>
-                            </ul>
+                    <!-- Before -->
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                            <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">Before (30 Min Prior)</h3>
                         </div>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Test mic, camera & internet speed connection</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Open Q&A panel & webinar platform admin</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Review offer details & ready CTA links</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Column 2 -->
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_rgba(42,188,237,0.5)]"></span>
-                                <h3 class="text-xs font-bold tracking-widest uppercase text-white">Live</h3>
-                            </div>
-                            <ul class="space-y-4">
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>High energy welcome message in Chat</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Edify & introduce the Owner enthusiastically</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Reinforce urgency during the Close pitch</span>
-                                </li>
-                            </ul>
+                    <!-- Live -->
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_rgba(42,188,237,0.5)]"></span>
+                            <h3 class="text-xs font-bold tracking-widest uppercase text-white">Live</h3>
                         </div>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>High energy welcome message in Chat</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Edify & introduce the Owner enthusiastically</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Reinforce urgency during the Close pitch</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                        <!-- Column 3 -->
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
-                                <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">After</h3>
-                            </div>
-                            <ul class="space-y-4">
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Post CTA link one final time before end</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Thank attendees and close room</span>
-                                </li>
-                                <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
-                                    <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm"></iconify-icon>
-                                    <span>Quick 5m debrief call with Owner</span>
-                                </li>
-                            </ul>
+                    <!-- After -->
+                    <div class="space-y-5">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                            <h3 class="text-xs font-bold tracking-widest uppercase text-zinc-300">After</h3>
                         </div>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Post CTA link one final time before end</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Thank attendees and close room</span>
+                            </li>
+                            <li class="flex gap-3 text-xs text-zinc-400 font-accent leading-relaxed">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-brand shrink-0 text-sm mt-0.5"></iconify-icon>
+                                <span>Quick 5-minute debrief call with Owner</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- FAQ Footer -->
-        <div class="mt-20 border-t border-white/5 pt-12 max-w-2xl mx-auto">
-            <h3 class="text-lg font-display font-medium text-white mb-6 text-center">Common Questions</h3>
-            <div class="space-y-2">
-                <details class="group feature-card rounded-lg open:bg-white/[0.03] transition-colors">
-                    <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-zinc-300 hover:text-white transition-colors list-none text-sm">
-                        <span>What platform do we use for webinars?</span>
-                        <span class="transition group-open:rotate-180 text-zinc-500">
-                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
-                        </span>
-                    </summary>
-                    <div class="p-4 pt-0 text-xs text-zinc-500 font-accent font-light leading-relaxed">
-                        We primarily use Zoom Webinar or GoToWebinar depending on the client. Check the calendar invite for the specific link.
-                    </div>
-                </details>
-
-                <details class="group feature-card rounded-lg open:bg-white/[0.03] transition-colors">
-                    <summary class="flex cursor-pointer items-center justify-between p-4 font-medium text-zinc-300 hover:text-white transition-colors list-none text-sm">
-                        <span>Do I need to be on camera?</span>
-                        <span class="transition group-open:rotate-180 text-zinc-500">
-                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon>
-                        </span>
-                    </summary>
-                    <div class="p-4 pt-0 text-xs text-zinc-500 font-accent font-light leading-relaxed">
-                        Yes. Co-hosts must have camera ON during the intro and Q&A. You may turn it off during the owner's presentation slides if requested.
-                    </div>
-                </details>
-            </div>
-        </div>
     </main>
 
-     <!-- ═══ FOOTER (same as become-a-partner) ═══ -->
+    <!-- ═══ FOOTER ═══ -->
     <footer class="footer">
       <div class="footer-line-top" aria-hidden="true"></div>
-
       <div class="footer-row">
         <div class="footer-col-left">
           <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
@@ -546,79 +578,101 @@
             comprehensive, results-driven approach.
           </p>
         </div>
-
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="client-testimonials" class="footer-link">Client Testimonials</a>
         </nav>
       </div>
-
       <div class="footer-copyright">
         &copy; 2026 Scaling Offers | All Rights Reserved
       </div>
     </footer>
-  </div>
 
-  <script>
-    // Intersection Observer for Scroll Reveals
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ═══ SMART CHAPTERS ═══
+        const video = document.getElementById('webinarVideo');
+        const chapters = document.querySelectorAll('.chapter-card');
+        const placeholder = document.getElementById('videoPlaceholder');
+
+        // Chapter timestamps (in seconds) for active tracking
+        const chapterTimes = Array.from(chapters).map(ch => parseInt(ch.dataset.time));
+
+        // Click to seek
+        chapters.forEach(chapter => {
+            chapter.addEventListener('click', () => {
+                const time = parseInt(chapter.dataset.time);
+                if (video) {
+                    video.currentTime = time;
+                    video.play();
+                    if (placeholder) placeholder.style.display = 'none';
+                }
+                // Scroll video into view
+                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        // Track active chapter during playback
+        if (video) {
+            video.addEventListener('timeupdate', () => {
+                const currentTime = video.currentTime;
+                let activeIndex = 0;
+
+                for (let i = chapterTimes.length - 1; i >= 0; i--) {
+                    if (currentTime >= chapterTimes[i]) {
+                        activeIndex = i;
+                        break;
+                    }
+                }
+
+                chapters.forEach((ch, i) => {
+                    ch.classList.toggle('active', i === activeIndex);
+                });
+            });
+
+            // Hide placeholder when video plays
+            video.addEventListener('play', () => {
+                if (placeholder) placeholder.style.display = 'none';
+            });
         }
-      });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // ═══ SCROLL REVEAL ═══
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-    // Mobile menu toggle
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuButton = document.querySelector(".mobile-menu-btn");
-      const menuPanel = document.querySelector(".mobile-menu-panel");
-      const headerRoot = document.querySelector(".header-header");
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      if (!menuButton || !menuPanel || !headerRoot) return;
+        // ═══ MOBILE MENU ═══
+        const menuButton = document.querySelector('.mobile-menu-btn');
+        const menuPanel = document.querySelector('.mobile-menu-panel');
+        const headerRoot = document.querySelector('.header-header');
 
-      const setMenuState = (isOpen) => {
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuPanel.setAttribute("aria-hidden", String(!isOpen));
-        headerRoot.classList.toggle("is-menu-open", isOpen);
-      };
+        if (!menuButton || !menuPanel || !headerRoot) return;
 
-      menuButton.addEventListener("click", () => {
-        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-        setMenuState(!isOpen);
-      });
+        const setMenuState = (isOpen) => {
+            menuButton.setAttribute('aria-expanded', String(isOpen));
+            menuPanel.setAttribute('aria-hidden', String(!isOpen));
+            headerRoot.classList.toggle('is-menu-open', isOpen);
+        };
 
-      menuPanel.addEventListener("click", (event) => {
-        if (event.target.closest("a, button")) {
-          setMenuState(false);
-        }
-      });
+        menuButton.addEventListener('click', () => {
+            const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+            setMenuState(!isOpen);
+        });
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          setMenuState(false);
-        }
-      });
+        menuPanel.addEventListener('click', (event) => {
+            if (event.target.closest('a, button')) setMenuState(false);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') setMenuState(false);
+        });
     });
-  </script>
+    </script>
 </body>
-
 </html>
-
-    <!-- Video Modal -->
-    <div id="videoModal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-md transition-opacity" onclick="closeVideoModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="w-full max-w-5xl bg-[#141414] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-                <!-- Header -->
-                <div class="flex items-center justify-between p-4 border-b border-white/5 bg-[#141414]">
-                    <h3 id="modalTitle" class="text-zinc-200 font-display font-medium text-sm">Webinar Recording</h3>
-                    <button onclick="closeVideoModal()" class="text-zinc-500 hover:text-white transition-colors">
-                        <iconify-icon icon="solar:close-circle-linear" width="20"></iconify-icon>
-                    </button>
-                </div>
-
-                <!-- Video Area -->
-                <div class="relative bg-black aspect-video flex-grow flex items-center justify-center group overflow-
