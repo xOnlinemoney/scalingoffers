@@ -421,7 +421,7 @@
                 <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">City</label>
                 <input type="text" id="city" required placeholder="Miami" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
               </div>
-              <div class="grid grid-cols-2 gap-4 space-y-2">
+              <div class="grid grid-cols-2 gap-4">
                 <div class="space-y-2">
                   <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">State</label>
                   <input type="text" id="state" required placeholder="FL" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
@@ -749,7 +749,6 @@
       checkbox.addEventListener('change', validateAll);
 
       // Also trigger validation when country changes in phone picker
-      const phoneInput = document.getElementById('phone');
       if (phoneInput) {
         phoneInput.addEventListener('countrychange', validateAll);
       }
