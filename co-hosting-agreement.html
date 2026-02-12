@@ -16,6 +16,10 @@
   <!-- Iconify -->
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
+  <!-- International Phone Input -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/css/intlTelInput.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/intlTelInput.min.js"></script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -141,6 +145,61 @@
     }
     .legal-content li {
       margin-bottom: 0.5rem;
+    }
+
+    /* ═══ PHONE INPUT OVERRIDES ═══ */
+    .iti {
+      width: 100%;
+    }
+    .iti__country-container {
+      padding-left: 4px;
+    }
+    .iti__selected-country {
+      background: transparent !important;
+      border-radius: 8px 0 0 8px;
+      padding: 0 8px 0 12px !important;
+    }
+    .iti__selected-country:hover,
+    .iti__selected-country:focus {
+      background: rgba(255,255,255,0.05) !important;
+    }
+    .iti__arrow {
+      border-top-color: rgba(255,255,255,0.5) !important;
+    }
+    .iti__arrow--up {
+      border-bottom-color: rgba(255,255,255,0.5) !important;
+    }
+    .iti__dropdown-content {
+      background: #1a1a1a !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+    }
+    .iti__search-input {
+      background: rgba(255,255,255,0.05) !important;
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.1) !important;
+      border-radius: 6px !important;
+    }
+    .iti__search-input::placeholder {
+      color: rgba(255,255,255,0.3) !important;
+    }
+    .iti__country {
+      color: rgba(255,255,255,0.8) !important;
+      padding: 8px 12px !important;
+    }
+    .iti__country:hover,
+    .iti__country--highlight {
+      background: rgba(42,188,237,0.1) !important;
+    }
+    .iti__dial-code {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    .iti__country-name {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    #phone {
+      padding-left: 90px !important;
     }
 
     /* Canvas */
@@ -346,7 +405,9 @@
               </div>
               <div class="space-y-2">
                 <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Phone Number</label>
-                <input type="tel" id="phone" required placeholder="+1 (555) 000-0000" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                <div class="phone-input-wrapper">
+                  <input type="tel" id="phone" required class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                </div>
               </div>
               <div class="space-y-2">
                 <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Date</label>
@@ -511,6 +572,16 @@
       document.getElementById('date-field').value = today;
       document.getElementById('legal-date-placeholder').textContent = today.toUpperCase();
 
+      // --- Phone Input with Country Picker ---
+      const phoneInput = document.getElementById('phone');
+      const iti = window.intlTelInput(phoneInput, {
+        initialCountry: 'us',
+        preferredCountries: ['us', 'ca', 'gb', 'au'],
+        separateDialCode: true,
+        formatAsYouType: true,
+        utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js',
+      });
+
       // State Tracking
       const state = {
         scrolledBottom: false,
@@ -659,7 +730,7 @@
 
         const name = document.getElementById('full-name').value;
         const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
+        const phone = iti.getNumber();
         const address = document.getElementById('address').value;
         const signedDate = document.getElementById('date-field').value;
         const signatureData = canvas.toDataURL('image/png');
