@@ -214,18 +214,13 @@
           </div>
         </div>
         <nav class="header-nav" aria-label="Main navigation">
-          <a href="/" class="header-logo-link" aria-label="Scaling Offers home">
+          <a href="https://www.scalingoffers.com" class="header-logo-link" aria-label="Scaling Offers home">
             <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
           </a>
-          <div class="header-row2">
-            <a href="client-testimonials" class="header-text">Client Testimonials</a>
-          </div>
+          <div class="header-row2" style="display:none;"></div>
           <div class="header-row-right">
-            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
-              Become a Partner
-            </a>
-            <a href="client-login" class="header-btn-client-login text1 hover-bright">
-              Client Login
+            <a href="closer-login" class="header-btn-client-login text1 hover-bright">
+              Closer Login
             </a>
           </div>
           <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -233,15 +228,10 @@
           </button>
         </nav>
         <div class="mobile-menu-panel" aria-hidden="true">
-          <div class="mobile-menu-links" role="menu">
-            <a href="client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
-          </div>
+          <div class="mobile-menu-links" role="menu" style="display:none;"></div>
           <div class="mobile-menu-actions">
-            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
-              Become a Partner
-            </a>
-            <a href="client-login" class="header-btn-client-login text1 hover-bright">
-              Client Login
+            <a href="closer-login" class="header-btn-client-login text1 hover-bright">
+              Closer Login
             </a>
           </div>
         </div>
@@ -473,7 +463,6 @@
           </p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="client-testimonials" class="footer-link">Client Testimonials</a>
         </nav>
       </div>
       <div class="footer-copyright">
@@ -485,10 +474,7 @@
 
   <!-- ═══ SCRIPTS ═══ -->
 
-  <!-- Subdomain navigation controller -->
-  <script src="js/subdomain-nav.js"></script>
-
-  <!-- Mobile Menu Toggle (from header/footer site) -->
+  <!-- Mobile Menu Toggle -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const menuButton = document.querySelector(".mobile-menu-btn");
