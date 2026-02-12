@@ -46,6 +46,12 @@
         '<a href="closer-login" class="header-btn-client-login text1 hover-bright">Closer Login</a>';
     }
 
+    // --- Logo: point to main domain ---
+    var logoLink = document.querySelector('.header-logo-link');
+    if (logoLink) {
+      logoLink.setAttribute('href', 'https://www.scalingoffers.com');
+    }
+
     // --- Footer ---
 
     // Remove "Client Testimonials" from footer nav
