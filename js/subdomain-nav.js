@@ -28,7 +28,7 @@
     var headerRowRight = document.querySelector('.header-row-right');
     if (headerRowRight) {
       headerRowRight.innerHTML =
-        '<a href="client-login" class="header-btn-client-login text1 hover-bright">Closer Login</a>';
+        '<a href="closer-login" class="header-btn-client-login text1 hover-bright">Closer Login</a>';
     }
 
     // --- Mobile Menu ---
@@ -43,7 +43,7 @@
     var mobileMenuActions = document.querySelector('.mobile-menu-actions');
     if (mobileMenuActions) {
       mobileMenuActions.innerHTML =
-        '<a href="client-login" class="header-btn-client-login text1 hover-bright">Closer Login</a>';
+        '<a href="closer-login" class="header-btn-client-login text1 hover-bright">Closer Login</a>';
     }
 
     // --- Footer ---
