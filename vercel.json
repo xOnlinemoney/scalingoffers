@@ -2,6 +2,7 @@
     "cleanUrls": true,
     "rewrites": [
           { "source": "/cohost-training", "destination": "/co-hosting-recording.html" },
+          { "source": "/co-hosting-agreement", "destination": "/co-hosting-agreement.html" },
           { "source": "/client-testimonials", "destination": "/client-testimonials.html" },
           { "source": "/become-a-partner", "destination": "/become-a-partner.html" },
           { "source": "/client-login", "destination": "/client-login.html" }

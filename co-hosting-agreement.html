@@ -485,6 +485,9 @@
 
   <!-- ═══ SCRIPTS ═══ -->
 
+  <!-- Subdomain navigation controller -->
+  <script src="js/subdomain-nav.js"></script>
+
   <!-- Mobile Menu Toggle (from header/footer site) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -661,23 +664,61 @@
       inputs.forEach(input => input.addEventListener('input', validateAll));
       checkbox.addEventListener('change', validateAll);
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (submitBtn.disabled) return;
 
         submitBtn.innerHTML = '<iconify-icon icon="line-md:loading-loop" width="24"></iconify-icon> Processing...';
+        submitBtn.disabled = true;
 
-        setTimeout(() => {
-          const name = document.getElementById('full-name').value;
+        const name = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const signedDate = document.getElementById('date-field').value;
+        const signatureData = canvas.toDataURL('image/png');
+        const referenceId = 'SO-' + Math.floor(1000 + Math.random() * 9000);
+
+        try {
+          const response = await fetch('/api/submit-agreement', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              full_name: name,
+              email: email,
+              phone: phone,
+              mailing_address: address,
+              signature_data: signatureData,
+              signed_date: signedDate,
+              reference_id: referenceId,
+            }),
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.error || 'Failed to submit agreement');
+          }
+
+          // Success — show confirmation
           document.getElementById('conf-name').textContent = name;
           document.getElementById('conf-time').textContent = new Date().toLocaleString();
-          document.getElementById('conf-ref').textContent = 'SO-' + Math.floor(1000 + Math.random() * 9000);
+          document.getElementById('conf-ref').textContent = result.data?.reference_id || referenceId;
 
           document.getElementById('sign-view').classList.add('hidden');
           const confView = document.getElementById('confirmation-view');
           confView.classList.remove('hidden');
           window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 1500);
+
+        } catch (err) {
+          console.error('Submission error:', err);
+          const errorMsg = document.getElementById('error-msg');
+          errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
+          errorMsg.classList.remove('hidden');
+          submitBtn.innerHTML = 'Sign &amp; Submit Agreement';
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('disabled-btn');
+        }
       });
     });
   </script>
