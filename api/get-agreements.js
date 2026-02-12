@@ -18,12 +18,12 @@ export default async function handler(req, res) {
 
     let query = supabase
       .from('agreements')
-      .select('id, reference_id, full_name, email, phone, mailing_address, signed_date, ip_address, created_at', { count: 'exact' })
+      .select('id, reference_id, first_name, last_name, email, phone, street_address, city, state, zip_code, signed_date, ip_address, created_at', { count: 'exact' })
       .order('created_at', { ascending: false })
       .range(parseInt(offset), parseInt(offset) + parseInt(limit) - 1);
 
     if (search) {
-      query = query.or(`full_name.ilike.%${search}%,email.ilike.%${search}%,reference_id.ilike.%${search}%`);
+      query = query.or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%,email.ilike.%${search}%,reference_id.ilike.%${search}%`);
     }
 
     const { data, error, count } = await query;

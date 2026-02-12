@@ -15,16 +15,20 @@ export default async function handler(req, res) {
 
   try {
     const {
-      full_name,
+      first_name,
+      last_name,
       email,
       phone,
-      mailing_address,
+      street_address,
+      city,
+      state,
+      zip_code,
       signature_data,
       signed_date,
       reference_id,
     } = req.body;
 
-    if (!full_name || !email || !phone || !mailing_address || !signature_data) {
+    if (!first_name || !last_name || !email || !phone || !street_address || !city || !state || !zip_code || !signature_data) {
       return res.status(400).json({ error: 'All fields are required.' });
     }
 
@@ -39,10 +43,14 @@ export default async function handler(req, res) {
       .from('agreements')
       .insert({
         reference_id,
-        full_name,
+        first_name,
+        last_name,
         email,
         phone,
-        mailing_address,
+        street_address,
+        city,
+        state,
+        zip_code,
         signature_data,
         signed_date,
         ip_address,

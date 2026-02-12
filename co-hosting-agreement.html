@@ -396,8 +396,12 @@
             <!-- Personal Info -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
-                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Full Legal Name</label>
-                <input type="text" id="full-name" required placeholder="John Doe" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">First Name</label>
+                <input type="text" id="first-name" required placeholder="John" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Last Name</label>
+                <input type="text" id="last-name" required placeholder="Doe" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
               </div>
               <div class="space-y-2">
                 <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Email Address</label>
@@ -409,13 +413,27 @@
                   <input type="tel" id="phone" required class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
                 </div>
               </div>
+              <div class="space-y-2 md:col-span-2">
+                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Mailing Street Address</label>
+                <input type="text" id="street-address" required placeholder="123 Business Rd" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">City</label>
+                <input type="text" id="city" required placeholder="Miami" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+              </div>
+              <div class="grid grid-cols-2 gap-4 space-y-2">
+                <div class="space-y-2">
+                  <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">State</label>
+                  <input type="text" id="state" required placeholder="FL" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Zip Code</label>
+                  <input type="text" id="zip-code" required placeholder="33101" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
+                </div>
+              </div>
               <div class="space-y-2">
                 <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Date</label>
                 <input type="text" id="date-field" readonly class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 text-zinc-400 cursor-not-allowed">
-              </div>
-              <div class="space-y-2 md:col-span-2">
-                <label class="text-xs uppercase tracking-wider text-zinc-500 font-bold ml-1">Mailing Address</label>
-                <input type="text" id="address" required placeholder="123 Business Rd, City, State, Zip" class="w-full bg-white/5 border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-all text-white placeholder-zinc-600">
               </div>
             </div>
 
@@ -695,12 +713,21 @@
       });
 
       // --- 4. Validation & Submit ---
-      const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+      const requiredInputs = [
+        document.getElementById('first-name'),
+        document.getElementById('last-name'),
+        document.getElementById('email'),
+        document.getElementById('phone'),
+        document.getElementById('street-address'),
+        document.getElementById('city'),
+        document.getElementById('state'),
+        document.getElementById('zip-code'),
+      ];
       const checkbox = document.getElementById('agree-checkbox');
 
       function checkInputs() {
         let allFilled = true;
-        inputs.forEach(input => {
+        requiredInputs.forEach(input => {
           if (!input.value.trim()) allFilled = false;
         });
         return allFilled;
@@ -718,8 +745,14 @@
         }
       }
 
-      inputs.forEach(input => input.addEventListener('input', validateAll));
+      requiredInputs.forEach(input => input.addEventListener('input', validateAll));
       checkbox.addEventListener('change', validateAll);
+
+      // Also trigger validation when country changes in phone picker
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        phoneInput.addEventListener('countrychange', validateAll);
+      }
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -728,10 +761,14 @@
         submitBtn.innerHTML = '<iconify-icon icon="line-md:loading-loop" width="24"></iconify-icon> Processing...';
         submitBtn.disabled = true;
 
-        const name = document.getElementById('full-name').value;
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
         const email = document.getElementById('email').value;
         const phone = iti.getNumber();
-        const address = document.getElementById('address').value;
+        const streetAddress = document.getElementById('street-address').value;
+        const city = document.getElementById('city').value;
+        const state = document.getElementById('state').value;
+        const zipCode = document.getElementById('zip-code').value;
         const signedDate = document.getElementById('date-field').value;
         const signatureData = canvas.toDataURL('image/png');
         const referenceId = 'SO-' + Math.floor(1000 + Math.random() * 9000);
@@ -741,10 +778,14 @@
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              full_name: name,
+              first_name: firstName,
+              last_name: lastName,
               email: email,
               phone: phone,
-              mailing_address: address,
+              street_address: streetAddress,
+              city: city,
+              state: state,
+              zip_code: zipCode,
               signature_data: signatureData,
               signed_date: signedDate,
               reference_id: referenceId,
@@ -758,7 +799,7 @@
           }
 
           // Success — show confirmation
-          document.getElementById('conf-name').textContent = name;
+          document.getElementById('conf-name').textContent = firstName + ' ' + lastName;
           document.getElementById('conf-time').textContent = new Date().toLocaleString();
           document.getElementById('conf-ref').textContent = result.data?.reference_id || referenceId;
 
