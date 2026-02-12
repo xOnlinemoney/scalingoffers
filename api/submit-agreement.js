@@ -28,8 +28,18 @@ export default async function handler(req, res) {
       reference_id,
     } = req.body;
 
-    if (!first_name || !last_name || !email || !phone || !street_address || !city || !state || !zip_code || !signature_data) {
-      return res.status(400).json({ error: 'All fields are required.' });
+    const missing = [];
+    if (!first_name) missing.push('first_name');
+    if (!last_name) missing.push('last_name');
+    if (!email) missing.push('email');
+    if (!phone) missing.push('phone');
+    if (!street_address) missing.push('street_address');
+    if (!city) missing.push('city');
+    if (!state) missing.push('state');
+    if (!zip_code) missing.push('zip_code');
+    if (!signature_data) missing.push('signature_data');
+    if (missing.length > 0) {
+      return res.status(400).json({ error: `Missing fields: ${missing.join(', ')}` });
     }
 
     const ip_address =
