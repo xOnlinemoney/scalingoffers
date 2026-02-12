@@ -1,5 +1,13 @@
 {
     "cleanUrls": true,
+    "redirects": [
+          {
+            "source": "/co-hosting-agreement",
+            "has": [{ "type": "host", "value": "(?:www\\.)?scalingoffers\\.com" }],
+            "destination": "https://closer.scalingoffers.com/co-hosting-agreement",
+            "permanent": true
+          }
+    ],
     "rewrites": [
           { "source": "/cohost-training", "destination": "/co-hosting-recording.html" },
           { "source": "/co-hosting-agreement", "destination": "/co-hosting-agreement.html" },
