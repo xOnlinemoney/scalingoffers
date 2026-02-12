@@ -609,9 +609,9 @@
       const phoneInput = document.getElementById('phone');
       const iti = window.intlTelInput(phoneInput, {
         initialCountry: 'us',
-        preferredCountries: ['us', 'ca', 'gb', 'au'],
-        separateDialCode: true,
-        formatAsYouType: true,
+        countryOrder: ['us', 'ca', 'gb', 'au'],
+        showSelectedDialCode: true,
+        formatOnDisplay: true,
         utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js',
       });
 
@@ -778,7 +778,7 @@
         const firstName = document.getElementById('first-name').value;
         const lastName = document.getElementById('last-name').value;
         const email = document.getElementById('email').value;
-        const phone = iti.getNumber();
+        const phone = iti.getNumber() || phoneInput.value;
         const streetAddress = document.getElementById('street-address').value;
         const city = document.getElementById('city').value;
         const state = document.getElementById('state').value;
