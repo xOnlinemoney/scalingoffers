@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>JV Partnership Dashboard | Scaling Offers</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <!-- Dashboard fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: '#0b0e11',
+            surface: '#13171c',
+            border: '#2a3140',
+            gold: '#c9a84c',
+            'gold-dim': 'rgba(201, 168, 76, 0.1)',
+            green: '#34d399',
+            'green-dim': 'rgba(52, 211, 153, 0.1)',
+            blue: '#60a5fa',
+            purple: '#a78bfa',
+            red: '#f87171',
+            primary: '#e8ecf1',
+            secondary: '#8892a0',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            serif: ['DM Serif Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          maxWidth: {
+            'dashboard': '1100px',
+          },
+          letterSpacing: {
+            widest: '0.15em',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Dashboard-specific styles scoped to .jv-dashboard */
+    .jv-dashboard {
+      background-color: #0b0e11;
+      color: #e8ecf1;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Noise Texture */
+    .bg-noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    /* Custom Scrollbar for Agreement */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #13171c;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #2a3140;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #c9a84c;
+    }
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .rotate-icon {
+      transition: transform 0.3s ease;
+    }
+    .rotate-icon.open {
+      transform: rotate(180deg);
+    }
+    /* Collapsible Transition */
+    .collapsible-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease-out;
+    }
+    .collapsible-content.open {
+      grid-template-rows: 1fr;
+    }
+    .collapsible-inner {
+      overflow: hidden;
+    }
+
+    /* Make the main wrapper not clip sticky header */
+    .jv-page .main-wrapper {
+      overflow: clip;
+    }
+    /* Sticky header */
+    .jv-page .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .jv-page .header-header {
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+  </style>
+</head>
+
+<body class="jv-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+    <!-- Background elements hidden since dashboard has its own dark bg -->
+
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential
+                $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="/" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+
+          <div class="header-row2">
+            <a href="client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+
+          <div class="header-row-right">
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <div class="jv-dashboard" id="main-content">
+      <div class="bg-noise-overlay"></div>
+
+      <main class="relative z-10 max-w-dashboard mx-auto px-4 py-12 md:py-16" style="font-family: 'DM Sans', sans-serif;">
+
+        <!-- HEADER -->
+        <header class="text-center mb-10 fade-up">
+            <div class="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-gold-dim border border-gold/20 backdrop-blur-sm">
+                <span class="text-[10px] md:text-xs font-semibold tracking-widest text-gold uppercase">JV Marketing Partnership</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif text-primary mb-3">
+                Scaling Offers <span class="text-gold mx-1">&times;</span> Circle of Success
+            </h1>
+            <p class="text-secondary text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
+                Webinar revenue breakdown &amp; commission tracking — Scaling Offers receives 10% of Circle of Success's profit share per the Media Buyer Agreement
+            </p>
+        </header>
+
+        <!-- TAB SWITCHER -->
+        <div class="flex justify-center mb-10 fade-up delay-1">
+            <div class="bg-surface border border-border rounded-full p-1 flex items-center">
+                <button onclick="switchTab('keenan')" id="tab-keenan" class="flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-gold text-surface">
+                    Keenan
+                    <span class="bg-surface/20 text-surface/90 text-[10px] px-1.5 py-0.5 rounded font-mono">10</span>
+                </button>
+                <button onclick="switchTab('ethan')" id="tab-ethan" class="flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 text-secondary hover:text-primary">
+                    Ethan
+                    <span class="bg-surface/20 text-surface/90 text-[10px] px-1.5 py-0.5 rounded font-mono">2</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- KEENAN TAB CONTENT -->
+        <div id="content-keenan" class="space-y-6">
+
+            <!-- SUMMARY GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 fade-up delay-2">
+                <!-- Card 1: Gross Revenue -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-gold"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Gross Revenue</p>
+                        <iconify-icon icon="solar:wallet-money-linear" class="text-gold text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$66,150.00</p>
+                    <p class="text-secondary text-xs">10 funded clients</p>
+                </div>
+
+                <!-- Card 2: Scaling Offers Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-green"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Scaling Offers Payout</p>
+                        <iconify-icon icon="solar:chart-arrow-up-linear" class="text-green text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$3,042.90</p>
+                    <p class="text-secondary text-xs">10% of Circle of Success's 50%</p>
+                </div>
+
+                <!-- Card 3: Partner Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-blue"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Partner Payout (Keenan)</p>
+                        <iconify-icon icon="solar:user-hand-up-linear" class="text-blue text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$30,429.00</p>
+                    <p class="text-secondary text-xs">50% after deductions</p>
+                </div>
+
+                <!-- Card 4: Circle of Success Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-purple"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Circle of Success Payout</p>
+                        <iconify-icon icon="solar:buildings-2-linear" class="text-purple text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$27,386.10</p>
+                    <p class="text-secondary text-xs">Company 50% minus Scaling Offers 10%</p>
+                </div>
+            </div>
+
+            <!-- REVENUE BREAKDOWN TABLE -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-3">
+                <div class="px-6 py-4 border-b border-border flex justify-between items-center">
+                    <h3 class="font-serif text-lg text-primary">Revenue Breakdown</h3>
+                    <span class="px-2 py-1 rounded bg-border/50 text-[10px] font-mono text-secondary tracking-widest border border-border">50 / 50 SPLIT</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <tbody class="divide-y divide-border/50">
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Gross Revenue</td>
+                            </tr>
+                            <tr class="bg-page/10">
+                                <td class="px-6 py-3 text-secondary font-medium">Total Funded Revenue</td>
+                                <td class="px-6 py-3 text-right font-mono text-gold font-medium">$66,150.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Mandatory Deductions (Section 4.2)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Enrollment Specialist Fee — 2%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $1,323.00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Financing Funding Fee — 6%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $3,969.00</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-secondary/80">Total Deductions — 8%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $5,292.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Net Revenue After Deductions</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Net Revenue (Gross − Deductions)</td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$60,858.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Profit Split (Section 4.1)</td>
+                            </tr>
+                            <tr class="bg-page/10">
+                                <td class="px-6 py-3 text-primary">Partner Share — 50% → Keenan Williams</td>
+                                <td class="px-6 py-3 text-right font-mono text-blue font-medium">$30,429.00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Company Share — 50% → Circle of Success</td>
+                                <td class="px-6 py-3 text-right font-mono text-secondary">$30,429.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Scaling Offers — 10% of Company Share</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Scaling Offers Payout (10% of $30,429.00)</td>
+                                <td class="px-6 py-3 text-right font-mono text-green">$3,042.90</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Circle of Success Retention (90% of $30,429.00)</td>
+                                <td class="px-6 py-3 text-right font-mono text-purple">$27,386.10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FUNDED CLIENT DETAIL TABLE -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-4">
+                <div class="px-6 py-4 border-b border-border flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <h3 class="font-serif text-lg text-primary">Funded Client Detail</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        <span class="text-[10px] font-mono text-secondary uppercase tracking-widest">Keenan Williams — Webinar</span>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left whitespace-nowrap">
+                        <thead class="bg-page/50 text-[10px] uppercase tracking-widest text-secondary font-semibold">
+                            <tr>
+                                <th class="px-6 py-3">#</th>
+                                <th class="px-6 py-3">Client Name</th>
+                                <th class="px-6 py-3">ES</th>
+                                <th class="px-6 py-3">Loan Program</th>
+                                <th class="px-6 py-3">Status</th>
+                                <th class="px-6 py-3 text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border/50">
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">01</td>
+                                <td class="px-6 py-3 font-medium text-primary">Chris Layne</td>
+                                <td class="px-6 py-3 text-secondary">Laura</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 3: ELITE</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$10,350</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">02</td>
+                                <td class="px-6 py-3 font-medium text-primary">Osarumwense Uwagboe</td>
+                                <td class="px-6 py-3 text-secondary">Laura</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 4: ELITE</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,600</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">03</td>
+                                <td class="px-6 py-3 font-medium text-primary">Shadonna Cave</td>
+                                <td class="px-6 py-3 text-secondary">Laura</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 4: ELITE</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,600</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">04</td>
+                                <td class="px-6 py-3 font-medium text-primary">Carianne Brown</td>
+                                <td class="px-6 py-3 text-secondary">Danahi</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">05</td>
+                                <td class="px-6 py-3 font-medium text-primary">Tariq Deeds</td>
+                                <td class="px-6 py-3 text-secondary">Danahi</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">06</td>
+                                <td class="px-6 py-3 font-medium text-primary">Shakil Miller</td>
+                                <td class="px-6 py-3 text-secondary">Valentina</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">07</td>
+                                <td class="px-6 py-3 font-medium text-primary">Latoya Taylor</td>
+                                <td class="px-6 py-3 text-secondary">Elissa</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 4: ELITE</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,600</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">08</td>
+                                <td class="px-6 py-3 font-medium text-primary">Steven Fountain</td>
+                                <td class="px-6 py-3 text-secondary">Elissa</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">09</td>
+                                <td class="px-6 py-3 font-medium text-primary">Robert Lewis</td>
+                                <td class="px-6 py-3 text-secondary">Danahi</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">10</td>
+                                <td class="px-6 py-3 font-medium text-primary">Veronica Williams-Hall</td>
+                                <td class="px-6 py-3 text-secondary">Danahi</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$6,000</td>
+                            </tr>
+                            <tr class="bg-page/30 font-semibold border-t-2 border-border">
+                                <td colspan="5" class="px-6 py-4 text-right text-primary">Total Funded Revenue</td>
+                                <td class="px-6 py-4 text-right font-mono text-gold">$66,150</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- WIRE PAYMENT DETAILS -->
+            <div class="rounded-xl border border-gold/30 p-6 fade-up delay-4" style="background: linear-gradient(135deg, #1a1812 0%, #13171c 100%);">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-serif text-lg text-primary">Wire Payment Details — Scaling Offers</h3>
+                    <span class="px-2 py-1 rounded bg-gold/10 text-[10px] font-mono text-gold tracking-widest border border-gold/20">ACH / WIRE</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Beneficiary Name</p>
+                        <p class="text-primary font-mono text-sm md:text-base">True Capital Holdings, LLC</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Address</p>
+                        <p class="text-primary font-mono text-sm md:text-base">1712 Pioneer Ave Suite 500, Cheyenne, WY 82001</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Account Number</p>
+                            <p class="text-primary font-mono text-lg">5939723911</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Routing Number</p>
+                            <p class="text-primary font-mono text-lg">121000248</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLLAPSIBLE AGREEMENT SECTION -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-4">
+                <button onclick="toggleAgreement('keenan')" class="w-full px-6 py-4 flex items-center justify-between bg-page/30 hover:bg-page/50 transition-colors text-left">
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg">&#128196;</span>
+                        <h3 class="font-serif text-base md:text-lg text-primary">Webinar Partnership Agreement — Full Text</h3>
+                    </div>
+                    <iconify-icon id="arrow-icon-keenan" icon="solar:alt-arrow-down-linear" class="text-secondary rotate-icon text-xl"></iconify-icon>
+                </button>
+
+                <div id="agreement-body-keenan" class="collapsible-content">
+                    <div class="collapsible-inner px-6 py-6 border-t border-border/50 max-h-[600px] overflow-y-auto custom-scrollbar bg-surface">
+                        <div class="space-y-6 text-[13px] leading-[1.8] text-secondary">
+                            <div class="text-center mb-6">
+                                <h4 class="text-base font-semibold text-primary uppercase tracking-wider mb-1">Webinar Partnership Agreement</h4>
+                                <p class="text-[11px] uppercase tracking-widest mb-4">Trial Period &amp; Revenue-Sharing Agreement</p>
+                                <p class="font-medium text-primary">TRUE CAPITAL HOLDINGS, LLC d/b/a SCALING OFFERS</p>
+                            </div>
+                            <p>This Webinar Partnership Agreement ("This Agreement") is entered into as of the date last signed below (the "Effective Date"), by and between True Capital Holdings, LLC, and the undersigned Partner.</p>
+                            <p class="italic opacity-60">... [Full Agreement Text Hidden for brevity in this view, same as standard agreement] ...</p>
+                            <div class="text-center text-[10px] tracking-widest text-secondary mt-8 border-t border-border pt-4">&#9552;&#9552;&#9552; END OF AGREEMENT &#9552;&#9552;&#9552;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END KEENAN CONTENT -->
+
+        <!-- ETHAN TAB CONTENT -->
+        <div id="content-ethan" class="hidden space-y-6">
+            <!-- SUMMARY GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 fade-up delay-2">
+                <!-- Card 1: Gross Revenue -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-gold"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Gross Revenue</p>
+                        <iconify-icon icon="solar:wallet-money-linear" class="text-gold text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$20,000.00</p>
+                    <p class="text-secondary text-xs">2 funded clients</p>
+                </div>
+
+                <!-- Card 2: Scaling Offers Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-green"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Scaling Offers Payout</p>
+                        <iconify-icon icon="solar:chart-arrow-up-linear" class="text-green text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$920.00</p>
+                    <p class="text-secondary text-xs">10% of Circle of Success's 50%</p>
+                </div>
+
+                <!-- Card 3: Partner Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-blue"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Partner Payout (Ethan)</p>
+                        <iconify-icon icon="solar:user-hand-up-linear" class="text-blue text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$9,200.00</p>
+                    <p class="text-secondary text-xs">50% after deductions</p>
+                </div>
+
+                <!-- Card 4: Circle of Success Payout -->
+                <div class="bg-surface rounded-xl border border-border p-6 relative overflow-hidden group hover:border-border/80 transition-colors">
+                    <div class="absolute top-0 left-0 w-full h-0.5 bg-purple"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <p class="text-secondary text-xs font-semibold tracking-widest uppercase">Circle of Success Payout</p>
+                        <iconify-icon icon="solar:buildings-2-linear" class="text-purple text-xl opacity-80"></iconify-icon>
+                    </div>
+                    <p class="text-2xl lg:text-3xl font-mono font-medium text-primary mb-1">$8,280.00</p>
+                    <p class="text-secondary text-xs">Company 50% minus Scaling Offers 10%</p>
+                </div>
+            </div>
+
+            <!-- REVENUE BREAKDOWN TABLE -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-3">
+                <div class="px-6 py-4 border-b border-border flex justify-between items-center">
+                    <h3 class="font-serif text-lg text-primary">Revenue Breakdown</h3>
+                    <span class="px-2 py-1 rounded bg-border/50 text-[10px] font-mono text-secondary tracking-widest border border-border">50 / 50 SPLIT</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <tbody class="divide-y divide-border/50">
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Gross Revenue</td>
+                            </tr>
+                            <tr class="bg-page/10">
+                                <td class="px-6 py-3 text-secondary font-medium">Total Funded Revenue</td>
+                                <td class="px-6 py-3 text-right font-mono text-gold font-medium">$20,000.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Mandatory Deductions (Section 4.2)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Enrollment Specialist Fee — 2%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $400.00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Financing Funding Fee — 6%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $1,200.00</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-secondary/80">Total Deductions — 8%</td>
+                                <td class="px-6 py-3 text-right font-mono text-red">- $1,600.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Net Revenue After Deductions</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Net Revenue (Gross − Deductions)</td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$18,400.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Profit Split (Section 4.1)</td>
+                            </tr>
+                            <tr class="bg-page/10">
+                                <td class="px-6 py-3 text-primary">Partner Share — 50% → Ethan</td>
+                                <td class="px-6 py-3 text-right font-mono text-blue font-medium">$9,200.00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-3 text-secondary">Company Share — 50% → Circle of Success</td>
+                                <td class="px-6 py-3 text-right font-mono text-secondary">$9,200.00</td>
+                            </tr>
+                            <tr class="bg-page/30">
+                                <td colspan="2" class="px-6 py-2 text-[10px] font-semibold text-secondary uppercase tracking-widest">Scaling Offers — 10% of Company Share</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Scaling Offers Payout (10% of $9,200.00)</td>
+                                <td class="px-6 py-3 text-right font-mono text-green">$920.00</td>
+                            </tr>
+                            <tr class="bg-page/10 font-medium">
+                                <td class="px-6 py-3 text-primary">Circle of Success Retention (90% of $9,200.00)</td>
+                                <td class="px-6 py-3 text-right font-mono text-purple">$8,280.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FUNDED CLIENT DETAIL TABLE -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-4">
+                <div class="px-6 py-4 border-b border-border flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <h3 class="font-serif text-lg text-primary">Funded Client Detail</h3>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        <span class="text-[10px] font-mono text-secondary uppercase tracking-widest">Ethan — Webinar</span>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left whitespace-nowrap">
+                        <thead class="bg-page/50 text-[10px] uppercase tracking-widest text-secondary font-semibold">
+                            <tr>
+                                <th class="px-6 py-3">#</th>
+                                <th class="px-6 py-3">Client Name</th>
+                                <th class="px-6 py-3">ES</th>
+                                <th class="px-6 py-3">Loan Program</th>
+                                <th class="px-6 py-3">Status</th>
+                                <th class="px-6 py-3 text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-border/50">
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">01</td>
+                                <td class="px-6 py-3 font-medium text-primary">Dominique Brown</td>
+                                <td class="px-6 py-3 text-secondary">Elissa</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$10,000</td>
+                            </tr>
+                            <tr class="hover:bg-page/30 transition-colors">
+                                <td class="px-6 py-3 font-mono text-secondary">02</td>
+                                <td class="px-6 py-3 font-medium text-primary">Joanne Vazquez</td>
+                                <td class="px-6 py-3 text-secondary">Laura</td>
+                                <td class="px-6 py-3 text-secondary/70">Tier 5: EAZECap</td>
+                                <td class="px-6 py-3"><span class="inline-flex px-2 py-0.5 rounded-full bg-green-dim text-green text-[10px] font-semibold tracking-wide border border-green/20">FUNDED</span></td>
+                                <td class="px-6 py-3 text-right font-mono text-primary">$10,000</td>
+                            </tr>
+                            <tr class="bg-page/30 font-semibold border-t-2 border-border">
+                                <td colspan="5" class="px-6 py-4 text-right text-primary">Total Funded Revenue</td>
+                                <td class="px-6 py-4 text-right font-mono text-gold">$20,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- WIRE PAYMENT DETAILS -->
+            <div class="rounded-xl border border-gold/30 p-6 fade-up delay-4" style="background: linear-gradient(135deg, #1a1812 0%, #13171c 100%);">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-serif text-lg text-primary">Wire Payment Details — Scaling Offers</h3>
+                    <span class="px-2 py-1 rounded bg-gold/10 text-[10px] font-mono text-gold tracking-widest border border-gold/20">ACH / WIRE</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Beneficiary Name</p>
+                        <p class="text-primary font-mono text-sm md:text-base">True Capital Holdings, LLC</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Address</p>
+                        <p class="text-primary font-mono text-sm md:text-base">1712 Pioneer Ave Suite 500, Cheyenne, WY 82001</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Account Number</p>
+                            <p class="text-primary font-mono text-lg">5939723911</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gold font-semibold tracking-widest uppercase mb-1">Routing Number</p>
+                            <p class="text-primary font-mono text-lg">121000248</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLLAPSIBLE AGREEMENT SECTION -->
+            <div class="bg-surface rounded-xl border border-border overflow-hidden fade-up delay-4">
+                <button onclick="toggleAgreement('ethan')" class="w-full px-6 py-4 flex items-center justify-between bg-page/30 hover:bg-page/50 transition-colors text-left">
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg">&#128196;</span>
+                        <h3 class="font-serif text-base md:text-lg text-primary">Webinar Partnership Agreement — Full Text</h3>
+                    </div>
+                    <iconify-icon id="arrow-icon-ethan" icon="solar:alt-arrow-down-linear" class="text-secondary rotate-icon text-xl"></iconify-icon>
+                </button>
+
+                <div id="agreement-body-ethan" class="collapsible-content">
+                    <div class="collapsible-inner px-6 py-6 border-t border-border/50 max-h-[600px] overflow-y-auto custom-scrollbar bg-surface">
+                        <div class="space-y-6 text-[13px] leading-[1.8] text-secondary">
+                            <div class="text-center mb-6">
+                                <h4 class="text-base font-semibold text-primary uppercase tracking-wider mb-1">Webinar Partnership Agreement</h4>
+                                <p class="text-[11px] uppercase tracking-widest mb-4">Trial Period &amp; Revenue-Sharing Agreement</p>
+                                <p class="font-medium text-primary">TRUE CAPITAL HOLDINGS, LLC d/b/a SCALING OFFERS</p>
+                            </div>
+                            <p>This Webinar Partnership Agreement ("This Agreement") is entered into as of the date last signed below (the "Effective Date"), by and between True Capital Holdings, LLC, and the undersigned Partner.</p>
+                            <p class="italic opacity-60">... [Full Agreement Text Hidden for brevity in this view, same as standard agreement] ...</p>
+                            <div class="text-center text-[10px] tracking-widest text-secondary mt-8 border-t border-border pt-4">&#9552;&#9552;&#9552; END OF AGREEMENT &#9552;&#9552;&#9552;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+      </main>
+    </div>
+    <!-- END DASHBOARD CONTENT -->
+
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+
+      if (!menuButton || !menuPanel || !headerRoot) return;
+
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+
+    // Tab Switching Logic
+    function switchTab(tabName) {
+      const contentKeenan = document.getElementById('content-keenan');
+      const contentEthan = document.getElementById('content-ethan');
+      const tabKeenan = document.getElementById('tab-keenan');
+      const tabEthan = document.getElementById('tab-ethan');
+
+      if (tabName === 'keenan') {
+        contentKeenan.classList.remove('hidden');
+        contentEthan.classList.add('hidden');
+        tabKeenan.classList.add('bg-gold', 'text-surface');
+        tabKeenan.classList.remove('text-secondary', 'hover:text-primary');
+        tabEthan.classList.remove('bg-gold', 'text-surface');
+        tabEthan.classList.add('text-secondary', 'hover:text-primary');
+      } else {
+        contentKeenan.classList.add('hidden');
+        contentEthan.classList.remove('hidden');
+        tabEthan.classList.add('bg-gold', 'text-surface');
+        tabEthan.classList.remove('text-secondary', 'hover:text-primary');
+        tabKeenan.classList.remove('bg-gold', 'text-surface');
+        tabKeenan.classList.add('text-secondary', 'hover:text-primary');
+      }
+    }
+
+    // Accordion Logic
+    function toggleAgreement(name) {
+      const body = document.getElementById(`agreement-body-${name}`);
+      const arrow = document.getElementById(`arrow-icon-${name}`);
+      body.classList.toggle('open');
+      arrow.classList.toggle('open');
+    }
+  </script>
+</body>
+
+</html>
