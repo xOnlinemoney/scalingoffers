@@ -129,11 +129,22 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      overflow: hidden;
+    }
+    /* Hide hero-only elements that bleed out of header */
+    .jv-page .header-rect1,
+    .jv-page .header-video,
+    .jv-page .header-particles {
+      display: none;
     }
     .jv-page .header-header {
-      background: rgba(18, 18, 18, 0.85);
+      background: rgba(18, 18, 18, 0.95);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+    }
+    /* Ensure noise overlay doesn't block clicks */
+    .bg-noise-overlay {
+      pointer-events: none;
     }
   </style>
 </head>
