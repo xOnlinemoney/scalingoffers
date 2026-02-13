@@ -266,7 +266,7 @@ body {
 	}
 
 	100% {
-		transform: translateX(calc(-100% / 3));
+		transform: translateX(calc(-100% / 8));
 	}
 }
 
