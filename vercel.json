@@ -6,6 +6,12 @@
             "has": [{ "type": "host", "value": "(?:www\\.)?scalingoffers\\.com" }],
             "destination": "https://closer.scalingoffers.com/co-hosting-agreement",
             "permanent": true
+          },
+          {
+            "source": "/client-agreement",
+            "has": [{ "type": "host", "value": "(?:www\\.)?scalingoffers\\.com" }],
+            "destination": "https://client.scalingoffers.com/client-agreement",
+            "permanent": true
           }
     ],
     "rewrites": [
@@ -14,6 +20,7 @@
           { "source": "/client-testimonials", "destination": "/client-testimonials.html" },
           { "source": "/become-a-partner", "destination": "/become-a-partner.html" },
           { "source": "/client-login", "destination": "/client-login.html" },
-          { "source": "/closer-login", "destination": "/closer-login.html" }
+          { "source": "/closer-login", "destination": "/closer-login.html" },
+          { "source": "/client-agreement", "destination": "/client-agreement.html" }
     ]
 }
