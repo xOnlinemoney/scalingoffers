@@ -249,13 +249,15 @@ body {
 
 .marquee-track {
 	display: flex;
-	gap: 58px;
+	gap: 0;
+	width: max-content;
 	animation: marquee 30s linear infinite;
 }
 
 .marquee-text {
 	white-space: nowrap;
 	flex-shrink: 0;
+	padding-right: 58px;
 }
 
 @keyframes marquee {
@@ -264,7 +266,7 @@ body {
 	}
 
 	100% {
-		transform: translateX(-50%);
+		transform: translateX(calc(-100% / 3));
 	}
 }
 
@@ -2394,8 +2396,11 @@ body {
 @media screen and (max-width: 576px) {
 
 	.marquee-track {
-		gap: 44px;
 		animation: marquee 22s linear infinite;
+	}
+
+	.marquee-text {
+		padding-right: 44px;
 	}
 
 	.header-info {
