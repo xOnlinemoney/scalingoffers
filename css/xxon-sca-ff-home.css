@@ -280,7 +280,7 @@ body {
 	font-size: 14px;
 	line-height: 1.429;
 	padding: 18px 160px;
-	overflow: hidden;
+	overflow: visible;
 	border-bottom: 1px solid transparent;
 	border-image: linear-gradient(90deg,
 			rgba(0, 0, 0, 0.16) 0%,
