@@ -10,7 +10,7 @@
           {
             "source": "/client-agreement",
             "has": [{ "type": "host", "value": "(?:www\\.)?scalingoffers\\.com" }],
-            "destination": "https://client.scalingoffers.com/client-agreement",
+            "destination": "https://clients.scalingoffers.com/client-agreement",
             "permanent": true
           }
     ],
