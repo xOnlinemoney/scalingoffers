@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rich Legacy Fast Track | Offer Deck</title>
+
+  <!-- Site fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Deck fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: '#0b0e11',
+            surface: '#12151a',
+            border: '#22262e',
+            gold: '#d4af37',
+            'gold-dim': 'rgba(212, 175, 55, 0.1)',
+            subtle: '#8890a0',
+            light: '#e8ecf2',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          maxWidth: {
+            'deck': '900px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ═══ HEADER/FOOTER OVERRIDES ═══ */
+    .deck-page .header {
+      min-height: auto;
+    }
+    .deck-page .header-rect1,
+    .deck-page .header-video,
+    .deck-page .header-particles,
+    .deck-page .hero-content,
+    .deck-page .header-stat {
+      display: none;
+    }
+
+    /* Sticky header */
+    .deck-page .main-wrapper {
+      overflow: clip;
+    }
+    .deck-page .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .deck-page .header-header {
+      background: rgba(11, 14, 17, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* ═══ DECK BODY STYLES ═══ */
+    .deck-body {
+      background-color: #0b0e11;
+      color: #e8ecf2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Highlight Styles */
+    ::selection {
+      background: rgba(212, 175, 55, 0.3);
+      color: #fff;
+    }
+
+    .user-highlight {
+      background-color: rgba(250, 204, 21, 0.2);
+      border-bottom: 2px solid #fbbf24;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+
+    .user-highlight:hover {
+      background-color: rgba(250, 204, 21, 0.3);
+    }
+
+    .user-highlight::after {
+      content: attr(data-note);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px) scale(0.95);
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      min-width: 150px;
+      max-width: 250px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      border: 1px solid #374151;
+      z-index: 50;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    .user-highlight:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-8px) scale(1);
+    }
+
+    /* Floating Tools */
+    #floating-toolbar {
+      position: fixed;
+      z-index: 100;
+      display: none;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 4px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      animation: popIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Noise Texture */
+    .deck-noise {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Note Input Modal */
+    #note-modal {
+      background: rgba(11, 14, 17, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Custom scrollbar for disclosure */
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #12151a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #22262e; border-radius: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+  </style>
+</head>
+
+<body class="deck-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+
+    <!-- ═══ HEADER (clients subdomain) ═══ -->
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="https://www.scalingoffers.com" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+          <div class="header-row2">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+          <div class="header-row-right">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ DECK CONTENT ═══ -->
+    <div class="deck-body" id="main-content">
+      <div class="deck-noise"></div>
+
+      <!-- Floating Selection Toolbar -->
+      <div id="floating-toolbar" class="flex gap-1">
+        <button onclick="addHighlight()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white hover:bg-white/10 rounded transition-colors">
+          <iconify-icon icon="solar:pen-new-square-linear" class="text-gold text-lg"></iconify-icon>
+          Add Note
+        </button>
+      </div>
+
+      <!-- Modal for Inputting Note -->
+      <div id="note-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-surface border border-border rounded-xl shadow-2xl w-full max-w-sm p-5 transform transition-all scale-100">
+          <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
+            <iconify-icon icon="solar:notes-linear" class="text-gold"></iconify-icon>
+            Add a note to selection
+          </h3>
+          <textarea id="note-input" class="w-full bg-page border border-border rounded-lg p-3 text-sm text-white focus:outline-none focus:border-gold/50 min-h-[100px] mb-4 placeholder-subtle/50" placeholder="Type your question or comment here..."></textarea>
+          <div class="flex justify-end gap-2">
+            <button onclick="closeModal()" class="px-4 py-2 text-xs font-medium text-subtle hover:text-white transition-colors">Cancel</button>
+            <button onclick="confirmHighlight()" class="px-4 py-2 text-xs font-semibold bg-gold text-black rounded-lg hover:bg-yellow-500 transition-colors">Save Note</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <main class="max-w-deck md:pt-2 z-10 mr-auto ml-auto pt-0 pr-6 pb-24 pl-6 relative" id="offer-content" style="font-family: 'DM Sans', sans-serif;">
+
+        <!-- HEADER -->
+        <header class="text-center mb-16 md:mb-24 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="text-[10px] uppercase tracking-widest text-subtle font-semibold">Rich Legacy &times; Scaling Offers</span>
+          </div>
+
+          <h1 class="font-serif text-5xl md:text-7xl text-white leading-[0.95] tracking-tight">
+            Rich Legacy <br>
+            <span class="text-gold italic">Fast Track</span>
+          </h1>
+
+          <p class="md:text-xl text-subtle leading-relaxed text-lg font-light max-w-2xl mr-auto ml-auto">
+            How one self-made founder built an 8-figure fashion empire — and now builds your brand <span class="text-white font-medium">WITH</span> you in 90 days.
+          </p>
+
+          <div class="flex items-center justify-center gap-2 text-xs text-subtle uppercase tracking-widest mt-8">
+            <span>Presented by Jessica Rich</span>
+            <span class="text-gold">&bull;</span>
+            <span>In Partnership with Scaling Offers</span>
+          </div>
+        </header>
+
+        <!-- JESSICA'S STORY -->
+        <section class="mb-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+          <div class="md:col-span-4 sticky top-10">
+            <div class="aspect-[3/4] rounded-xl bg-surface border border-border overflow-hidden relative">
+              <div class="absolute inset-0 z-10">
+                <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bdc837d2-7e8d-4926-92db-336d75963b78_800w.jpg" class="w-full h-full object-cover" alt="Jessica Rich">
+                <div class="bg-gradient-to-t from-page via-transparent to-transparent absolute top-0 right-0 bottom-0 left-0"></div>
+              </div>
+              <div class="w-full h-full bg-gray-800 flex items-center justify-center text-subtle">
+                <iconify-icon icon="solar:gallery-wide-linear" class="text-4xl opacity-20"></iconify-icon>
+              </div>
+              <div class="absolute bottom-6 left-6 z-20">
+                <p class="font-serif text-2xl text-white italic">Jessica Rich</p>
+                <p class="text-[10px] text-gold uppercase tracking-widest">Founder &amp; CEO</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-8 space-y-10">
+            <div>
+              <h2 class="text-sm font-semibold text-gold uppercase tracking-widest mb-4">The Transformation</h2>
+              <h3 class="font-serif text-3xl text-white mb-6">From Zero to 8 Figures</h3>
+              <div class="prose prose-invert prose-p:text-subtle prose-p:font-light prose-p:leading-7 prose-headings:text-white max-w-none">
+                <p>Jessica started exactly where many aspiring brand builders are today: No formal business training, no college degree, no investors, no handouts, and no clear roadmap to building a scalable product brand.</p>
+                <p>After launching her luxury footwear brand from scratch, Jessica has:</p>
+                <ul class="list-none pl-0 space-y-3 my-6">
+                  <li class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                    <span>Built Jessica Rich Collection into a multi-seven-figure fashion empire</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                    <span>Landed a major collaboration with Steve Madden</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                    <span>Had products worn by countless celebrities on red carpets and music videos</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                    <span>Generated $30,000 in her first 60 days — and scaled to 8 figures within 7 years</span>
+                  </li>
+                </ul>
+                <p class="text-white font-medium border-l-2 border-gold pl-4 italic">
+                  You're here to see the system Jessica built so you don't have to keep trying to figure this out alone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="border-border/60 mb-20">
+
+        <!-- WHY IT WORKS -->
+        <section class="mb-20">
+          <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Why The Rich Legacy System Works</h2>
+            <p class="text-subtle max-w-xl mx-auto">This model works because it's built on fundamentals that compound.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:link-circle-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">Access to Vendors</h3>
+              <p class="text-sm text-subtle leading-relaxed">Jessica's personal vendor network eliminates trial-and-error sourcing instantly.</p>
+            </div>
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:calendar-date-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">90-Day Sequence</h3>
+              <p class="text-sm text-subtle leading-relaxed">Execution follows a clear 90-day sequence instead of random action.</p>
+            </div>
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:star-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">Real Relationships</h3>
+              <p class="text-sm text-subtle leading-relaxed">Celebrity and influencer placement is done through real relationships, not cold outreach.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- THE CORE PRINCIPLE -->
+        <section class="mb-20 bg-surface rounded-2xl p-8 md:p-12 border border-border relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-3 opacity-10">
+            <iconify-icon icon="solar:chart-square-linear" class="text-9xl text-white"></iconify-icon>
+          </div>
+
+          <div class="relative z-10 max-w-3xl">
+            <h3 class="font-serif text-2xl md:text-3xl text-white mb-6">The Core Principle You Need To Understand</h3>
+            <p class="text-subtle mb-6 text-lg">In brand building, results don't come from doing more. They come from doing things in the right order with the right people.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+              <div class="border-l border-gold pl-4">
+                <p class="text-gold font-serif text-xl mb-1">1. Foundation</p>
+                <p class="text-xs text-subtle">Branding, sourcing, and product development that must exist first.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">2. Execution</p>
+                <p class="text-xs text-subtle">Launching with the right creative, ads, and influencer strategy.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">3. Leverage</p>
+                <p class="text-xs text-subtle">Celebrity placement, PR, and scaling that accelerates growth.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHO THIS IS FOR -->
+        <section class="mb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-surface/50 rounded-xl border border-border p-8">
+            <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2">
+              <iconify-icon icon="solar:user-check-linear" class="text-gold"></iconify-icon>
+              Who This Is For
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Aspiring or early-stage brand owners in fashion, beauty, lifestyle, or product businesses.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Entrepreneurs stuck under $10K/month who know their brand could be bigger.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Serious founders who believe in leverage and want to move fast with the right partner.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Action-takers tired of consuming content and ready to CREATE success.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-surface/30 rounded-xl border border-border/50 p-8 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+            <h3 class="font-serif text-xl text-subtle mb-6 flex items-center gap-2">
+              <iconify-icon icon="solar:forbidden-circle-linear" class="text-red-400"></iconify-icon>
+              Not For
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                DIY learners who just want another course.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                Course collectors — this is a done-WITH-you brand build.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                People unwilling to invest real time, energy, and commitment into building a real brand.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- WHAT YOU GET -->
+        <section class="mb-24">
+          <h2 class="font-serif text-3xl md:text-4xl text-center text-white mb-12">What You Get When You Join Jessica</h2>
+
+          <div class="space-y-6">
+            <!-- Module 1 -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:clipboard-check-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Onboarding &amp; Personalization</h3>
+                  <p class="text-sm text-subtle mb-4">Kickoff Call (90 mins) + Initial Audit. We build a personalized roadmap with clear milestones.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Brand concept review</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Product &amp; niche alignment</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Defined Next Steps (Now vs. Later)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:rocket-2-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Core Program: Rich Legacy Fast Track (90 Days)</h3>
+                  <p class="text-sm text-subtle mb-4">Done-With-You Brand Building. Takes you from no brand to revenue-generating business.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Branding &amp; Creative Direction</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Access to Jessica's Personal Vendors</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Full Conversion-Focused Website Build</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Backend systems &amp; fulfillment setup</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:camera-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Creative Assets &amp; Content Production</h3>
+                  <p class="text-sm text-subtle mb-4">Professional Creative Package handled by Jessica's team.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>10 Ad-Ready UGC Videos</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>20 Professional Lifestyle/Product Shots</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>PR-Ready Media Kit &amp; Bio</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:megaphone-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Paid Ad Launch &amp; Management</h3>
+                  <p class="text-sm text-subtle mb-4">60 Days of Paid Ad Setup &amp; Management (Facebook/Instagram).</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Full Campaign Strategy</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Creative Rotation &amp; A/B Testing</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Retargeting Setup</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:star-fall-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Influencer &amp; Celebrity Placement</h3>
+                  <p class="text-sm text-subtle mb-4">Access to the same network that gets Jessica's shoes on red carpets.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>5–10 Micro/Mid-Tier Influencers (Gifting)</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Jessica's Personal Celebrity Gifting Strategy</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Curated Product Placement</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BONUS -->
+        <section class="mb-24">
+          <div class="bg-gradient-to-br from-gold/20 to-surface border border-gold/40 rounded-xl p-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-white to-gold"></div>
+
+            <div class="relative z-10">
+              <div class="inline-block px-3 py-1 bg-gold text-black text-[10px] font-bold tracking-widest uppercase rounded mb-4">Fast Action Bonus</div>
+              <h3 class="font-serif text-2xl text-white mb-2">First 10 People Who Apply &amp; Get Onboarded</h3>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div>
+                  <h4 class="text-gold font-medium mb-2">Brand Launch Fast-Track Review</h4>
+                  <p class="text-xs text-subtle leading-relaxed">Full brand and store review by Jessica's team before you go live. Fix recommendations to eliminate launch errors.</p>
+                </div>
+                <div>
+                  <h4 class="text-gold font-medium mb-2">7-Day Launch Sprint</h4>
+                  <p class="text-xs text-subtle leading-relaxed">Daily launch milestones, accountability check-ins, and live support designed to help you go live within one week.</p>
+                </div>
+                <div>
+                  <h4 class="text-gold font-medium mb-2">VIP Brand Feature Consideration</h4>
+                  <p class="text-xs text-subtle leading-relaxed">Placement consideration on one of Jessica's platforms (Instagram, YouTube, or Facebook) for brand fit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INVESTMENT -->
+        <section class="mb-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="font-serif text-4xl text-white mb-6">Investment</h2>
+              <p class="text-subtle mb-8 text-lg">We're committed to helping you build a brand designed for 6-figure months.</p>
+
+              <div class="space-y-4">
+                <div class="flex justify-between items-center py-4 border-b border-border">
+                  <span class="text-subtle">Total Program Value</span>
+                  <span class="text-subtle line-through decoration-red-500">$55,000+</span>
+                </div>
+                <div class="flex justify-between items-center py-4 border-b border-gold/30">
+                  <span class="text-white font-medium">Your Investment Today</span>
+                  <span class="text-3xl font-serif text-gold">$25,000</span>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Payment Options</h4>
+                <ul class="space-y-3 text-sm text-subtle">
+                  <li class="flex items-center gap-2">
+                    <iconify-icon icon="solar:wallet-linear" class="text-gold"></iconify-icon>
+                    Pay in Full: $25,000 by wire or credit card
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <iconify-icon icon="solar:card-transfer-linear" class="text-gold"></iconify-icon>
+                    <span>OR choose flexible <span class="text-white border-b border-white/30">financing options</span></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-2xl border border-border p-8 relative">
+              <div class="absolute -top-3 -right-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded shadow-lg transform rotate-2">SIMPLE FINANCING</div>
+
+              <h3 class="text-xl text-white font-serif mb-6">Financing Made Simple</h3>
+              <div class="space-y-4 mb-8">
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">1</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Payments as low as $350–$600/mo</p>
+                    <p class="text-xs text-subtle mt-1">Depends on credit profile.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">2</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Soft Pull Application</p>
+                    <p class="text-xs text-subtle mt-1">No impact to your credit score to check.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">3</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Instant Decision</p>
+                    <p class="text-xs text-subtle mt-1">Know in about 30 seconds.</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="w-full py-4 bg-gold hover:bg-yellow-500 text-black font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+                Check Financing Eligibility
+                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+              </button>
+              <p class="text-center text-[10px] text-subtle mt-3 opacity-60">This is not a commitment. Costs you nothing.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- DISCLOSURE -->
+        <section class="max-w-3xl mx-auto mb-20">
+          <h3 class="text-center font-serif text-2xl text-white mb-8">Disclosure &amp; Agreement</h3>
+
+          <div class="bg-surface border border-border rounded-lg p-1">
+            <div class="h-[400px] overflow-y-auto p-6 text-xs text-subtle leading-relaxed custom-scrollbar">
+              <h4 class="text-white font-semibold mb-2">Rich Legacy — Refund Policy</h4>
+              <p class="mb-4">At Scaling Offers, we are fully committed to delivering on everything promised in the Rich Legacy Fast Track. We work closely with each client to ensure all deliverables are completed within the 90-day timeline.</p>
+
+              <h5 class="text-white font-medium mb-1">Action-Based Guarantee</h5>
+              <p class="mb-2">We stand behind our work — but results require your participation. If you:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>Complete all assigned tasks within the agreed timeline</li>
+                <li>Show up to all scheduled calls</li>
+                <li>Follow the guidance and implementation steps provided</li>
+                <li>Launch your brand using our framework</li>
+              </ul>
+              <p class="mb-4">...and if you don't see progress or feel satisfied with your deliverables within 90 days of completion, you may request a performance review with our team.</p>
+
+              <h5 class="text-white font-medium mb-1">Non-Refundable Circumstances</h5>
+              <p class="mb-4">To protect our time, team, and systems, no refunds will be issued if you change your mind, fail to provide materials, delay milestones, or request refunds based on future income expectations.</p>
+
+              <h4 class="text-white font-semibold mb-2 mt-6">Financing &amp; Payment Responsibility</h4>
+              <p class="mb-4">By enrolling, you acknowledge that financing payments are your sole responsibility. Clients agree to actively participate to help complete their financing balance within an estimated 3–6 month period.</p>
+
+              <p class="italic opacity-70 mt-6 border-t border-border pt-4">Reminder: This is not a "get rich quick" program. Your results depend on your ability to implement, market, and sell your products with our support. By enrolling in the Rich Legacy Fast Track, you agree to this refund policy.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+    <!-- END DECK CONTENT -->
+
+    <!-- ═══ FOOTER (clients subdomain) ═══ -->
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://www.scalingoffers.com/client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ═══ SCRIPTS ═══ -->
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+      if (!menuButton || !menuPanel || !headerRoot) return;
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+  </script>
+
+  <!-- Highlighting Logic -->
+  <script>
+    const contentArea = document.getElementById('offer-content');
+    const toolbar = document.getElementById('floating-toolbar');
+    const modal = document.getElementById('note-modal');
+    const noteInput = document.getElementById('note-input');
+
+    let currentRange = null;
+
+    document.addEventListener('selectionchange', () => {
+      const selection = window.getSelection();
+      if (selection.isCollapsed || !contentArea.contains(selection.anchorNode)) {
+        toolbar.style.display = 'none';
+        return;
+      }
+      const range = selection.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      if (rect.width > 0) {
+        currentRange = range;
+        toolbar.style.display = 'flex';
+        toolbar.style.top = `${rect.top + window.scrollY - 40}px`;
+        toolbar.style.left = `${rect.left + (rect.width / 2) - (toolbar.offsetWidth / 2)}px`;
+      }
+    });
+
+    function addHighlight() {
+      if (!currentRange) return;
+      toolbar.style.display = 'none';
+      modal.classList.remove('hidden');
+      noteInput.value = '';
+      noteInput.focus();
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      window.getSelection().removeAllRanges();
+    }
+
+    function confirmHighlight() {
+      const noteText = noteInput.value.trim();
+      if (!noteText) { closeModal(); return; }
+      const span = document.createElement('span');
+      span.className = 'user-highlight';
+      span.setAttribute('data-note', noteText);
+      span.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirm('Delete this note?')) {
+          const text = document.createTextNode(this.textContent);
+          this.parentNode.replaceChild(text, this);
+        }
+      };
+      try {
+        currentRange.surroundContents(span);
+      } catch (e) {
+        alert("Please select text within a single paragraph.");
+      }
+      closeModal();
+    }
+
+    window.addEventListener('scroll', () => {
+      if (toolbar.style.display === 'flex') {
+        toolbar.style.display = 'none';
+        window.getSelection().removeAllRanges();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -22,6 +22,7 @@
           { "source": "/client-login", "destination": "/client-login.html" },
           { "source": "/closer-login", "destination": "/closer-login.html" },
           { "source": "/client-agreement", "destination": "/client-agreement.html" },
-          { "source": "/circle-of-success-jv-commission", "destination": "/circle-of-success-jv-commission.html" }
+          { "source": "/circle-of-success-jv-commission", "destination": "/circle-of-success-jv-commission.html" },
+          { "source": "/jessica-rich-webinar-deck", "destination": "/jessica-rich-webinar-deck.html" }
     ]
 }
