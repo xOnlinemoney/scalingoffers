@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7-Day Posting Strategy | Scaling Offers</title>
+
+  <!-- Site fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#2abced',
+              dim: 'rgba(42, 188, 237, 0.1)',
+              glow: 'rgba(42, 188, 237, 0.5)',
+              dark: '#1ea8d6',
+              text: '#7dd3fc'
+            },
+            bg: '#050505',
+            surface: '#0f0f0f',
+            surface2: '#18181b',
+            border: 'rgba(255, 255, 255, 0.08)',
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ═══ HEADER/FOOTER OVERRIDES ═══ */
+    .blueprint-page .header {
+      min-height: auto;
+    }
+    .blueprint-page .header-rect1,
+    .blueprint-page .header-video,
+    .blueprint-page .header-particles,
+    .blueprint-page .hero-content,
+    .blueprint-page .header-stat {
+      display: none;
+    }
+    .blueprint-page .main-wrapper {
+      overflow: clip;
+    }
+    .blueprint-page .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .blueprint-page .header-header {
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* ═══ DECK BODY STYLES ═══ */
+    .blueprint-body {
+      background-color: #050505;
+      color: #d4d4d8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+    .glass-card {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .story-node {
+      position: relative;
+    }
+    .story-node::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 24px;
+      width: 1px;
+      height: calc(100% + 24px);
+      background: rgba(255,255,255,0.1);
+    }
+    .story-node:last-child::before {
+      display: none;
+    }
+
+    /* Typography adjustments */
+    .blueprint-body h1,
+    .blueprint-body h2,
+    .blueprint-body h3 { font-weight: 500; }
+    .blueprint-body p { font-weight: 300; }
+    .blueprint-body strong { font-weight: 500; color: white; }
+  </style>
+</head>
+
+<body class="blueprint-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+
+    <!-- ═══ HEADER (clients subdomain) ═══ -->
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="https://www.scalingoffers.com" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+          <div class="header-row2">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+          <div class="header-row-right">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ BLUEPRINT CONTENT ═══ -->
+    <div class="blueprint-body" id="main-content">
+
+      <!-- Ambient Background -->
+      <div class="fixed inset-0 overflow-hidden pointer-events-none" style="z-index: 0;">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-dim rounded-full blur-[140px] opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[140px] opacity-20"></div>
+      </div>
+
+      <!-- Main Container -->
+      <main class="max-w-4xl mx-auto px-6 py-16 relative" style="z-index: 1; font-family: 'Poppins', sans-serif;">
+
+        <!-- Header -->
+        <div class="text-center mb-16 space-y-4">
+          <h1 class="text-4xl md:text-5xl font-display tracking-tight text-white">7-Day Posting &amp; Story Blueprint</h1>
+          <p class="max-w-xl mx-auto text-zinc-400 text-sm md:text-base leading-relaxed">
+            Build hype, remove doubts, correct misconceptions, answer fears, show proof, and create urgency for the LIVE class.
+          </p>
+          <div class="mt-6 p-4 rounded-lg bg-brand/5 border border-brand/10 inline-block max-w-2xl">
+            <p class="text-sm text-brand-text flex gap-3 items-start text-left">
+              <iconify-icon icon="solar:info-circle-linear" class="shrink-0 mt-0.5" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Use your own voice and personality. Just follow each day's theme + structure.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Grid -->
+        <div class="space-y-6">
+
+          <!-- Day 1 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-brand/50 group-hover:bg-brand transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-brand">
+                  <iconify-icon icon="solar:megaphone-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 1 — Announcement</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Let people know something big is coming.</p>
+                </div>
+              </div>
+            </header>
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 1 (Talking Head)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic mb-2">"A lot of you keep asking how I built my life through [niche]... so I'm going LIVE next week breaking down everything I did — step-by-step — even if you don't have a big following, certifications, or XYZ."</p>
+                  <p class="text-white italic">"This is probably the only time I'll teach this. Link below."</p>
+                </div>
+              </div>
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 2</span>
+                </div>
+                <p class="text-zinc-300">Theme: "Most people say they want more, but never show up for opportunities that matter." (Your own wording)</p>
+              </div>
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 3 (Lifestyle/Clip)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-4 border border-white/5">
+                  <p class="text-white mb-2">Text overlay: "This came from learning one skill once."</p>
+                  <span class="text-xs text-brand border border-brand/20 px-2 py-1 rounded">Link Attached</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 2 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/50 group-hover:bg-purple-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-purple-400">
+                  <iconify-icon icon="solar:shield-warning-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 2 — Limiting Beliefs</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Remove the excuses people hide behind.</p>
+                </div>
+              </div>
+            </header>
+            <div class="mb-6 bg-purple-900/10 border border-purple-500/20 p-4 rounded-lg">
+              <p class="text-xs text-purple-300 uppercase tracking-wide mb-2">Key Beliefs to Address:</p>
+              <ul class="text-sm text-zinc-300 space-y-1 list-disc list-inside marker:text-purple-500">
+                <li>"I need a big following."</li>
+                <li>"This may not work for me."</li>
+                <li>"I don't have experience."</li>
+                <li>"I need certifications."</li>
+              </ul>
+            </div>
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <span class="text-xs uppercase tracking-wider text-purple-300 font-medium mb-2 block">Story 1</span>
+                <p>Pick belief and explain why it isn't required.</p>
+              </div>
+              <div class="story-node">
+                <span class="text-xs uppercase tracking-wider text-purple-300 font-medium mb-2 block">Story 2</span>
+                <p>Your own story or someone you know proving that belief wrong.</p>
+              </div>
+              <div class="story-node">
+                <span class="text-xs uppercase tracking-wider text-purple-300 font-medium mb-2 block">Story 3 (CTA)</span>
+                <p class="mb-2 text-white italic">"Register here — I'll break this down live."</p>
+                <span class="text-xs text-brand border border-brand/20 px-2 py-1 rounded">Link Attached</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 3 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-orange-500/50 group-hover:bg-orange-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-orange-400">
+                  <iconify-icon icon="solar:danger-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 3 — Misconceptions</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Correct the myths holding people back.</p>
+                </div>
+              </div>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pl-2 md:pl-6">
+              <div class="space-y-6">
+                <div class="bg-surface2/30 p-4 rounded-lg border border-white/5">
+                  <p class="text-xs text-orange-300 uppercase mb-2">Misconceptions to hit:</p>
+                  <ul class="text-sm text-zinc-400 space-y-1">
+                    <li>&bull; "The space is oversaturated."</li>
+                    <li>&bull; "I won't make any money."</li>
+                    <li>&bull; "You need luck."</li>
+                  </ul>
+                </div>
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium mb-1 block">Story 1</span>
+                  <p>Pick ONE misconception and break it down.</p>
+                </div>
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium mb-1 block">Story 2</span>
+                  <p class="text-white italic">"People get paid for solving problems, not XYZ."</p>
+                </div>
+              </div>
+              <div class="space-y-6">
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium mb-1 block">Story 3</span>
+                  <p class="text-zinc-300">Theme: "If you keep believing the wrong things, you'll keep doing the wrong things."</p>
+                </div>
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium mb-1 block">Story 4</span>
+                  <p>CTA + Link attached.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 4 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-blue-500/50 group-hover:bg-blue-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-blue-400">
+                  <iconify-icon icon="solar:question-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 4 — Q&amp;A / Fear Handling</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Address the real hesitation — fear.</p>
+                </div>
+              </div>
+            </header>
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-blue-300 font-medium">Story 1 (Question Box)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5 text-center">
+                  <p class="text-white font-medium">"What's actually stopping you from coaching online/offering your service?"</p>
+                </div>
+              </div>
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-blue-300 font-medium">Stories 2–4 (Answers)</span>
+                </div>
+                <p class="mb-3">Answer 2–4 questions. Focus on fear-based ones:</p>
+                <div class="grid grid-cols-2 gap-2 text-sm text-zinc-400">
+                  <div class="px-3 py-2 bg-white/5 rounded">Fear of failing</div>
+                  <div class="px-3 py-2 bg-white/5 rounded">Fear of being judged</div>
+                  <div class="px-3 py-2 bg-white/5 rounded">Fear of not knowing enough</div>
+                  <div class="px-3 py-2 bg-white/5 rounded">Fear of charging money</div>
+                </div>
+              </div>
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-blue-300 font-medium">Story 5 (CTA)</span>
+                </div>
+                <p class="text-white italic">"We're covering everything live — link here."</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 5 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-rose-500/50 group-hover:bg-rose-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-rose-400">
+                  <iconify-icon icon="solar:heart-pulse-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 5 — Pain vs Desire</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Create the emotional shift.</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium">
+                Only 2–3 stories (Retention)
+              </div>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pl-2 md:pl-6">
+              <div class="bg-surface2/30 p-5 rounded-xl border border-white/5">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs uppercase tracking-wider text-rose-300 font-medium">Story 1: The Pain</span>
+                  <iconify-icon icon="solar:sad-circle-linear" class="text-zinc-600"></iconify-icon>
+                </div>
+                <p class="text-white mb-3 italic">"What happens if nothing changes?"</p>
+                <ul class="text-sm text-zinc-500 space-y-1">
+                  <li>&bull; Same job</li>
+                  <li>&bull; Same income</li>
+                  <li>&bull; Same routine</li>
+                  <li>&bull; Same frustration</li>
+                </ul>
+                <p class="text-xs text-zinc-600 mt-4">(Keep it short)</p>
+              </div>
+              <div class="bg-surface2/30 p-5 rounded-xl border border-white/5">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 2: The Desire</span>
+                  <iconify-icon icon="solar:smile-circle-linear" class="text-zinc-600"></iconify-icon>
+                </div>
+                <p class="text-white mb-3 italic">"What life looks like when you DO take action."</p>
+                <p class="text-sm text-zinc-400">Use lifestyle clip, transformation, or simple talking head.</p>
+              </div>
+            </div>
+            <div class="mt-6 pl-2 md:pl-6 text-center">
+              <p class="text-white italic mb-2">"This live class shows the exact steps to go from Story 1 → Story 2."</p>
+              <span class="text-xs text-brand border border-brand/20 px-2 py-1 rounded">Link Attached</span>
+            </div>
+          </article>
+
+          <!-- Day 6 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500/50 group-hover:bg-emerald-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-emerald-400">
+                  <iconify-icon icon="solar:users-group-rounded-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 6 — Social Proof</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Show that normal people win.</p>
+                </div>
+              </div>
+            </header>
+            <div class="space-y-6 pl-2 md:pl-6">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 bg-surface2/30 p-4 rounded-lg border border-white/5">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium mb-2 block">Story 1</span>
+                  <p class="text-sm text-zinc-300">Client win, transformation (before &amp; after), or progress screenshot.</p>
+                </div>
+                <div class="flex-1 bg-surface2/30 p-4 rounded-lg border border-white/5">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium mb-2 block">Story 2</span>
+                  <p class="text-sm text-white italic">Theme: "They started where you're at right now."</p>
+                </div>
+              </div>
+              <div class="text-center pt-4">
+                <p class="text-white italic mb-2">"We're almost at the live class — grab your spot."</p>
+                <span class="text-xs text-brand border border-brand/20 px-2 py-1 rounded">Link Attached</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 7 -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group border-brand/30">
+            <div class="absolute top-0 left-0 w-1 h-full bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-shadow"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500">
+                  <iconify-icon icon="solar:alarm-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 7 — Final Urgency</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Goal: Drive maximum attendance. Don't let them forget.</p>
+                </div>
+              </div>
+            </header>
+            <div class="space-y-4">
+              <div class="flex gap-4 items-start">
+                <div class="w-20 text-xs text-zinc-500 pt-3 text-right font-medium tracking-wide">MORNING</div>
+                <div class="flex-1 bg-surface2/50 p-4 rounded-lg border border-white/5">
+                  <p class="text-white italic mb-2">"Live class is TODAY — last chance to register."</p>
+                  <div class="flex gap-2">
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Countdown Sticker</span>
+                    <span class="text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20">Link</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <div class="w-20 text-xs text-zinc-500 pt-3 text-right font-medium tracking-wide">AFTERNOON</div>
+                <div class="flex-1 bg-surface2/50 p-4 rounded-lg border border-white/5">
+                  <p class="text-xs uppercase text-zinc-400 mb-2">Answer FAQs:</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-zinc-300">
+                    <div>&bull; "Do I need a following?" <span class="text-white">No</span></div>
+                    <div>&bull; "Do I need experience?" <span class="text-white">No</span></div>
+                    <div>&bull; "Is it beginner friendly?" <span class="text-white">Yes</span></div>
+                    <div>&bull; "Is this the only one?" <span class="text-white">Yes</span></div>
+                  </div>
+                  <div class="mt-3 text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20 inline-block">Link Attached</div>
+                </div>
+              </div>
+              <div class="flex gap-4 items-center">
+                <div class="w-20 text-xs text-red-400 pt-1 text-right font-medium tracking-wide">1 HOUR</div>
+                <div class="flex-1 bg-surface2/50 p-3 rounded-lg border border-red-500/20 flex justify-between items-center">
+                  <p class="text-white italic text-sm">"We're going live in 1 hour — final call to register."</p>
+                  <span class="text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20">Link</span>
+                </div>
+              </div>
+              <div class="flex gap-4 items-center">
+                <div class="w-20 text-xs text-red-500 pt-1 text-right font-bold tracking-wide">15 MINS</div>
+                <div class="flex-1 bg-red-500/10 p-3 rounded-lg border border-red-500/30 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                  <div>
+                    <p class="text-xs text-red-300 mb-1">Behind-the-scenes clip (Zoom or slides).</p>
+                    <p class="text-white font-medium text-sm">"Going live in 15 minutes — join here."</p>
+                  </div>
+                  <span class="text-[10px] bg-brand/20 text-brand px-2 py-1 rounded border border-brand/20 self-start sm:self-center">Link</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Guidelines -->
+        <div class="mt-12 bg-gradient-to-b from-surface2 to-black p-8 rounded-2xl border border-white/10">
+          <div class="flex items-center gap-3 mb-6">
+            <iconify-icon icon="solar:clipboard-check-linear" class="text-brand" width="24" stroke-width="1.5"></iconify-icon>
+            <h3 class="text-xl font-display text-white">Guidelines For All 7 Days</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+            <ul class="space-y-3 text-sm text-zinc-400">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Post 2–5 story frames daily</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>At least 1 talking-head story each day</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Always attach the link</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Mix lifestyle, talking-head, proof, and text stories</span>
+              </li>
+            </ul>
+            <ul class="space-y-3 text-sm text-zinc-400">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>DM anyone who interacts with link (polls, replies, Q&amp;A)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:star-linear" class="mt-0.5 text-brand"></iconify-icon>
+                <span class="text-zinc-300">Highlight consistently:</span>
+              </li>
+              <div class="pl-8 space-y-1 text-zinc-500 text-xs">
+                <p>– It's live &amp; limited</p>
+                <p>– It's for [niche audience] wanting to monetize</p>
+                <p>– No XYZ needed</p>
+                <p>– This is the opportunity they've been waiting for</p>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+      </main>
+    </div>
+    <!-- END BLUEPRINT CONTENT -->
+
+    <!-- ═══ FOOTER (clients subdomain) ═══ -->
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://www.scalingoffers.com/client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+      if (!menuButton || !menuPanel || !headerRoot) return;
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
