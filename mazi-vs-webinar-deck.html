@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mazi VS Private Deployment | Offer Deck</title>
+
+  <!-- Site fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Deck fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            page: '#0b0e11',
+            surface: '#12151a',
+            border: '#22262e',
+            gold: '#d4af37',
+            'gold-dim': 'rgba(212, 175, 55, 0.1)',
+            subtle: '#8890a0',
+            light: '#e8ecf2',
+            accent: '#2abced',
+            'accent-dim': 'rgba(42, 188, 237, 0.1)',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          maxWidth: {
+            'deck': '900px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ═══ HEADER/FOOTER OVERRIDES ═══ */
+    .deck-page .header { min-height: auto; }
+    .deck-page .header-rect1,
+    .deck-page .header-video,
+    .deck-page .header-particles,
+    .deck-page .hero-content,
+    .deck-page .header-stat { display: none; }
+    .deck-page .main-wrapper { overflow: clip; }
+    .deck-page .header { position: sticky; top: 0; z-index: 100; }
+    .deck-page .header-header {
+      background: rgba(11, 14, 17, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .deck-body {
+      background-color: #0b0e11;
+      color: #e8ecf2;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(212, 175, 55, 0.3); color: #fff; }
+
+    .deck-noise {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #12151a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #22262e; border-radius: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+  </style>
+</head>
+
+<body class="deck-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+
+    <!-- ═══ HEADER (clients subdomain) ═══ -->
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="https://www.scalingoffers.com" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+          <div class="header-row2">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+          <div class="header-row-right">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">Become a Partner</a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">Client Login</a>
+          </div>
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">Become a Partner</a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">Client Login</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ DECK CONTENT ═══ -->
+    <div class="deck-body" id="main-content">
+      <div class="deck-noise"></div>
+
+      <main class="max-w-deck md:pt-2 z-10 mr-auto ml-auto pt-0 pr-6 pb-24 pl-6 relative" style="font-family: 'DM Sans', sans-serif;">
+
+        <!-- HERO HEADER -->
+        <header class="text-center mb-16 md:mb-24 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+            <span class="text-[10px] uppercase tracking-widest text-subtle font-semibold">Mazi VS &times; Scaling Offers</span>
+          </div>
+
+          <h1 class="font-serif text-5xl md:text-7xl text-white leading-[0.95] tracking-tight">
+            Mazi VS <br>
+            <span class="text-gold italic">Private Deployment</span>
+          </h1>
+
+          <p class="md:text-xl text-subtle leading-relaxed text-lg font-light max-w-2xl mr-auto ml-auto">
+            30 days of private, high-conviction plays, structured allocation, and direct access to the process behind one of sports betting's most followed operators.
+          </p>
+
+          <div class="flex items-center justify-center gap-2 text-xs text-subtle uppercase tracking-widest mt-8">
+            <span>Presented by Mazi VS | SBK</span>
+            <span class="text-gold">&bull;</span>
+            <span>In Partnership with Scaling Offers</span>
+          </div>
+        </header>
+
+        <!-- MAZI'S STORY -->
+        <section class="mb-20 space-y-10">
+          <div>
+            <h2 class="text-sm font-semibold text-gold uppercase tracking-widest mb-4">The Transformation</h2>
+            <h3 class="font-serif text-3xl text-white mb-6">From Zero to Industry Operator</h3>
+            <div class="max-w-none">
+              <p class="text-subtle font-light leading-7 mb-4">Mazi started exactly where many aspiring sports bettors are today: No formal training, no degree, no industry connections. No system for managing bankroll or sizing positions. No framework to separate edge from noise. No clear roadmap to turning sports knowledge into consistent, compounding capital.</p>
+              <p class="text-subtle font-light leading-7 mb-6">After developing his approach to sports analysis and capital deployment, Mazi has:</p>
+              <ul class="list-none pl-0 space-y-3 my-6">
+                <li class="flex items-start gap-3 text-subtle font-light leading-7">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                  <span>Built one of the largest sports betting communities in the world with <span class="text-white font-medium">2M+ followers</span></span>
+                </li>
+                <li class="flex items-start gap-3 text-subtle font-light leading-7">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                  <span>Grown Mazi Picks into a platform with <span class="text-white font-medium">thousands of active members</span></span>
+                </li>
+                <li class="flex items-start gap-3 text-subtle font-light leading-7">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                  <span>Been featured in <span class="text-white font-medium">ESPN, The Sun, LA Weekly, Spike TV, The Game Day</span>, and Truly Bling Life</span>
+                </li>
+                <li class="flex items-start gap-3 text-subtle font-light leading-7">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                  <span>Turned an initial <span class="text-white font-medium">$50,000 stake into $300,000 in four days</span> — the turning point that launched his career</span>
+                </li>
+                <li class="flex items-start gap-3 text-subtle font-light leading-7">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-1"></iconify-icon>
+                  <span>Built a <span class="text-white font-medium">multi-million dollar operation</span> from Las Vegas with publicly documented results</span>
+                </li>
+              </ul>
+              <p class="text-white font-medium border-l-2 border-gold pl-4 italic">
+                You're here to see the system Mazi built so you can stop guessing and start operating with structure.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="border-border/60 mb-20">
+
+        <!-- WHY IT WORKS -->
+        <section class="mb-20">
+          <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Why Mazi's System Works</h2>
+            <p class="text-subtle max-w-xl mx-auto">This model works because it's built on fundamentals that compound.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:target-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">High-Conviction Plays</h3>
+              <p class="text-sm text-subtle leading-relaxed">Access to plays backed by real capital eliminates second-guessing.</p>
+            </div>
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:chart-square-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">Structured Allocation</h3>
+              <p class="text-sm text-subtle leading-relaxed">Replaces emotional sizing with systematic positioning.</p>
+            </div>
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:shield-check-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">Variance Management</h3>
+              <p class="text-sm text-subtle leading-relaxed">Keeps you in the game long enough for edge to compound.</p>
+            </div>
+            <div class="bg-surface border border-border p-6 rounded-xl hover:border-gold/30 transition-colors group">
+              <div class="w-10 h-10 rounded-full bg-gold-dim flex items-center justify-center text-gold mb-4 group-hover:scale-110 transition-transform">
+                <iconify-icon icon="solar:restart-circle-linear" class="text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-white font-medium text-lg mb-2">Repeatable System</h3>
+              <p class="text-sm text-subtle leading-relaxed">Works across sports, seasons, and market conditions.</p>
+            </div>
+          </div>
+          <p class="text-center text-subtle text-sm mt-8 italic">This is about operating inside a structured system with a proven operator, not just following picks.</p>
+        </section>
+
+        <!-- WHY THIS MATTERS -->
+        <section class="mb-20 bg-surface rounded-2xl p-8 md:p-12 border border-border relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-3 opacity-10">
+            <iconify-icon icon="solar:graph-up-linear" class="text-9xl text-white"></iconify-icon>
+          </div>
+
+          <div class="relative z-10 max-w-3xl">
+            <h3 class="font-serif text-2xl md:text-3xl text-white mb-6">Why Mazi's Program Matters</h3>
+            <p class="text-subtle mb-4 text-lg">Most people don't struggle with sports betting because they lack knowledge or effort. They struggle because they're operating without structure — and emotion fills the gap. Every time.</p>
+            <p class="text-subtle mb-4">They don't know:</p>
+            <ul class="space-y-2 mb-6 text-subtle text-sm">
+              <li class="flex items-start gap-2"><iconify-icon icon="solar:close-circle-linear" class="text-red-400 shrink-0 mt-0.5"></iconify-icon> How to size positions based on conviction instead of impulse</li>
+              <li class="flex items-start gap-2"><iconify-icon icon="solar:close-circle-linear" class="text-red-400 shrink-0 mt-0.5"></iconify-icon> When to press, when to pull back, and when to sit out entirely</li>
+              <li class="flex items-start gap-2"><iconify-icon icon="solar:close-circle-linear" class="text-red-400 shrink-0 mt-0.5"></iconify-icon> How to manage variance across a full season instead of reacting to a single week</li>
+            </ul>
+            <p class="text-subtle mb-6">Without a clear framework, people end up chasing losses, oversizing on emotion, and bleeding capital from bad decisions. This program exists to remove that.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+              <div class="border-l border-gold pl-4">
+                <p class="text-gold font-serif text-xl mb-1">Structured Allocation</p>
+                <p class="text-xs text-subtle">Bankroll treated as capital, not gambling money.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">Conviction Sizing</p>
+                <p class="text-xs text-subtle">Positions scaled to edge, not emotion.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">Operator Mindset</p>
+                <p class="text-xs text-subtle">From undisciplined bettor to structured operator to compounding capital.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- THE CORE PRINCIPLE -->
+        <section class="mb-20 bg-surface/50 rounded-2xl p-8 md:p-12 border border-gold/20 relative overflow-hidden">
+          <div class="relative z-10 max-w-3xl">
+            <h3 class="font-serif text-2xl md:text-3xl text-white mb-6">The Core Principle You Need To Understand</h3>
+            <p class="text-subtle mb-6 text-lg">In sports betting, results don't come from more picks. They come from positioning, structure, and discipline.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+              <div class="border-l border-gold pl-4">
+                <p class="text-gold font-serif text-xl mb-1">1. Infrastructure</p>
+                <p class="text-xs text-subtle">The allocation framework and bankroll management that must exist first.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">2. Execution</p>
+                <p class="text-xs text-subtle">Conviction-based plays executed with proper sizing.</p>
+              </div>
+              <div class="border-l border-border pl-4">
+                <p class="text-white font-serif text-xl mb-1">3. Discipline</p>
+                <p class="text-xs text-subtle">Variance management that keeps you in the game while edge compounds.</p>
+              </div>
+            </div>
+
+            <p class="text-subtle text-sm mt-8 italic">Most people skip the infrastructure and jump straight to picks — and then wonder why they can't hold onto profits.</p>
+            <p class="text-white font-medium mt-4 border-l-2 border-gold pl-4">Understanding this is important. Executing it inside a controlled environment with Mazi personally deploying alongside you is the real advantage.</p>
+          </div>
+        </section>
+
+        <!-- WHO THIS IS FOR -->
+        <section class="mb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-surface/50 rounded-xl border border-border p-8">
+            <h3 class="font-serif text-xl text-white mb-6 flex items-center gap-2">
+              <iconify-icon icon="solar:user-check-linear" class="text-gold"></iconify-icon>
+              Who This Is For
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Serious operators who treat sports betting as capital deployment, not entertainment.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                People with real bankroll who want structure, not just more information.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Individuals who understand variance and want to operate through it, not react to it.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:check-read-linear" class="text-gold text-lg shrink-0"></iconify-icon>
+                Action-takers tired of bleeding capital from emotional decisions who want a system.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-surface/30 rounded-xl border border-border/50 p-8 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+            <h3 class="font-serif text-xl text-subtle mb-6 flex items-center gap-2">
+              <iconify-icon icon="solar:forbidden-circle-linear" class="text-red-400"></iconify-icon>
+              Not For
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                Recreational bettors looking for excitement.
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                People who think one good week means they've "figured it out."
+              </li>
+              <li class="flex gap-3 text-sm text-subtle">
+                <iconify-icon icon="solar:close-circle-linear" class="text-red-400 text-lg shrink-0"></iconify-icon>
+                Anyone looking for a magic pick or guaranteed outcomes — this is a system, not a lottery ticket.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- WHAT YOU GET -->
+        <section class="mb-24">
+          <h2 class="font-serif text-3xl md:text-4xl text-center text-white mb-12">What You Get When You Join Mazi</h2>
+
+          <div class="space-y-6">
+            <!-- Module 1: Onboarding -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:clipboard-check-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Onboarding &amp; Deployment Setup</h3>
+                  <p class="text-sm text-subtle mb-4">Onboarding Call with Mazi's team + Initial Assessment. We build a personalized deployment roadmap.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Current bankroll review &amp; position history</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Risk tolerance &amp; capital deployment goals</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Allocation framework calibrated to your bankroll</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Position sizing rules &amp; conviction tiers</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Variance management &amp; drawdown protocols</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Defined operating parameters from day one</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 2: Core 30-Day -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:rocket-2-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Core: 30-Day Private Deployment Window</h3>
+                  <p class="text-sm text-subtle mb-1">Structured. Controlled. Limited to a small cohort of serious operators.</p>
+                  <div class="space-y-4 mt-4">
+                    <div>
+                      <h4 class="text-sm text-white font-medium mb-2">High-Conviction Private Plays</h4>
+                      <div class="grid grid-cols-1 gap-y-2 text-xs text-subtle/80">
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>30 days of private plays — positions Mazi is taking with real capital behind them</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Every signal has intent — when Mazi sends something, there's money on it. His.</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Plays delivered with conviction tier, sizing guidance, and rationale</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="text-sm text-white font-medium mb-2">Structured Allocation Framework</h4>
+                      <div class="grid grid-cols-1 gap-y-2 text-xs text-subtle/80">
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>How to think about your bankroll as capital, not gambling money</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>How to size based on conviction instead of emotion</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>How to stay in the game long enough for edge to compound</span>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="text-sm text-white font-medium mb-2">Position Sizing &amp; Variance Management</h4>
+                      <div class="grid grid-cols-1 gap-y-2 text-xs text-subtle/80">
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>When to press — capitalize when edge is confirmed</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>When to pull back — protect capital during cold stretches</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>When to sit out entirely — the discipline most operators never learn</span>
+                        <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Drawdown protocols that keep emotion out of execution</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 3: Direct Access -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:chat-round-dots-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Direct Access to Mazi</h3>
+                  <p class="text-sm text-subtle mb-4">Direct Communication Channel — real-time access to Mazi during the deployment window.</p>
+                  <div class="grid grid-cols-1 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Line moving and not sure what to do? You ask. Clarity in real time.</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Want reasoning behind a position before you execute? You get it.</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Operating with someone in your corner, not scrolling a feed</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Time-sensitive decisions get time-sensitive responses</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 4: Live Calls -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:videocamera-record-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 mb-2">
+                    <h3 class="text-lg font-medium text-white">Live Game Analysis Calls (6 Weeks)</h3>
+                    <span class="text-[10px] bg-gold text-black font-bold px-2 py-0.5 rounded uppercase tracking-wider">Bonus</span>
+                  </div>
+                  <p class="text-sm text-subtle mb-4">Six (6) weekly live calls with Mazi — on camera, breaking down the board in real time.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>How Mazi reads lines and identifies value</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Where he's seeing edge in real time</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Real-time board analysis across all major sports</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>The process behind the output — not just the pick</span>
+                  </div>
+                  <p class="text-subtle text-xs mt-4 italic">Most people only see the output. These calls show the process. That's the part that stays with you.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module 5: Community -->
+            <div class="group bg-surface border border-border rounded-xl p-6 md:p-8 hover:border-gold/40 transition-all">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="shrink-0">
+                  <div class="w-12 h-12 rounded-lg bg-page border border-border flex items-center justify-center text-gold">
+                    <iconify-icon icon="solar:users-group-rounded-linear" class="text-2xl"></iconify-icon>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-medium text-white mb-2">Private Operator Community</h3>
+                  <p class="text-sm text-subtle mb-4">Private Mazi VS Deployment Cohort — small, controlled group.</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-xs text-subtle/80">
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Capped seats to maintain proximity &amp; value</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Peer accountability with serious operators</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Shared learning from collective deployment</span>
+                    <span class="flex items-center gap-2"><div class="w-1 h-1 bg-gold rounded-full"></div>Direct access to Mazi + support team</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- YOU WALK AWAY WITH -->
+        <section class="mb-24">
+          <div class="bg-gradient-to-br from-gold/20 to-surface border border-gold/40 rounded-xl p-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold via-white to-gold"></div>
+
+            <div class="relative z-10">
+              <div class="inline-block px-3 py-1 bg-gold text-black text-[10px] font-bold tracking-widest uppercase rounded mb-4">What You Walk Away With</div>
+              <h3 class="font-serif text-2xl text-white mb-2">A Complete Operating Framework</h3>
+              <p class="text-sm text-subtle mb-6">Built through 30 days of live deployment alongside one of the most followed operators in the industry.</p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  30 days of high-conviction plays backed by real capital
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  A structured allocation framework you can use permanently
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  Position sizing discipline calibrated to your bankroll
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  Variance management protocols — emotion out of execution
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  6 weeks of live game analysis — how Mazi reads the board
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  Direct access to Mazi during the entire deployment window
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  A repeatable system you can operate independently after
+                </div>
+                <div class="flex items-start gap-2 text-sm text-subtle">
+                  <iconify-icon icon="solar:check-circle-linear" class="text-gold shrink-0 mt-0.5"></iconify-icon>
+                  Proximity, structure, and unfair advantage
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- INVESTMENT -->
+        <section class="mb-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="font-serif text-4xl text-white mb-6">Investment</h2>
+              <p class="text-subtle mb-4 text-sm leading-relaxed">How many of you have lost five, ten, fifteen thousand over the last year making emotional plays? Chasing. Oversizing. Tailing random accounts. Playing scared because you didn't trust your own process. Add that up.</p>
+              <p class="text-white font-medium mb-8">That's what this solves. You're paying for the framework that turns your capital into something that actually compounds.</p>
+
+              <div class="space-y-4">
+                <div class="flex justify-between items-center py-4 border-b border-border">
+                  <span class="text-subtle">Total Program Value</span>
+                  <span class="text-subtle line-through decoration-red-500">$50,000+</span>
+                </div>
+                <div class="flex justify-between items-center py-4 border-b border-gold/30">
+                  <span class="text-white font-medium">Your Investment Today</span>
+                  <span class="text-3xl font-serif text-gold">$25,000</span>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Payment Options</h4>
+                <ul class="space-y-3 text-sm text-subtle">
+                  <li class="flex items-center gap-2">
+                    <iconify-icon icon="solar:wallet-linear" class="text-gold"></iconify-icon>
+                    Pay in Full: $25,000 by wire or credit card
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <iconify-icon icon="solar:card-transfer-linear" class="text-gold"></iconify-icon>
+                    <span>OR explore flexible <span class="text-white border-b border-white/30">financing options</span></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-2xl border border-border p-8 relative">
+              <div class="absolute -top-3 -right-3 bg-gold text-black text-xs font-bold px-3 py-1 rounded shadow-lg transform rotate-2">SIMPLE FINANCING</div>
+
+              <h3 class="text-xl text-white font-serif mb-6">Financing Made Simple</h3>
+              <div class="space-y-4 mb-8">
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">1</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Soft Pull Application</p>
+                    <p class="text-xs text-subtle mt-1">No impact to your credit score to check.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">2</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Instant Decision</p>
+                    <p class="text-xs text-subtle mt-1">Know in about 30 seconds.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                  <div class="w-8 h-8 rounded bg-page flex items-center justify-center shrink-0 border border-border">
+                    <span class="text-gold font-mono">3</span>
+                  </div>
+                  <div>
+                    <p class="text-white font-medium text-sm">Funding up to $25,000</p>
+                    <p class="text-xs text-subtle mt-1">For qualified applicants (500+ credit score). Funds applied directly toward your 30-day access.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-page/50 border border-border rounded-lg p-4 mb-6 text-xs text-subtle space-y-1">
+                <p><span class="text-white font-medium">Important:</span> This is not a contract. This is not a commitment. This is not a credit hit.</p>
+                <p>Checking approval doesn't commit you to anything. It just shows you what's available.</p>
+              </div>
+
+              <button class="w-full py-4 bg-gold hover:bg-yellow-500 text-black font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+                Check Financing Eligibility
+                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+              </button>
+              <p class="text-center text-[10px] text-subtle mt-3 opacity-60">Operators don't wait for ideal conditions. They create positioning.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- YOUR NEXT STEPS -->
+        <section class="mb-24 bg-surface rounded-2xl p-8 md:p-12 border border-border">
+          <h3 class="font-serif text-2xl text-white mb-8 text-center">Your Next Steps</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-sm text-gold font-semibold uppercase tracking-wider mb-4">Direct Application</h4>
+              <div class="space-y-3">
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">1</div>
+                  <p class="text-sm text-subtle">Fill out a short application (takes a few minutes)</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">2</div>
+                  <p class="text-sm text-subtle">We review it and assess fit — this is application-only and we're selective</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">3</div>
+                  <p class="text-sm text-subtle">If accepted, onboarding is immediate — structured and operating from day one</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-sm text-gold font-semibold uppercase tracking-wider mb-4">Financing Path</h4>
+              <div class="space-y-3">
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">1</div>
+                  <p class="text-sm text-subtle">Complete the funding approval check (soft pull, 1–2 minutes)</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">2</div>
+                  <p class="text-sm text-subtle">Receive your instant decision</p>
+                </div>
+                <div class="flex gap-3 items-start">
+                  <div class="w-6 h-6 rounded bg-gold/10 flex items-center justify-center shrink-0 text-gold text-xs font-mono">3</div>
+                  <p class="text-sm text-subtle">If qualified, funds are applied directly toward your access</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-white font-medium mt-8 text-sm">If you're serious, apply. That's it.</p>
+        </section>
+
+        <!-- DISCLOSURE -->
+        <section class="max-w-3xl mx-auto mb-20">
+          <h3 class="text-center font-serif text-2xl text-white mb-8">Disclosure &amp; Agreement</h3>
+
+          <div class="bg-surface border border-border rounded-lg p-1">
+            <div class="h-[500px] overflow-y-auto p-6 text-xs text-subtle leading-relaxed custom-scrollbar">
+              <h4 class="text-white font-semibold mb-2">Mazi VS Private Deployment — Refund Policy</h4>
+              <p class="mb-4">At Scaling Offers, we are fully committed to delivering on everything promised in the Mazi VS Private Deployment. We work closely with each cohort member to ensure all deliverables are fulfilled within the 30-day deployment window and that you are fully supported throughout.</p>
+              <p class="mb-4">Because this is a high-access, limited-seat deployment that requires Mazi's direct time, attention, and proprietary strategy from day one, we have implemented the following policy:</p>
+
+              <h5 class="text-white font-medium mb-1">Action-Based Guarantee</h5>
+              <p class="mb-2">We stand behind our work — but results require your participation. If you:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>Follow the allocation framework provided during onboarding</li>
+                <li>Execute positions according to the sizing guidance delivered</li>
+                <li>Show up to the live game analysis calls</li>
+                <li>Operate within the system as structured</li>
+              </ul>
+              <p class="mb-4">...and if you don't see progress or feel the deliverables were not met within 30 days of completion, you may request a performance review with our team.</p>
+              <p class="mb-4">If it's found that our team did not deliver what was outlined in your agreement, we'll do one of the following at our discretion: Address the issue and complete remaining deliverables, or offer additional support or extended access to resolve the gap.</p>
+
+              <h5 class="text-white font-medium mb-1">Non-Refundable Circumstances</h5>
+              <p class="mb-2">To protect our time, team, and systems, no refunds will be issued under the following circumstances:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>You change your mind after payment or decide not to continue</li>
+                <li>You do not follow the allocation framework or sizing guidance provided</li>
+                <li>You delay or miss scheduled milestones, calls, or communication windows</li>
+                <li>You do not execute within the system as structured</li>
+                <li>You request a refund based on individual betting outcomes or expected returns</li>
+              </ul>
+
+              <h4 class="text-white font-semibold mb-2 mt-6">Financing &amp; Payment Responsibility</h4>
+              <p class="mb-4">By enrolling in the program, you acknowledge and agree that financing payments are your sole responsibility and are a required part of completing the program.</p>
+
+              <h5 class="text-white font-medium mb-1">Financing Timeline &amp; Client Responsibility</h5>
+              <p class="mb-2">Clients who choose to finance their investment agree to:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>Actively participate in the program and follow all recommended steps</li>
+                <li>Make all required monthly payments on time</li>
+                <li>Take action within the program to support payoff completion</li>
+              </ul>
+              <p class="mb-4">The 3–6 month timeframe is a goal, not a guarantee, and depends on the client's credit profile, participation, and consistency.</p>
+
+              <h5 class="text-white font-medium mb-1">Ongoing Monthly Payments</h5>
+              <p class="mb-2">If the financing balance is not paid in full within the target timeframe, the client agrees that:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>Monthly payments will continue until the balance is paid in full</li>
+                <li>No program access or services will be revoked solely due to extended financing, as long as payments remain current</li>
+                <li>Scaling Offers will ensure monthly payments are fair and reasonable based on the client's financing terms</li>
+              </ul>
+
+              <h5 class="text-white font-medium mb-1">Importance of Payment Compliance</h5>
+              <p class="mb-2">Failure to remain current on payments may result in:</p>
+              <ul class="list-disc pl-5 mb-4 space-y-1">
+                <li>Delays in support or services</li>
+                <li>Potential third-party financing consequences</li>
+                <li>Ineligibility for certain bonuses, upgrades, or extended access</li>
+              </ul>
+
+              <p class="italic opacity-70 mt-6 border-t border-border pt-4">Reminder: This is not a "get rich quick" program. Sports betting involves inherent risk and variance. Your results depend on your discipline, execution, and adherence to the framework provided. We are here to install structure, provide access, and give you the tools to operate at a higher level — but we cannot guarantee individual betting outcomes or income results. By enrolling in the Mazi VS Private Deployment, you agree to this policy.</p>
+
+              <div class="mt-8 border-t border-border pt-6 space-y-4">
+                <div>
+                  <p class="text-subtle text-[11px] mb-1">Client Name &amp; Team Member:</p>
+                  <div class="border-b border-border/50 pb-2 text-white">_______________________________</div>
+                </div>
+                <div>
+                  <p class="text-subtle text-[11px] mb-1">Date:</p>
+                  <div class="border-b border-border/50 pb-2 text-white">_______________________________</div>
+                </div>
+                <div class="grid grid-cols-2 gap-8 mt-4">
+                  <div>
+                    <p class="text-subtle text-[11px] mb-1">X</p>
+                    <div class="border-b border-border/50 pb-2 text-white text-[11px]">________________________________________________</div>
+                    <p class="text-subtle text-[10px] mt-1">CEO of Scaling Offers</p>
+                  </div>
+                  <div>
+                    <p class="text-subtle text-[11px] mb-1">X</p>
+                    <div class="border-b border-border/50 pb-2 text-white text-[11px]">____Mazi VS____</div>
+                    <p class="text-subtle text-[10px] mt-1">Mazi VS: CEO of Mazi Picks</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+    <!-- END DECK CONTENT -->
+
+    <!-- ═══ FOOTER (clients subdomain) ═══ -->
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://www.scalingoffers.com/client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+      if (!menuButton || !menuPanel || !headerRoot) return;
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) { setMenuState(false); }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") { setMenuState(false); }
+      });
+    });
+  </script>
+
+</body>
+</html>
