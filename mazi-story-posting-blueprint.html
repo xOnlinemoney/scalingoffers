@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6-Day Pre-Webinar Instagram Story Blueprint | Scaling Offers</title>
+
+  <!-- Site fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/xxon-sca-ff-home.css">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconify -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#d4a843',
+              dim: 'rgba(212, 168, 67, 0.1)',
+              glow: 'rgba(212, 168, 67, 0.5)',
+              dark: '#b8922e',
+              text: '#e8c76a'
+            },
+            bg: '#050505',
+            surface: '#0f0f0f',
+            surface2: '#18181b',
+            border: 'rgba(255, 255, 255, 0.08)',
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ═══ HEADER/FOOTER OVERRIDES ═══ */
+    .blueprint-page .header {
+      min-height: auto;
+    }
+    .blueprint-page .header-rect1,
+    .blueprint-page .header-video,
+    .blueprint-page .header-particles,
+    .blueprint-page .hero-content,
+    .blueprint-page .header-stat {
+      display: none;
+    }
+    .blueprint-page .main-wrapper {
+      overflow: clip;
+    }
+    .blueprint-page .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .blueprint-page .header-header {
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* ═══ DECK BODY STYLES ═══ */
+    .blueprint-body {
+      background-color: #050505;
+      color: #d4d4d8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+    .glass-card {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .story-node {
+      position: relative;
+    }
+    .story-node::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 24px;
+      width: 1px;
+      height: calc(100% + 24px);
+      background: rgba(255,255,255,0.1);
+    }
+    .story-node:last-child::before {
+      display: none;
+    }
+
+    /* Typography adjustments */
+    .blueprint-body h1,
+    .blueprint-body h2,
+    .blueprint-body h3 { font-weight: 500; }
+    .blueprint-body p { font-weight: 300; }
+    .blueprint-body strong { font-weight: 500; color: white; }
+
+    /* Why tags */
+    .why-tag {
+      background: rgba(212, 168, 67, 0.08);
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      color: #e8c76a;
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      margin-top: 0.75rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body class="blueprint-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="main-wrapper">
+
+    <!-- ═══ HEADER (clients subdomain) ═══ -->
+    <header class="header">
+      <div class="header-rect1" aria-hidden="true"></div>
+      <div class="header-particles" aria-hidden="true"></div>
+      <video class="header-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="header-header">
+        <div class="header-info" aria-label="Hiring announcement">
+          <div class="header-rect2" aria-hidden="true"></div>
+          <div class="marquee-wrapper">
+            <div class="marquee-track">
+              <span class="marquee-text">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+              <span class="marquee-text" aria-hidden="true">HIRING NOW! Sales: High Ticket Closer — Earning potential $10,000 to $50,000/month</span>
+            </div>
+          </div>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="https://www.scalingoffers.com" class="header-logo-link" aria-label="Scaling Offers home">
+            <img src="assets/header-img.png" class="header-img" alt="Scaling Offers logo" />
+          </a>
+          <div class="header-row2">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text">Client Testimonials</a>
+          </div>
+          <div class="header-row-right">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+          <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </nav>
+        <div class="mobile-menu-panel" aria-hidden="true">
+          <div class="mobile-menu-links" role="menu">
+            <a href="https://www.scalingoffers.com/client-testimonials" class="header-text" role="menuitem">Client Testimonials</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="https://www.scalingoffers.com/become-a-partner" class="header-btn-become-a-partner hover-bright text1">
+              Become a Partner
+            </a>
+            <a href="https://www.scalingoffers.com/client-login" class="header-btn-client-login text1 hover-bright">
+              Client Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ BLUEPRINT CONTENT ═══ -->
+    <div class="blueprint-body" id="main-content">
+
+      <!-- Ambient Background -->
+      <div class="fixed inset-0 overflow-hidden pointer-events-none" style="z-index: 0;">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-dim rounded-full blur-[140px] opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-900/10 rounded-full blur-[140px] opacity-20"></div>
+      </div>
+
+      <!-- Main Container -->
+      <main class="max-w-4xl mx-auto px-6 py-16 relative" style="z-index: 1; font-family: 'Poppins', sans-serif;">
+
+        <!-- Header -->
+        <div class="text-center mb-16 space-y-4">
+          <h1 class="text-4xl md:text-5xl font-display tracking-tight text-white">6-Day Pre-Webinar Instagram Story Blueprint</h1>
+          <p class="max-w-xl mx-auto text-zinc-400 text-sm md:text-base leading-relaxed">
+            Build anticipation, stack credibility, disrupt beliefs, and drive registrations for the LIVE class.
+          </p>
+
+          <!-- Core Positioning -->
+          <div class="mt-8 p-6 rounded-xl bg-brand/5 border border-brand/10 max-w-2xl mx-auto text-left">
+            <p class="text-xs uppercase tracking-wider text-brand-text font-medium mb-3 flex items-center gap-2">
+              <iconify-icon icon="solar:target-linear" width="16" stroke-width="1.5"></iconify-icon>
+              The Core Positioning
+            </p>
+            <p class="text-sm text-zinc-300 mb-3">The language is:</p>
+            <ul class="text-sm text-zinc-300 space-y-1.5 mb-4">
+              <li class="flex items-start gap-2"><span class="text-brand-text mt-0.5">&#8226;</span>"Having me in your corner"</li>
+              <li class="flex items-start gap-2"><span class="text-brand-text mt-0.5">&#8226;</span>"What happens when I'm locked in with you for 30 days"</li>
+              <li class="flex items-start gap-2"><span class="text-brand-text mt-0.5">&#8226;</span>"Something I've never offered before"</li>
+              <li class="flex items-start gap-2"><span class="text-brand-text mt-0.5">&#8226;</span>"I'm opening the door for a few people"</li>
+              <li class="flex items-start gap-2"><span class="text-brand-text mt-0.5">&#8226;</span>"I'm about to change the game for a small group"</li>
+            </ul>
+            <p class="text-sm text-brand-text italic">Every story should make people feel like they're about to get access to a cheat code that only a few people will ever get.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Grid -->
+        <div class="space-y-6">
+
+          <!-- ═══════════════════════ DAY 1: THE SIGNAL ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-brand/50 group-hover:bg-brand transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-brand">
+                  <iconify-icon icon="solar:bolt-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 1 — The Signal</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: "Wait... what is he about to do?"</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-brand-text text-xs font-medium">
+                No link. Just intrigue.
+              </div>
+            </header>
+            <p class="text-sm text-zinc-400 mb-6 pl-2 md:pl-6">The goal is NOT to announce anything. It's to create a disturbance. Something feels different. His audience should feel like something big is coming without being told what.</p>
+
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 1: The Cold Open (Lifestyle Video)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-xs text-zinc-500 mb-3">Visual: Him in a high-end Vegas setting. Penthouse, casino VIP area, courtside. Living. Not posing.</p>
+                  <p class="text-white italic">Text overlay: "What if you had me in your corner for 30 days straight?"</p>
+                  <p class="text-xs text-zinc-500 mt-3">No link. No CTA. No explanation. Just the question hanging in the air.</p>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 2: The Tease (Talking Head, 15s max)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic mb-3">"I've never done this before. And I might not do it again. Details coming this week. Pay attention."</p>
+                  <div class="flex gap-2 items-center">
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Poll Sticker</span>
+                    <span class="text-xs text-zinc-400">"Would you want me breaking down games with you LIVE?" YES / I'M SLEEP</span>
+                  </div>
+                  <div class="why-tag">
+                    <strong>Why the poll:</strong> Everyone who taps YES just raised their hand. That's your DM list for Day 6.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-brand-text font-medium">Story 3: The Quotable (Text-only, black bg, white text)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic text-lg mb-3">"Most people bet alone. The ones who win have someone in the room who sees what they don't."</p>
+                  <div class="flex gap-2 items-center">
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Share Arrow Prompt</span>
+                    <span class="text-xs text-zinc-400">"Send this to someone who needs to hear it."</span>
+                  </div>
+                  <div class="why-tag">
+                    <strong>Why:</strong> Shareable, screenshottable, and it frames the entire offer without revealing it. "Someone in the room" is the seed for live game analysis without ever saying it.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════ DAY 2: THE TRACK RECORD ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500/50 group-hover:bg-emerald-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-emerald-400">
+                  <iconify-icon icon="solar:medal-ribbons-star-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 2 — The Track Record</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: "This man doesn't miss."</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-medium">
+                Pure credibility. No selling.
+              </div>
+            </header>
+            <p class="text-sm text-zinc-400 mb-6 pl-2 md:pl-6">Day 2 is pure credibility. No selling. No teasing. Just an avalanche of proof that Mazi is one of the best in the world at this. CEMENT it so hard that when the offer drops, the only question is "how do I get in" not "is he legit."</p>
+
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 1: The Receipts (Screenshot Series)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-sm text-zinc-300 mb-3">3-4 story frames. Each one a different bet slip, payout, or win. Recent ones. Big numbers.</p>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                    <div class="bg-white/5 rounded p-3 text-center text-sm text-white italic">"Tuesday."</div>
+                    <div class="bg-white/5 rounded p-3 text-center text-sm text-white italic">"Last week."</div>
+                    <div class="bg-white/5 rounded p-3 text-center text-sm text-white italic">"This one was fun."</div>
+                    <div class="bg-white/5 rounded p-3 text-center text-sm text-white italic">"Regular day."</div>
+                  </div>
+                  <div class="why-tag">
+                    <strong>Why:</strong> No bragging. No explanation. Just results with timestamps. The casual tone is the flex. When you treat $10K wins like it's a regular Tuesday, that says more than any sales pitch.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 2: The Perspective (Talking Head)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic text-sm leading-relaxed">"People always ask me, 'Mazi, how do you see games that other people don't?' It's not magic. I just do this every single day. While other people are guessing, I'm studying. While they're chasing parlays, I'm reading the game in real time. I see things before they happen because I've trained my eye for years. This is my life. Not a side hustle. Not a hobby. My life. And this week I'm about to show a few people what that looks like up close."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> Transitions from proof to intrigue. "Up close" teases the offer without naming it. "A few people" creates scarcity before anything is announced. "I see things before they happen" plants the seed for live game analysis.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 3: The Social Proof (Repost or Screenshot)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-sm text-zinc-300 mb-2">Screenshot a comment, DM, or post from someone credible acknowledging his track record. Another bettor, a media mention, a celebrity interaction.</p>
+                  <p class="text-white italic">Text: "They know."</p>
+                  <p class="text-xs text-zinc-500 mt-2">No CTA. No link. Just proof stacking.</p>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 4: The Seed</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-xs text-zinc-500 mb-2">Text overlay on lifestyle clip:</p>
+                  <p class="text-white italic">"Imagine being in the room while I break down a game live. Hearing exactly what I see before the lines move. That's all I'll say for now."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> "In the room" and "break down a game live" is the clearest preview of the offer without naming it. "Before the lines move" speaks directly to bettors who understand value and timing.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════ DAY 3: THE DISRUPTION ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-orange-500/50 group-hover:bg-orange-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-orange-400">
+                  <iconify-icon icon="solar:danger-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 3 — The Disruption</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: "Everything I've been doing is wrong."</p>
+                </div>
+              </div>
+            </header>
+            <p class="text-sm text-zinc-400 mb-6 pl-2 md:pl-6">Day 3 is where Mazi separates himself from every capper, tout, and betting page on Instagram. He's not one of them. He's above them. The audience needs to feel that gap so the offer feels like an elevation, not a purchase.</p>
+
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium">Story 1: The Hot Take (Talking Head)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic text-sm leading-relaxed">"You know what's crazy? 90% of people who bet on sports are just donating money to the sportsbook. And they don't even know it. They think they're gambling. They're not. They're just paying. Following random cappers. Tailing parlays on Twitter. Putting money on their favorite team because 'they got a feeling.' That's not betting. That's hoping. And hope don't pay rent."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> This is the kind of content that gets screenshotted and sent to group chats. It attacks the behavior without insulting people directly. Makes them feel seen. Positions Mazi as the guy who does it differently.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium">Story 2: The Live Analysis Tease (Video)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-sm text-zinc-300 mb-3">Show him watching a game. Phone or screen visible. Reacting, pointing something out, calling something before it happens. Raw footage. Like someone accidentally recorded him in his element.</p>
+                  <p class="text-white italic">"This is what most bettors will never see. What it looks like when someone's actually reading the game in real time."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> At $25K, you're selling the mystique as much as the results. Showing him in the middle of live analysis without explaining the process makes people want IN. They see the skill but can't access it. The only way to get it is through the offer.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium">Story 3: The Contrast (Text-only, two frames)</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="bg-zinc-900 p-5 rounded-lg border border-white/5">
+                    <p class="text-xs text-zinc-500 uppercase mb-2">Frame 1 (dark)</p>
+                    <p class="text-zinc-300 text-sm leading-relaxed">What most people do: Pick a team. Bet. Pray. Lose. Repeat.</p>
+                  </div>
+                  <div class="bg-amber-950/30 p-5 rounded-lg border border-brand/20">
+                    <p class="text-xs text-brand-text uppercase mb-2">Frame 2 (gold)</p>
+                    <p class="text-white text-sm leading-relaxed">What I do: Watch. Read. Analyze. Position. Win. Repeat.</p>
+                  </div>
+                </div>
+                <p class="text-xs text-zinc-500 mt-3">Simple. Visual contrast. No CTA needed. The contrast does the selling.</p>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-orange-300 font-medium">Story 4: The Whisper</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic">"Tomorrow I'm going to tell you what I'm doing. If you've been paying attention this week, you already know it's different."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> Building to the "announcement" on Day 4 without actually announcing. He's been teasing for 3 days. The anticipation is the marketing.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════ DAY 4: THE REVEAL ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-purple-500/50 group-hover:bg-purple-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-purple-400">
+                  <iconify-icon icon="solar:eye-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 4 — The Reveal <span class="text-zinc-500 text-lg">(But Not Really)</span></h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: "I need to be on this. Whatever it is."</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-medium">
+                Links start today
+              </div>
+            </header>
+            <p class="text-sm text-zinc-400 mb-6 pl-2 md:pl-6">Day 4 is when Mazi "reveals" what he's doing. But the reveal is intentionally vague. He tells them WHAT (a live class) but not the specifics, the price, or the details. The webinar is the reveal. Today just confirms something is happening and gives them a way in.</p>
+
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-purple-300 font-medium">Story 1: The Announcement (Talking Head — Most Important Story of the Week)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-purple-500/20">
+                  <p class="text-white italic text-sm leading-relaxed">"Alright. I've been hinting at this all week. Here it is. I'm going live [DATE] to break down something I've never offered before. I'm not gonna tell you exactly what it is yet. But I will tell you this: if you've ever wanted me in your corner, actually in your corner, breaking down live games in real time, showing you exactly what I see before the lines move, calling out plays as they happen... this is the closest you're ever gonna get. It's not for everybody. It's for a few people who are serious. Register for the live. I'll explain everything there."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> "Never offered before" = novelty. "Not gonna tell you exactly" = mystery. "Breaking down live games in real time" = picture without naming. "Not for everybody" = pre-qualifies. "A few people who are serious" = scarcity + identity. Only way to find out more = register.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-purple-300 font-medium">Story 2: The Backup (Text)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic mb-3">"Next [DAY], I'm going live to explain something that's going to change how a small group of people makes money from sports. That's all I can say right now. Link to register below."</p>
+                  <div class="flex gap-2 items-center flex-wrap">
+                    <span class="text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20">Link Sticker</span>
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">DM me "LOCKED" for the link</span>
+                  </div>
+                  <div class="why-tag">
+                    <strong>Why "LOCKED" not "SYSTEM":</strong> The word "locked" fits his persona. It implies exclusivity. "I'm locked in." "We're locked." Natural to his audience.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-purple-300 font-medium">Story 3: The Scarcity Frame</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic text-sm leading-relaxed">"I'm not doing this for clout. I'm not doing this to sell you a course. I'm doing this because a few people have been asking for something I've never given access to. If that's you, register. If not, no love lost."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> Handles the "is this a scam/course/guru thing" objection before it forms. "Not for clout" and "not a course" disarms skepticism. "A few people have been asking" = demand-driven, not sales-driven.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-purple-300 font-medium">Story 4: Engagement Bait</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <div class="flex gap-2 items-center flex-wrap">
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Poll Sticker</span>
+                    <span class="text-sm text-zinc-300">"You coming to the live?" <span class="text-white">I'M THERE</span> / <span class="text-white">TELL ME MORE</span></span>
+                  </div>
+                  <p class="text-xs text-zinc-500 mt-3">Anyone who taps either option gets a DM.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════ DAY 5: PAIN + DESIRE ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group">
+            <div class="absolute top-0 left-0 w-1 h-full bg-rose-500/50 group-hover:bg-rose-500 transition-colors"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-surface2 border border-white/10 flex items-center justify-center text-rose-400">
+                  <iconify-icon icon="solar:heart-pulse-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 5 — Pain + Desire</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: Feel the cost of missing this.</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-medium">
+                SHORT DAY — Only 3 stories
+              </div>
+            </header>
+            <p class="text-sm text-zinc-400 mb-6 pl-2 md:pl-6">Only 3 stories today. Intentionally light. After 4 days of content, pull back. Less noise = more weight per frame.</p>
+
+            <div class="space-y-8 pl-2 md:pl-6">
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-rose-300 font-medium">Story 1: The Pain (Text, dark background, slow reveal)</span>
+                </div>
+                <div class="bg-zinc-900 rounded-lg p-6 border border-white/5">
+                  <div class="space-y-2 text-white italic text-center">
+                    <p>"Another month goes by."</p>
+                    <p>"Same bets. Same losses. Same cycle."</p>
+                    <p>"You know something has to change."</p>
+                    <p>"But you keep doing it alone."</p>
+                  </div>
+                  <p class="text-xs text-zinc-600 text-center mt-4">No sticker. No link. No CTA. Just the weight.</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> At $25K, the pain isn't "I can't afford food." The pain is: "I keep losing and I know I shouldn't be. I know there's a better way and I'm not accessing it." That's a person who HAS money to bet but doesn't have the edge. That's Mazi's buyer.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-emerald-300 font-medium">Story 2: The Desire (Lifestyle + Talking Head)</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-xs text-zinc-500 mb-3">Visual: Him watching a game, relaxed, locked in. Calm confidence. Maybe a phone notification of a win hits mid-clip.</p>
+                  <p class="text-white italic text-sm leading-relaxed">"This is what it looks like when you're not guessing. When you're watching games with someone who sees things nobody else sees. Breaking down plays live. Reading the game before it happens. That's what I'm offering. The live explains everything."</p>
+                  <div class="why-tag">
+                    <strong>Why:</strong> "Someone who sees things nobody else sees" is the most powerful positioning for live game analysis. It makes Mazi feel like a superpower you can borrow.
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-node">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs uppercase tracking-wider text-rose-300 font-medium">Story 3: The Bridge</span>
+                </div>
+                <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                  <p class="text-white italic mb-3">"Tomorrow I'm showing you what people who've been around me already know. These results aren't normal. They're earned. And for the first time, I'm letting people inside."</p>
+                  <div class="flex gap-2 items-center flex-wrap">
+                    <span class="text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20">Link Sticker</span>
+                    <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">DM "LOCKED"</span>
+                  </div>
+                  <div class="why-tag">
+                    <strong>Why the teaser for tomorrow:</strong> You're pre-selling Day 6's social proof. They'll come back to check.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════ DAY 6: PROOF + FINAL PUSH ═══════════════════════ -->
+          <article class="glass-card rounded-2xl p-8 relative overflow-hidden group border-red-500/20">
+            <div class="absolute top-0 left-0 w-1 h-full bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-shadow"></div>
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/5 pb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500">
+                  <iconify-icon icon="solar:alarm-circle-linear" width="24" stroke-width="1.5"></iconify-icon>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-display tracking-tight text-white">Day 6 — Proof + Final Push</h2>
+                  <p class="text-sm text-zinc-500 mt-1">Psychological Job: "I can't afford to miss this."</p>
+                </div>
+              </div>
+              <div class="px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-xs font-medium">
+                Heaviest Day — 7+ stories. This is the close.
+              </div>
+            </header>
+
+            <!-- MORNING -->
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-5 pl-2 md:pl-6">
+                <div class="w-20 text-xs text-zinc-500 text-right font-medium tracking-wide uppercase">Morning</div>
+                <div class="flex-1 h-px bg-white/5"></div>
+                <span class="text-xs text-zinc-600">10am–12pm</span>
+              </div>
+
+              <div class="space-y-6 pl-2 md:pl-6">
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-300 font-medium">Stories 1–3: Social Proof Stack</span>
+                  </div>
+                  <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                    <p class="text-sm text-zinc-300 mb-3">Client wins. DMs from people who've been around him during games. Screenshots of reactions. Before/after lifestyle. Stack 2-3 proof frames.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+                      <div class="bg-white/5 rounded p-3 text-sm text-white italic text-center">"He was in the room when I called it live."</div>
+                      <div class="bg-white/5 rounded p-3 text-sm text-white italic text-center">"Real time. No delay. I said it before it happened."</div>
+                      <div class="bg-white/5 rounded p-3 text-sm text-white italic text-center">"This is what it sounds like when I'm locked in during a game."</div>
+                    </div>
+                    <p class="text-xs text-zinc-500">Keep it vague. Never say "this is a client." Never name the product. Just show the results. The implication is clear: people close to Mazi during games win.</p>
+                  </div>
+                </div>
+
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-300 font-medium">Story 4: The Mirror</span>
+                  </div>
+                  <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                    <p class="text-white italic text-sm leading-relaxed">"Every person I've helped started in the same place. Losing more than winning. Betting with emotion. No edge. The only difference between them and you is they got in the room."</p>
+                    <div class="flex gap-2 items-center mt-3">
+                      <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Countdown Sticker</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AFTERNOON -->
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-5 pl-2 md:pl-6">
+                <div class="w-20 text-xs text-zinc-500 text-right font-medium tracking-wide uppercase">Afternoon</div>
+                <div class="flex-1 h-px bg-white/5"></div>
+                <span class="text-xs text-zinc-600">3pm–5pm</span>
+              </div>
+
+              <div class="space-y-6 pl-2 md:pl-6">
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-300 font-medium">Story 5: FAQ Rapid Fire (Text frames, one per story)</span>
+                  </div>
+                  <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div class="flex justify-between items-center bg-white/5 rounded px-4 py-3">
+                        <span class="text-sm text-zinc-400">"Do I need a big bankroll?"</span>
+                        <span class="text-white font-medium text-sm">No.</span>
+                      </div>
+                      <div class="flex justify-between items-center bg-white/5 rounded px-4 py-3">
+                        <span class="text-sm text-zinc-400">"Is this for beginners?"</span>
+                        <span class="text-white font-medium text-sm">If you watch sports and bet, you qualify.</span>
+                      </div>
+                      <div class="flex justify-between items-center bg-white/5 rounded px-4 py-3">
+                        <span class="text-sm text-zinc-400">"Is this a picks service?"</span>
+                        <span class="text-white font-medium text-sm">Way more. I'll explain on the live.</span>
+                      </div>
+                      <div class="flex justify-between items-center bg-white/5 rounded px-4 py-3">
+                        <span class="text-sm text-zinc-400">"Will there be a replay?"</span>
+                        <span class="text-white font-medium text-sm">No. Live only. One time.</span>
+                      </div>
+                      <div class="flex justify-between items-center bg-white/5 rounded px-4 py-3 sm:col-span-2">
+                        <span class="text-sm text-zinc-400">"Why should I trust you?"</span>
+                        <span class="text-white font-medium text-sm">Show up. Judge for yourself.</span>
+                      </div>
+                    </div>
+                    <div class="why-tag">
+                      <strong>Why "way more than that" on picks:</strong> You can't say it's just picks at $25K. "Way more. I'll explain on the live" keeps the mystery and forces registration.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- EVENING -->
+            <div>
+              <div class="flex items-center gap-3 mb-5 pl-2 md:pl-6">
+                <div class="w-20 text-xs text-red-400 text-right font-medium tracking-wide uppercase">Evening</div>
+                <div class="flex-1 h-px bg-red-500/20"></div>
+                <span class="text-xs text-red-400">2–3 hours before</span>
+              </div>
+
+              <div class="space-y-6 pl-2 md:pl-6">
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-300 font-medium">Story 6: The Final Call (Talking Head)</span>
+                  </div>
+                  <div class="bg-surface2/50 rounded-lg p-5 border border-red-500/20">
+                    <p class="text-white italic text-sm leading-relaxed">"We're going live tonight. I'm about to put something on the table I've never offered before. If you've been watching me all week, you already feel it. This is different. Register right now. Link is in the story and the bio. Once we start, the door closes."</p>
+                    <div class="flex gap-2 items-center mt-3 flex-wrap">
+                      <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">Countdown Sticker</span>
+                      <span class="text-[10px] bg-brand/10 text-brand px-2 py-1 rounded border border-brand/20">Link Sticker</span>
+                      <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-1 rounded border border-white/5">DM "LOCKED" right now</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-300 font-medium">Story 7: Behind the Scenes</span>
+                  </div>
+                  <div class="bg-surface2/50 rounded-lg p-5 border border-white/5">
+                    <p class="text-xs text-zinc-500 mb-2">Photo/video of his setup. Screens. Game feeds. The war room.</p>
+                    <p class="text-white italic">"Setting up. Tonight changes the game for somebody watching this right now."</p>
+                  </div>
+                </div>
+
+                <div class="story-node">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-xs uppercase tracking-wider text-red-400 font-bold">Story 8: 15-Minute Warning</span>
+                  </div>
+                  <div class="bg-red-500/10 rounded-lg p-5 border border-red-500/30">
+                    <p class="text-white font-medium text-lg text-center">"15 MINUTES. If you're not registered, you're missing it. Link in bio."</p>
+                    <p class="text-xs text-zinc-500 mt-3 text-center">Clean. No stickers. Just urgency.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Daily Rules -->
+        <div class="mt-12 bg-gradient-to-b from-surface2 to-black p-8 rounded-2xl border border-white/10">
+          <div class="flex items-center gap-3 mb-6">
+            <iconify-icon icon="solar:clipboard-check-linear" class="text-brand" width="24" stroke-width="1.5"></iconify-icon>
+            <h3 class="text-xl font-display text-white">Daily Rules — Every Day, No Exceptions</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+            <ul class="space-y-3 text-sm text-zinc-400">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>3–5 story frames daily (Day 6 gets 7+)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>At least 1 talking-head video every day</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Link sticker on minimum 2 stories (starting Day 4)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>"DM 'LOCKED'" on at least 1 story per day (starting Day 4)</span>
+              </li>
+            </ul>
+            <ul class="space-y-3 text-sm text-zinc-400">
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Days 1–3 have NO registration link. Just intrigue. Links appear Day 4.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Mix formats: video, text-only, screenshots, lifestyle, interactive stickers</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:check-circle-linear" class="mt-0.5 text-zinc-600"></iconify-icon>
+                <span>Film raw on phone. No production. No editing. Overproduced content kills trust.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <iconify-icon icon="solar:star-linear" class="mt-0.5 text-brand"></iconify-icon>
+                <span class="text-zinc-300">Post between 11am–1pm and 7pm–10pm</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </main>
+    </div>
+    <!-- END BLUEPRINT CONTENT -->
+
+    <!-- ═══ FOOTER (clients subdomain) ═══ -->
+    <footer class="footer">
+      <div class="footer-line-top" aria-hidden="true"></div>
+      <div class="footer-row">
+        <div class="footer-col-left">
+          <img src="assets/header-img.png" class="footer-logo" alt="Scaling Offers logo" />
+          <p class="footer-text-discover">
+            Discover unparalleled success with Scaling Offers, your elite
+            sales and marketing partner. We elevate businesses with expert
+            teams, innovative strategies, and tailored solutions, driving
+            growth and maximizing ROI. Experience the difference with our
+            comprehensive, results-driven approach.
+          </p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="https://www.scalingoffers.com/client-testimonials" class="footer-link">Client Testimonials</a>
+        </nav>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Scaling Offers | All Rights Reserved
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.querySelector(".mobile-menu-btn");
+      const menuPanel = document.querySelector(".mobile-menu-panel");
+      const headerRoot = document.querySelector(".header-header");
+      if (!menuButton || !menuPanel || !headerRoot) return;
+      const setMenuState = (isOpen) => {
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuPanel.setAttribute("aria-hidden", String(!isOpen));
+        headerRoot.classList.toggle("is-menu-open", isOpen);
+      };
+      menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        setMenuState(!isOpen);
+      });
+      menuPanel.addEventListener("click", (event) => {
+        if (event.target.closest("a, button")) {
+          setMenuState(false);
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setMenuState(false);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

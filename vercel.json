@@ -25,6 +25,7 @@
           { "source": "/circle-of-success-jv-commission", "destination": "/circle-of-success-jv-commission.html" },
           { "source": "/jessica-rich-webinar-deck", "destination": "/jessica-rich-webinar-deck.html" },
           { "source": "/7-day-posting-blueprint", "destination": "/7-day-posting-blueprint.html" },
-          { "source": "/mazi-vs-webinar-deck", "destination": "/mazi-vs-webinar-deck.html" }
+          { "source": "/mazi-vs-webinar-deck", "destination": "/mazi-vs-webinar-deck.html" },
+          { "source": "/mazi-story-posting-blueprint", "destination": "/mazi-story-posting-blueprint.html" }
     ]
 }
